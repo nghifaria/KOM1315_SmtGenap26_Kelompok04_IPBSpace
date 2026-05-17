@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>IPB Space - Konfirmasi Penawaran Booking</title>
+    <!-- Google Fonts: Inter (strictly required) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) untuk navbar & aksesibilitas visual -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3F4F6;  /* Light Gray background */
+            color: #4B5563;              /* Medium Gray for body text default */
+            line-height: 1.5;
+            padding-bottom: 80px;        /* ruang untuk fixed bottom navbar */
+        }
+
+        /* Container utama: mobile-first (max-width 480px, centered on larger) */
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px 16px 32px 16px;
+        }
+
+        /* Card / Surface */
+        .card {
+            background-color: #FFFFFF;   /* Pure white surface */
+            border-radius: 24px;         /* soft rounded, modern */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
+            padding: 24px 20px;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
+        }
+
+        /* typography headings & body */
+        h1, h2, h3, .heading-primary {
+            color: #1F2937;              /* Dark Gray for headings */
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        h2 {
+            font-size: 1.65rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .greeting {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #1F2937;
+        }
+
+        .salutation {
+            margin-top: 8px;
+            margin-bottom: 16px;
+            font-weight: 500;
+            color: #1F2937;
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: #02275D;              /* IPB Navy Blue for emphasis */
+            background: rgba(2, 39, 93, 0.05);
+            padding: 0 4px;
+            border-radius: 6px;
+        }
+
+        .facility-card {
+            background: #F9FAFB;
+            border-left: 5px solid #02275D;
+            padding: 16px;
+            border-radius: 16px;
+            margin: 20px 0 16px;
+        }
+
+        .facility-detail {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #EFF6FF;
+            padding: 8px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #02275D;
+            margin-top: 8px;
+        }
+
+        .time-badge i {
+            font-size: 0.8rem;
+        }
+
+        /* timer khusus (30 menit) */
+        .timer-section {
+            background-color: #FEF9E3;
+            border-radius: 20px;
+            padding: 14px 16px;
+            margin: 18px 0 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .timer-label {
+            font-weight: 500;
+            color: #92400E;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timer-clock {
+            font-family: 'Inter', monospace;
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            background: #FFFFFF;
+            padding: 6px 14px;
+            border-radius: 48px;
+            color: #02275D;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        /* button utama - rounded corners, modern */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: #02275D;    /* IPB Navy Blue */
+            border: none;
+            color: white;
+            padding: 14px 28px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 60px;          /* soft rounded but also 8px-ish but modern big rounded */
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(2, 39, 93, 0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #011b48;
+            transform: scale(0.98);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary i {
+            font-size: 1rem;
+        }
+
+        .expiry-note {
+            font-size: 0.75rem;
+            color: #6B7280;
+            text-align: center;
+            margin-top: 16px;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 16px;
+        }
+
+        .footer-note {
+            font-size: 0.7rem;
+            text-align: center;
+            color: #9CA3AF;
+            margin-top: 20px;
+        }
+
+        /* Bottom Navigation Bar - Fixed (mobile first) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.04);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 16px 20px;
+            max-width: 100%;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Untuk layar besar, navbar tetap melekat di tengah dengan container max-width */
+        @media (min-width: 480px) {
+            .bottom-nav {
+                max-width: 480px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 24px 24px 0 0;
+                background: #FFFFFF;
+                border-top: 1px solid #EDF2F7;
+                padding-bottom: 12px;
+            }
+            body {
+                padding-bottom: 85px;
+            }
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #9CA3AF;
+            transition: all 0.2s ease;
+            padding: 6px 12px 4px;
+            border-radius: 40px;
+        }
+
+        .nav-item i {
+            font-size: 1.4rem;
+            color: #9CA3AF;
+            transition: color 0.2s;
+        }
+
+        .nav-item.active {
+            color: #02275D;
+        }
+
+        .nav-item.active i {
+            color: #02275D;
+        }
+
+        .nav-item span {
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* highlight untuk active tab: "Riwayat" tidak perlu tapi sesuai mock, tapi kita highlight "Beranda" sebagai active? 
+           sesuai spek: "Highlight the active tab with the Primary color." 
+           Karena konteks halaman ini adalah halaman konfirmasi penawaran, secara UX biasanya menu Beranda tidak spesifik aktif, tapi untuk memenuhi requirement: kita akan set 'Beranda' sebagai active (karena user sedang melihat penawaran yang mirip beranda/inbox). 
+           Bisa juga set 'Riwayat' tidak, tapi saya pilih 'Beranda' sebagai aktif konsisten. */
+        .nav-item.active {
+            background: rgba(2, 39, 93, 0.08);
+        }
+
+        /* Responsive spacing */
+        @media (max-width: 420px) {
+            .container {
+                padding: 16px 14px 32px 14px;
+            }
+            .timer-clock {
+                font-size: 1.3rem;
+                padding: 4px 12px;
+            }
+        }
+
+        /* tambahan style untuk elemen dinamis */
+        .text-small {
+            font-size: 0.8rem;
+        }
+        .warning-expired {
+            background-color: #FEE2E2;
+            color: #991B1B;
+            border-radius: 20px;
+            padding: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .btn-disabled {
+            background-color: #9CA3AF;
+            pointer-events: none;
+            opacity: 0.7;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <!-- Kartu utama penawaran booking -->
+        <div class="card" id="offerCard">
+            <div class="greeting">
+                <i class="fas fa-calendar-check" style="color: #02275D; margin-right: 6px;"></i> Notifikasi Prioritas
+            </div>
+            <h2>Penawaran Booking Tersedia</h2>
+            <p class="salutation">Yth. Bapak/Ibu <span id="fullnameDisplay" class="highlight">{{ fullname }}</span>,</p>
+            <p>Sebuah slot untuk <strong id="facilityNameSlot">{{ facility_name }}</strong> pada tanggal <strong id="dateSlot">{{ date }}</strong> mulai pukul <strong id="startSlot">{{ start_time }}</strong> hingga <strong id="endSlot">{{ end_time }}</strong> baru saja tersedia karena pembatalan.</p>
+            <div class="facility-card">
+                <div class="facility-detail">
+                    <i class="fas fa-building" style="color:#02275D; width: 20px;"></i> 
+                    <span id="facilityDetailName">{{ facility_name }}</span>
+                </div>
+                <div class="time-badge">
+                    <i class="far fa-clock"></i> 
+                    <span id="timeRangePreview">{{ start_time }} - {{ end_time }} WIB</span>
+                </div>
+                <div style="margin-top: 8px; font-size:0.75rem; color:#4B5563;">
+                    <i class="fas fa-map-marker-alt"></i> Kampus IPB, Dramaga
+                </div>
+            </div>
+            <p>Karena Anda memiliki permintaan pending untuk fasilitas ini, kami menawarkan slot ini kepada Anda. Harap konfirmasi booking Anda dalam waktu <strong class="highlight">30 menit</strong> dengan menekan tombol di bawah:</p>
+            
+            <!-- Timer 30 menit interaktif -->
+            <div class="timer-section" id="timerBox">
+                <div class="timer-label">
+                    <i class="fas fa-hourglass-half"></i> 
+                    <span>Sisa waktu konfirmasi:</span>
+                </div>
+                <div class="timer-clock" id="countdownDisplay">30:00</div>
+            </div>
+            
+            <!-- Tombol konfirmasi -->
+            <a href="{{ confirmation_link }}" id="confirmButton" class="btn-primary">
+                <i class="fas fa-check-circle"></i> Konfirmasi Booking Sekarang
+            </a>
+            <div class="expiry-note">
+                <i class="fas fa-info-circle"></i> Jika tidak mengonfirmasi dalam 30 menit, penawaran ini akan kedaluwarsa dan tidak ada tindakan lebih lanjut.
+            </div>
+            <div class="footer-note">
+                IPB Space · Layanan Reservasi Terintegrasi
+            </div>
+        </div>
+
+        <!-- Pesan expired (akan tampil jika waktu habis) -->
+        <div id="expiredMessage" style="display: none;" class="card warning-expired">
+            <i class="fas fa-hourglass-end" style="margin-right: 8px;"></i> 
+            <strong>Penawaran telah kedaluwarsa.</strong><br>
+            Slot tidak dapat dikonfirmasi lagi. Silakan cek ketersediaan baru di menu Eksplor.
+        </div>
+    </div>
+
+    <!-- Fixed Bottom Navbar dengan 4 ikon + teks, aktif Beranda diberi warna primary -->
+    <div class="bottom-nav">
+        <div class="nav-item active" id="navHome">
+            <i class="fas fa-home"></i>
+            <span>Beranda</span>
+        </div>
+        <div class="nav-item" id="navExplore">
+            <i class="fas fa-compass"></i>
+            <span>Eksplor</span>
+        </div>
+        <div class="nav-item" id="navHistory">
+            <i class="fas fa-history"></i>
+            <span>Riwayat</span>
+        </div>
+        <div class="nav-item" id="navProfile">
+            <i class="fas fa-user-circle"></i>
+            <span>Profil</span>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // Data simulasi / placeholder (formal Indonesian, dinamis dari template)
+        // Karena file asli menggunakan placeholder seperti {{ fullname }} dll,
+        // Kita akan menggantinya dengan data contoh untuk demonstrasi, namun tetap mengikuti
+        // struktur yang dapat dengan mudah digabungkan dengan backend.
+        // Parameter ditentukan manual agar sesuai visual, dengan format Indonesia.
+        // ============================================================
+        
+        // Data dinamis yang dapat diisi oleh server
+        const offerData = {
+            fullname: "{{ fullname }}",
+            facility_name: "{{ facility_name }}",
+            date: "{{ date }}",
+            start_time: "{{ start_time }}",
+            end_time: "{{ end_time }}",
+            confirmation_link: "{{ confirmation_link }}"
+        };
+        
+        // Update semua placeholder di DOM
+        function renderOfferData() {
+            // elemen teks
+            const fullnameSpan = document.getElementById('fullnameDisplay');
+            const facilityNameSlot = document.getElementById('facilityNameSlot');
+            const dateSlot = document.getElementById('dateSlot');
+            const startSlot = document.getElementById('startSlot');
+            const endSlot = document.getElementById('endSlot');
+            const facilityDetailName = document.getElementById('facilityDetailName');
+            const timeRangePreview = document.getElementById('timeRangePreview');
+            
+            if (fullnameSpan) fullnameSpan.innerText = offerData.fullname;
+            if (facilityNameSlot) facilityNameSlot.innerText = offerData.facility_name;
+            if (dateSlot) dateSlot.innerText = offerData.date;
+            if (startSlot) startSlot.innerText = offerData.start_time;
+            if (endSlot) endSlot.innerText = offerData.end_time;
+            if (facilityDetailName) facilityDetailName.innerText = offerData.facility_name;
+            if (timeRangePreview) timeRangePreview.innerText = `${offerData.start_time} - ${offerData.end_time} WIB`;
+        }
+        
+        // Timer countdown 30 menit (1800 detik) & handling expired
+        let timeLeft = 1800; // 30 menit dalam detik
+        let timerInterval = null;
+        let isExpired = false;
+        let confirmed = false;
+        
+        const countdownDisplay = document.getElementById('countdownDisplay');
+        const confirmBtn = document.getElementById('confirmButton');
+        const expiredMsgDiv = document.getElementById('expiredMessage');
+        const offerCard = document.getElementById('offerCard');
+        
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        function updateTimerUI() {
+            if (countdownDisplay) {
+                countdownDisplay.innerText = formatTime(timeLeft);
+            }
+            // jika waktu <= 0 dan belum expired
+            if (timeLeft <= 0 && !isExpired) {
+                expireOffer();
+            }
+        }
+        
+        function expireOffer() {
+            if (isExpired) return;
+            isExpired = true;
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            // nonaktifkan tombol
+            if (confirmBtn) {
+                confirmBtn.classList.add('btn-disabled');
+                confirmBtn.style.pointerEvents = 'none';
+                confirmBtn.innerHTML = '<i class="fas fa-ban"></i> Penawaran Kedaluwarsa';
+                // ubah link href menjadi void
+                confirmBtn.removeAttribute('href');
+                confirmBtn.setAttribute('href', 'javascript:void(0);');
+            }
+            // sembunyikan timer section atau ubah style
+            const timerSection = document.getElementById('timerBox');
+            if (timerSection) {
+                timerSection.style.backgroundColor = "#F3F4F6";
+                timerSection.style.opacity = "0.7";
+                const timerLabelSpan = timerSection.querySelector('.timer-label span');
+                if (timerLabelSpan) timerLabelSpan.innerText = "Penawaran telah berakhir:";
+                if (countdownDisplay) countdownDisplay.innerText = "00:00";
+            }
+            // tampilkan pesan expired card
+            if (expiredMsgDiv) expiredMsgDiv.style.display = "block";
+            // opsional sembunyikan tombol lama tapi sudah dinonaktifkan
+        }
+        
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (!isExpired && timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerUI();
+                } else if (timeLeft <= 0 && !isExpired) {
+                    expireOffer();
+                }
+            }, 1000);
+        }
+        
+        // Fungsi konfirmasi booking (simulasi dengan alert dan redirect sesuai link asli)
+        function handleConfirmBooking(e) {
+            if (isExpired) {
+                e.preventDefault();
+                alert("Maaf, penawaran ini sudah kedaluwarsa. Silakan cari slot baru melalui menu Eksplor.");
+                return false;
+            }
+            if (confirmed) {
+                e.preventDefault();
+                alert("Anda sudah mengonfirmasi booking ini. Silakan cek Riwayat pemesanan Anda.");
+                return false;
+            }
+            // proses konfirmasi: dalam implementasi nyata redirect ke confirmation_link
+            // tapi untuk demo, gunakan konfirmasi dengan alert dan update UI
+            e.preventDefault();
+            const userConfirmed = confirm(`Apakah Anda yakin ingin mengonfirmasi booking untuk ${offerData.facility_name} pada ${offerData.date} pukul ${offerData.start_time} - ${offerData.end_time}?`);
+            if (userConfirmed) {
+                confirmed = true;
+                // Hentikan timer agar tidak expired setelah konfirmasi sukses
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                // Update UI tombol
+                confirmBtn.innerHTML = '<i class="fas fa-check-double"></i> Booking Terkonfirmasi!';
+                confirmBtn.classList.add('btn-disabled');
+                confirmBtn.style.pointerEvents = 'none';
+                confirmBtn.style.background = '#0F3B2C';
+                // tampilkan pesan sukses di card
+                const expiryNote = document.querySelector('.expiry-note');
+                if (expiryNote) {
+                    expiryNote.innerHTML = '<i class="fas fa-check-circle" style="color:#02275D"></i> Booking telah dikonfirmasi. Silakan cek detail di menu Riwayat. Terima kasih.';
+                    expiryNote.style.color = '#02275D';
+                    expiryNote.style.background = '#EFF6FF';
+                    expiryNote.style.borderRadius = '16px';
+                    expiryNote.style.padding = '10px';
+                }
+                // nonaktifkan timer box
+                const timerBox = document.getElementById('timerBox');
+                if (timerBox) timerBox.style.display = 'none';
+                
+                // Jika perlu redirect ke link asli dari variabel (jika bukan '#')
+                if (offerData.confirmation_link && offerData.confirmation_link !== '#') {
+                    window.location.href = offerData.confirmation_link;
+                } else {
+                    // alert sukses untuk demo
+                    alert("✅ Booking berhasil dikonfirmasi! Terima kasih telah menggunakan IPB Space.");
+                }
+            }
+            return false;
+        }
+        
+        // Penambahan event listener pada tombol konfirmasi
+        function bindConfirmEvent() {
+            if (confirmBtn) {
+                confirmBtn.addEventListener('click', handleConfirmBooking);
+            }
+        }
+        
+        // Fungsi untuk navigasi bottom navbar (simulasi interaksi karena tidak ada page routing, beri alert sesuai formal)
+        function initNavbar() {
+            const navHome = document.getElementById('navHome');
+            const navExplore = document.getElementById('navExplore');
+            const navHistory = document.getElementById('navHistory');
+            const navProfile = document.getElementById('navProfile');
+            
+            // Set active class: Beranda aktif (primary highlight)
+            function setActive(activeElement) {
+                const allNavs = [navHome, navExplore, navHistory, navProfile];
+                allNavs.forEach(nav => {
+                    if (nav) {
+                        nav.classList.remove('active');
+                    }
+                });
+                if (activeElement) activeElement.classList.add('active');
+            }
+            
+            if (navHome) {
+                navHome.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setActive(navHome);
+                    alert("Menuju Beranda IPB Space. (Simulasi)");
+                });
+            }
+            if (navExplore) {
+                navExplore.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setActive(navExplore);
+                    alert("Buka menu Eksplorasi fasilitas & cari slot baru.");
+                });
+            }
+            if (navHistory) {
+                navHistory.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setActive(navHistory);
+                    alert("Lihat riwayat pemesanan dan penawaran Anda.");
+                });
+            }
+            if (navProfile) {
+                navProfile.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setActive(navProfile);
+                    alert("Profil pengguna IPB Space & pengaturan akun.");
+                });
+            }
+            // Pastikan Beranda aktif secara default (primary highlighted)
+            setActive(navHome);
+        }
+        
+        // Inisialisasi data placeholder serta memastikan bahwa jika ada variabel dari server dapat di-override
+        // Fungsi untuk menyediakan data agar dapat diintegrasi (seperti merender dari object)
+        function init() {
+            renderOfferData();
+            bindConfirmEvent();
+            startTimer();
+            initNavbar();
+            // Additional graceful jika penawaran instant expired? tidak, start fresh.
+            // Update tombol link confirmation: jika link valid gunakan href namun tetap override event
+            const link = offerData.confirmation_link;
+            if (confirmBtn && link && link !== '#') {
+                confirmBtn.setAttribute('href', link);
+                // tetapi event click tetap di-handle, jadi prevent default akan tetap menangani
+                // Kita perlu mempertahankan behavior; cukup seperti itu sudah benar.
+            }
+        }
+        
+        // Jalankan init ketika DOM siap
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
