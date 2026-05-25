@@ -16,5 +16,7 @@ class Settings(BaseSettings):
     MAIL_SSL_TLS: bool = os.getenv("MAIL_SSL_TLS", "False").lower() == "true"
     USE_CREDENTIALS: bool = True
     VALIDATE_CERTS: bool = True
+    CORS_ORIGINS: str = os.getenv("CORS_ORIGINS", "")
 
 settings = Settings()
+

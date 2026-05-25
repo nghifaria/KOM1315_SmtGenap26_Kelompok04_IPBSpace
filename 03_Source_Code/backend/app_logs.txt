@@ -1,0 +1,1 @@
+[2m2026-05-17T14:37:36.827767Z[0m [[32m[1minfo     [0m] [1mtest_event                    [0m [[0m[1m[34m__main__[0m][0m [36mmessage[0m=[35m'Verification log message'[0m

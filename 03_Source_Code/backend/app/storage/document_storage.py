@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Any
 from fastapi import UploadFile
 
 
@@ -23,4 +24,9 @@ class DocumentStorage(ABC):
     @abstractmethod
     async def delete_facility_image(self, file_url: str) -> bool:
         """Delete a facility image from storage."""
+        raise NotImplementedError
+
+    @abstractmethod
+    async def read_booking_document(self, file_url: str) -> Any:
+        """Read a booking document from storage and return it as a response."""
         raise NotImplementedError

@@ -5,3 +5,4 @@ class StatusApproval(enum.Enum):
     APPROVED = "approved"
     REJECTED = "rejected"
     CANCELED = "canceled"
+    CHECKED_IN = "checked-in"

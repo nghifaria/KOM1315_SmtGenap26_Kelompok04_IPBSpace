@@ -1,4 +1,6 @@
 import asyncio
+import io
+import mimetypes
 import os
 import re
 from uuid import uuid4
@@ -8,6 +10,7 @@ from appwrite.id import ID
 from appwrite.input_file import InputFile
 from appwrite.services.storage import Storage
 from fastapi import HTTPException, UploadFile, status
+from fastapi.responses import StreamingResponse
 
 from app.storage.document_storage import DocumentStorage
 
@@ -104,13 +107,58 @@ class AppwriteDocumentStorage(DocumentStorage):
             return False
 
     async def upload_booking_document(self, file: UploadFile) -> str:
+        if not self.booking_bucket_id:
+            raise HTTPException(status_code=500, detail="Booking bucket not configured")
         return await self._upload(file, self.booking_bucket_id)
 
     async def delete_booking_document(self, file_url: str) -> bool:
+        if not self.booking_bucket_id:
+            return False
         return await self._delete(file_url, self.booking_bucket_id)
 
     async def upload_facility_image(self, file: UploadFile) -> str:
+        if not self.facility_bucket_id:
+            raise HTTPException(status_code=500, detail="Facility bucket not configured")
         return await self._upload(file, self.facility_bucket_id)
 
     async def delete_facility_image(self, file_url: str) -> bool:
+        if not self.facility_bucket_id:
+            return False
         return await self._delete(file_url, self.facility_bucket_id)
+
+    async def read_booking_document(self, file_url: str) -> StreamingResponse:
+        if not self.booking_bucket_id:
+            raise HTTPException(status_code=500, detail="Booking bucket not configured")
+
+        match = re.search(r"/files/([^/?#]+)", file_url)
+        if not match:
+            raise HTTPException(status_code=400, detail="Invalid document URL")
+
+        file_id = match.group(1)
+        try:
+            # Fetch file metadata to get the original filename
+            file_meta = await asyncio.to_thread(
+                self.storage.get_file,
+                bucket_id=self.booking_bucket_id,
+                file_id=file_id,
+            )
+            # Appwrite SDK returns an object, not a dict
+            filename = getattr(file_meta, "name", f"document_{file_id}")
+            mime_type, _ = mimetypes.guess_type(filename)
+            media_type = mime_type or "application/octet-stream"
+
+            file_bytes = await asyncio.to_thread(
+                self.storage.get_file_download,
+                bucket_id=self.booking_bucket_id,
+                file_id=file_id,
+            )
+            return StreamingResponse(
+                io.BytesIO(file_bytes),
+                media_type=media_type,
+                headers={"Content-Disposition": f"inline; filename={filename}"},
+            )
+        except Exception as exc:
+            raise HTTPException(
+                status_code=status.HTTP_502_BAD_GATEWAY,
+                detail=f"Failed to retrieve document from Appwrite: {exc}",
+            ) from exc

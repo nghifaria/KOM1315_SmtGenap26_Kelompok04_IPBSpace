@@ -5,7 +5,7 @@ from app.core.database import get_db
 from app.services.user_service import UserService
 from app.repositories import user_repository
 from app.schemas.user import UserResponse, UserUpdate
-from app.api.dependencies import ensure_is_admin, get_current_user
+from app.api.dependencies import ensure_is_admin, get_current_user, ensure_is_admin_or_facility_manager
 from app.schemas.http import HTTPResponse
 
 router = APIRouter(prefix="/users", tags=["users"])
@@ -45,7 +45,7 @@ async def read_all_users(
     skip: int = Query(0, ge=0, description="The number of records to skip for pagination"),
     limit: int = Query(100, gt=0, le=1000, description="The maximum number of records to return"),
     service: UserService = Depends(get_user_service),
-    is_admin: bool = Depends(ensure_is_admin),
+    _: bool = Depends(ensure_is_admin_or_facility_manager),
 ) -> HTTPResponse:
     """
     Endpoint to retrieve a list of users with pagination. Requires authentication.
@@ -58,8 +58,8 @@ async def read_all_users(
     :type service: UserService
     :param current_user: The current authenticated user retrieved from the get_current_user dependency (used for authorization)
     :type current_user: UserResponse
-    :param is_admin: The current authenticated user retrieved from the ensure_is_admin dependency (used for authorization)
-    :type is_admin: UserResponse
+    :param _: The current authenticated user retrieved from the ensure_is_admin dependency (used for authorization)
+    :type _: UserResponse
     :return: A list of UserResponse objects representing the users in the system
     :rtype: List[UserResponse]
     """
@@ -70,17 +70,17 @@ async def read_all_users(
 async def read_user_by_id(
     user_id: int,
     service: UserService = Depends(get_user_service),
-    is_admin: bool = Depends(ensure_is_admin)
+    _: bool = Depends(ensure_is_admin_or_facility_manager)
 ) -> HTTPResponse:
     """
-    Endpoint to retrieve a user's information by their ID. Requires admin privileges.
-    
+    Endpoint to retrieve a user's information by their ID. Requires admin or facility manager privileges.
+
     :param user_id: The ID of the user to retrieve
     :type user_id: int
     :param service: The UserService dependency for handling user-related business logic
     :type service: UserService
-    :param current_user: The current authenticated user retrieved from the get_current_user dependency (used for authorization)
-    :type current_user: UserResponse
+    :param _: The current authenticated user retrieved from the ensure_is_admin_or_facility_manager dependency (used for authorization)
+    :type _: UserResponse
     :return: The UserResponse object representing the requested user if found, otherwise raises an HTTPException
     :rtype: UserResponse
     """

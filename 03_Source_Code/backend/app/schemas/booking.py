@@ -30,6 +30,7 @@ class BookingResponse(BaseModel):
     document_url: str | None = None
     fee: int | None = None
     status: str
+    reason: str | None = None
     date_of_booking: datetime
     start_time: datetime
     end_time: datetime
@@ -38,3 +39,7 @@ class BookingResponse(BaseModel):
     extra_items: List[BookingItemResponse] = []
 
     model_config = ConfigDict(from_attributes=True)
+
+class BookingStatusUpdate(BaseModel):
+    new_status: str = Field(..., pattern="^(pending|approved|rejected|canceled|checked-in)$")
+    reason: Optional[str] = None

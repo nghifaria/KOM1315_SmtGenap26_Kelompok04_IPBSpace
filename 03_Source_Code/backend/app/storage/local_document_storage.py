@@ -1,8 +1,11 @@
+import io
+import mimetypes
 import os
 from pathlib import Path
 from uuid import uuid4
 
 from fastapi import UploadFile
+from fastapi.responses import StreamingResponse
 
 from app.storage.document_storage import DocumentStorage
 
@@ -54,3 +57,18 @@ class LocalDocumentStorage(DocumentStorage):
 
     async def delete_facility_image(self, file_url: str) -> bool:
         return await self._delete(file_url, self.facility_dir)
+
+    async def read_booking_document(self, file_url: str) -> StreamingResponse:
+        filename = file_url.split("/")[-1]
+        file_path = self.booking_dir / filename
+        if file_path.exists():
+            file_bytes = file_path.read_bytes()
+            mime_type, _ = mimetypes.guess_type(filename)
+            media_type = mime_type or "application/octet-stream"
+
+            return StreamingResponse(
+                io.BytesIO(file_bytes),
+                media_type=media_type,
+                headers={"Content-Disposition": f"inline; filename={filename}"},
+            )
+        raise FileNotFoundError(f"Booking document not found: {file_url}")

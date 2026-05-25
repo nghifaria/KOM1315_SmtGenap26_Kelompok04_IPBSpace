@@ -6,7 +6,7 @@ from app.repositories.asset_repository import AssetRepository
 from app.services.facility_service import FacilityService
 from app.schemas.facility import FacilityCreate, FacilityUpdate, FacilityResponse
 from app.schemas.http import HTTPResponse
-from app.api.dependencies import ensure_is_admin
+from app.api.dependencies import ensure_is_admin, ensure_is_admin_or_facility_manager, ensure_is_facility_manager
 from app.storage.factory import get_document_storage
 import json
 from typing import List, Optional
@@ -56,7 +56,7 @@ async def create_facility(
     asset_ids: Optional[str] = Form("[]"), # Expecting JSON string for list
     image: Optional[UploadFile] = File(None),
     service: FacilityService = Depends(get_facility_service),
-    is_admin: bool = Depends(ensure_is_admin)
+    _: bool = Depends(ensure_is_admin)
     ) -> HTTPResponse:
     """
     Endpoint to create a new facility with an optional image. Requires admin privileges.
@@ -96,10 +96,10 @@ async def update_facility(
     asset_ids: Optional[str] = Form(None),
     image: Optional[UploadFile] = File(None),
     service: FacilityService = Depends(get_facility_service),
-    is_admin: bool = Depends(ensure_is_admin)
+    _: bool = Depends(ensure_is_admin_or_facility_manager)
 ) -> HTTPResponse:
     """
-    Endpoint to update an existing facility. Requires admin privileges.
+    Endpoint to update an existing facility. Requires admin or facility manager privileges.
     """
     update_dict = {}
     if name is not None: update_dict["name"] = name
@@ -123,7 +123,7 @@ async def update_facility(
 async def delete_facility(
     facility_id: int,
     service: FacilityService = Depends(get_facility_service),
-    is_admin: bool = Depends(ensure_is_admin)
+    _: bool = Depends(ensure_is_admin)
 ) -> HTTPResponse:
     """
     Endpoint to delete a facility. Requires admin privileges.

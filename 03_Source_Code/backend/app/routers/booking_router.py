@@ -8,9 +8,9 @@ from app.repositories.booking_repository import BookingRepository
 from app.repositories.facility_repository import FacilityRepository
 from app.repositories.user_repository import UserRepository
 from app.services.booking_service import BookingService
-from app.schemas.booking import BookingResponse
+from app.schemas.booking import BookingResponse, BookingStatusUpdate
 from app.schemas.http import HTTPResponse
-from app.api.dependencies import ensure_is_admin, get_current_user
+from app.api.dependencies import ensure_is_admin, get_current_user, ensure_is_facility_manager, ensure_is_admin_or_facility_manager
 from app.enums.user_enums import UserRoles
 from sqlalchemy.future import select
 from sqlalchemy.orm import joinedload
@@ -31,7 +31,7 @@ async def get_booking_service(db: AsyncSession = Depends(get_db)):
 @router.get("/", response_model=HTTPResponse)
 async def get_all_bookings(
     service: BookingService = Depends(get_booking_service),
-    is_admin: bool = Depends(ensure_is_admin)
+    is_authorized: bool = Depends(ensure_is_admin_or_facility_manager)
 ) -> HTTPResponse:
     bookings = await service.get_all_bookings()
     return HTTPResponse(
@@ -90,12 +90,25 @@ async def create_booking(
     end_time: str = Form(..., pattern=r"^\d{2}:\d{2}$"), # HH:MM format
     fee: int | None = Form(None, ge=0),
     document: UploadFile = File(...),
+    extra_items: str | None = Form(None),
     current_user: UserResponse = Depends(get_current_user),
     service: BookingService = Depends(get_booking_service),
 ) -> HTTPResponse:
-    booking_date = datetime.strptime(date_of_booking, "%Y-%m-%d")
-    start_dt = datetime.strptime(f"{date_of_booking} {start_time}", "%Y-%m-%d %H:%M")
-    end_dt = datetime.strptime(f"{date_of_booking} {end_time}", "%Y-%m-%d %H:%M")
+    from datetime import timezone, timedelta
+    WIB = timezone(timedelta(hours=7))
+    booking_date = datetime.strptime(date_of_booking, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    start_dt = datetime.strptime(f"{date_of_booking} {start_time}", "%Y-%m-%d %H:%M").replace(tzinfo=WIB)
+    end_dt = datetime.strptime(f"{date_of_booking} {end_time}", "%Y-%m-%d %H:%M").replace(tzinfo=WIB)
+
+    import json
+    extra_items_list = None
+    if extra_items:
+        try:
+            extra_items_list = json.loads(extra_items)
+            if not isinstance(extra_items_list, list):
+                raise HTTPException(status_code=400, detail="extra_items must be a JSON array")
+        except Exception:
+            raise HTTPException(status_code=400, detail="Invalid extra_items format. Must be JSON array.")
 
     booking = await service.create_booking(
         facility_id=facility_id,
@@ -106,7 +119,8 @@ async def create_booking(
         fee=fee,
         date_of_booking=booking_date,
         start_time=start_dt,
-        end_time=end_dt
+        end_time=end_dt,
+        extra_items=extra_items_list
     )
 
     return HTTPResponse(
@@ -117,11 +131,15 @@ async def create_booking(
 @router.put("/{booking_id}/status", response_model=HTTPResponse)
 async def update_booking_status(
     booking_id: int,
-    new_status: str = Form(..., pattern="^(pending|approved|rejected|canceled)$"),
+    status_update: BookingStatusUpdate,
     service: BookingService = Depends(get_booking_service),
-    is_admin: bool = Depends(ensure_is_admin)
+    _: bool = Depends(ensure_is_admin_or_facility_manager)
 ) -> HTTPResponse:
-    updated_booking = await service.update_booking_status(booking_id, new_status)
+    updated_booking = await service.update_booking_status(
+        booking_id, 
+        status_update.new_status,
+        status_update.reason
+    )
     return HTTPResponse(
         success=True,
         data={"booking": BookingResponse.model_validate(updated_booking).model_dump(mode="json")},
@@ -144,11 +162,34 @@ async def cancel_booking(
         data={"booking": BookingResponse.model_validate(updated_booking).model_dump(mode="json")},
     )
 
+@router.put("/{booking_id}/check-in", response_model=HTTPResponse)
+async def check_in_booking(
+    booking_id: int,
+    service: BookingService = Depends(get_booking_service),
+    current_user: UserResponse = Depends(get_current_user),
+) -> HTTPResponse:
+    booking = await service.get_booking_by_id(booking_id)
+    if booking.user_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Kamu tidak memiliki izin untuk check-in booking ini"
+        )
+    if booking.status != "approved":
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Booking harus dalam status 'approved' untuk check-in"
+        )
+    updated_booking = await service.update_booking_status(booking_id, "checked-in")
+    return HTTPResponse(
+        success=True,
+        data={"booking": BookingResponse.model_validate(updated_booking).model_dump(mode="json")},
+    )
+
 @router.delete("/{booking_id}", response_model=HTTPResponse)
 async def delete_booking(
     booking_id: int,
     service: BookingService = Depends(get_booking_service),
-    is_admin: bool = Depends(ensure_is_admin)
+    _: bool = Depends(ensure_is_admin)
 ) -> HTTPResponse:
     await service.delete_booking(booking_id)
     return HTTPResponse(success=True, data={"message": "Booking deleted successfully"})
@@ -157,13 +198,14 @@ async def delete_booking(
 async def get_booking_document(
     booking_id: int,
     service: BookingService = Depends(get_booking_service),
+    storage = Depends(get_document_storage),
     current_user: UserResponse = Depends(get_current_user),
 ):
     booking = await service.get_booking_by_id(booking_id)
     if not booking.document_url:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Document not found for this booking")
     
-    return RedirectResponse(url=booking.document_url)
+    return await storage.read_booking_document(booking.document_url)
 
 @router.delete("/{booking_id}/document", response_model=HTTPResponse)
 async def delete_booking_document(
