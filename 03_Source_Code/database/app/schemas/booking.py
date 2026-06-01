@@ -31,6 +31,7 @@ class BookingResponse(BaseModel):
     fee: int | None = None
     status: str
     reason: str | None = None
+    validated_by: str | None = None
     date_of_booking: datetime
     start_time: datetime
     end_time: datetime

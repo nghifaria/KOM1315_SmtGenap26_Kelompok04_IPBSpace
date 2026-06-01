@@ -138,8 +138,8 @@ class DocumentCrypto:
         #     raise ValueError(f"Decryption failed (key mismatch or tampered ciphertext): {exc}") from exc
         except Exception as exc:
           raise ValueError(
-              "Document could not be decrypted. "
-              "The file may be corrupted, tampered with, or encrypted using a different key."
+              "Dokumen tidak dapat diverifikasi dan didekripsi. "
+              "File mungkin telah berubah, rusak, atau tidak cocok dengan kunci enkripsi yang digunakan sistem."
           ) from exc
 
         # 2. Verify signature

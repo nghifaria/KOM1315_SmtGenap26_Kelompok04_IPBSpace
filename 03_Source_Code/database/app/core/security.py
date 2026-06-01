@@ -24,13 +24,13 @@ class Security:
         return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
     
     @staticmethod
-    def create_access_token(data: Dict[str, Any], expires_delta: int = 900) -> str:
+    def create_access_token(data: Dict[str, Any], expires_delta: int = 25200) -> str:
         """
         Create a JWT access token.
         
         :param data: The data to include in the token (e.g., user ID, role).
         :type data: Dict[str, Any]
-        :param expires_delta: Expiration time in seconds (default is 15 minutes).
+        :param expires_delta: Expiration time in seconds (default is 7 hours).
         :type expires_delta: int
         :return: Encoded JWT access token as a string
         :rtype: str

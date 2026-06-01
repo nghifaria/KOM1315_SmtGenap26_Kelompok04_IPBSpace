@@ -10,6 +10,7 @@ class UserBase(BaseModel):
     fullname: str = Field(..., min_length=3)
     idnum: str
     role: UserRoles = Field(default=UserRoles.CIVITAS)
+    is_active: bool = Field(default=True)
 
     @field_validator("fullname")
     def validate_fullname(cls, value: str) -> str:
@@ -70,3 +71,40 @@ class UserUpdate(BaseModel):
     fullname: str = Field(..., min_length=3)
     idnum: str
     email: EmailStr
+
+class ManagerCreate(UserCreate):
+    role: UserRoles = Field(default=UserRoles.FACILITY_MANAGER)
+    work_unit: Optional[str] = None
+
+class ManagerUpdate(BaseModel):
+    fullname: Optional[str] = Field(None, min_length=3)
+    idnum: Optional[str] = None
+    email: Optional[EmailStr] = None
+    work_unit: Optional[str] = None
+    password: Optional[str] = Field(None, min_length=8)
+    is_active: Optional[bool] = None
+
+    @field_validator("fullname")
+    @classmethod
+    def validate_fullname(cls, value: Optional[str]) -> Optional[str]:
+        if value is not None and not value.strip():
+            raise ValueError("Full name cannot be empty or just whitespace")
+        return value
+
+    @field_validator("password")
+    @classmethod
+    def validate_password(cls, value: Optional[str]) -> Optional[str]:
+        if value is None:
+            return value
+        if not value.strip():
+            raise ValueError("Password cannot be empty or just whitespace")
+        if len(value) < 8:
+            raise ValueError("Password must be at least 8 characters long")
+        if value.isdigit() or value.isalpha():
+            raise ValueError("Password must contain both letters and numbers")
+        if any(char.isspace() for char in value):
+            raise ValueError("Password cannot contain whitespace characters")
+        return value
+
+class ManagerResponse(UserResponse):
+    work_unit: Optional[str] = None

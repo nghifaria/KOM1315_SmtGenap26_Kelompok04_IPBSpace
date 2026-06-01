@@ -17,11 +17,10 @@ class User(Base):
     idnum : Mapped[str | None] = mapped_column(String, unique=True, index=True, nullable=True)  # NIM / NIP
     email : Mapped[str] = mapped_column(String, unique=True, index=True,nullable=False)
     hashed_password : Mapped[str] = mapped_column(String)
-    role: Mapped[UserRoles] = mapped_column(Enum(UserRoles, values_callable=lambda obj: [e.value for e in obj]),
-    nullable=False
-)
+    role: Mapped[UserRoles] = mapped_column(Enum(UserRoles, values_callable=lambda obj: [e.value for e in obj]), nullable=False)
     work_unit: Mapped[str | None] = mapped_column(String)
     authority_code: Mapped[str | None] = mapped_column(String)
+    is_active : Mapped[bool] = mapped_column(default=True, nullable=False)
 
     # Timestamps
     created_at : Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), default=datetime.datetime.now, nullable=False)

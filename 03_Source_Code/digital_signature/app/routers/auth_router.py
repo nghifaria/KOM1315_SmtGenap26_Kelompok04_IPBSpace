@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, status, Request
+from fastapi import APIRouter, Depends, status, Request, HTTPException
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.services.auth_service import AuthService
 from app.schemas.user import UserCreate, UserLogin
@@ -6,6 +7,11 @@ from app.schemas.http import HTTPResponse
 from app.schemas.token import refreshTokenRequest
 from app.api.dependencies import get_auth_service
 
+
+# Create a login response schema compatible with OAuth2 / Swagger UI and Frontend
+class LoginResponse(HTTPResponse):
+    access_token: str
+    token_type: str
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -49,28 +55,49 @@ async def register(
         data={}
     )
 
-@router.post("/login", response_model=HTTPResponse)
+@router.post("/login", response_model=LoginResponse)
 async def login(
-    data: UserLogin,
+    request: Request,
     service: AuthService = Depends(get_auth_service)
-) -> HTTPResponse:
+) -> LoginResponse:
     """
     Endpoint to log in a user and provide access and refresh tokens.
-
-    Example request body:
-    {
-        "email": "john.doe@ipbspace.com",
-        "password": "SecurePassword123"
-    }
+    Supports both JSON body (Frontend) and Form URL Encoded (Swagger Authorize).
     """
-    auth_data = await service.login(data)
+    content_type = request.headers.get("content-type", "")
     
-    return HTTPResponse(
+    if "application/x-www-form-urlencoded" in content_type or "multipart/form-data" in content_type:
+        form_data = await request.form()
+        email = form_data.get("username")
+        password = form_data.get("password")
+    else:
+        try:
+            body = await request.json()
+            email = body.get("email")
+            password = body.get("password")
+        except Exception:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid JSON body or content-type"
+            )
+            
+    if not email or not password:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email and password are required"
+        )
+        
+    user_login = UserLogin(email=email, password=password)
+    auth_data = await service.login(user_login)
+    
+    return LoginResponse(
         success=True,
         data={
             "user": auth_data.data,
             "token": auth_data.token,
-        }
+        },
+        access_token=auth_data.token.access_token,
+        token_type="bearer"
     )
 
 @router.post("/refresh", response_model=HTTPResponse)

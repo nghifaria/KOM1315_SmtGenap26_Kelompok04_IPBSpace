@@ -12,7 +12,7 @@ from app.enums.user_enums import UserRoles
 from app.core.logging import logger
 
 # OAuth2 scheme for token-based authentication
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 async def get_user_service(db: AsyncSession = Depends(get_db)) -> UserService:
     repo = user_repository.UserRepository(db)
