@@ -44,3 +44,4 @@ class BookingResponse(BaseModel):
 class BookingStatusUpdate(BaseModel):
     new_status: str = Field(..., pattern="^(pending|approved|rejected|canceled|checked-in)$")
     reason: Optional[str] = None
+    force: bool = False

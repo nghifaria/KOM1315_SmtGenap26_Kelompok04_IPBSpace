@@ -3,11 +3,11 @@ Generate a fresh RSA-2048 signing key pair and a 256-bit AES encryption key
 for the DocumentCrypto service.
  
 Usage
-─────
+-----
     python scripts/generate_keys.py
  
 Output
-──────
+------
 Prints the three .env lines you need to add:
  
     DOCUMENT_SIGNING_PRIVATE_KEY=-----BEGIN RSA PRIVATE KEY-----\\n...
@@ -18,7 +18,7 @@ The public key is for reference / verification only — it is not read by
 the application (it is re-derived from the private key at startup).
  
 Security notes
-──────────────
+--------------
 • Keep DOCUMENT_SIGNING_PRIVATE_KEY and DOCUMENT_ENCRYPTION_KEY secret.
 • Back them up securely — losing them means you cannot decrypt existing docs.
 • Rotate keys with care: after rotation old files need re-encryption.

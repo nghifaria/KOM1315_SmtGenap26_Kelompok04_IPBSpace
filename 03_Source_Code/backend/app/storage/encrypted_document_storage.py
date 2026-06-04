@@ -70,7 +70,7 @@ class EncryptedDocumentStorage(DocumentStorage):
             result = self._crypto.verify_and_decrypt(raw_bytes)
         except ValueError as exc:
             raise HTTPException(
-                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
                 detail=f"{exc}"
             ) from exc
 
@@ -81,7 +81,7 @@ class EncryptedDocumentStorage(DocumentStorage):
             )
             if self._strict:
                 raise HTTPException(
-                    status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                    status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
                     detail=msg,
                 )
             warnings.warn(msg, stacklevel=2)
