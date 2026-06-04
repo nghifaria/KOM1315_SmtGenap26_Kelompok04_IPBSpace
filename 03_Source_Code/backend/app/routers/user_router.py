@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Query, status
+from fastapi import APIRouter, Depends, Query, status, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
@@ -22,6 +22,43 @@ async def read_current_user(
     Endpoint to retrieve the current authenticated user's information.
     """
     return HTTPResponse(success=True, data={"user": current_user})
+
+@router.get("/me/security-audit", response_model=HTTPResponse)
+async def read_current_user_security_audit(
+    current_user: UserResponse = Depends(get_current_user),
+    service: UserService = Depends(get_user_service)
+) -> HTTPResponse:
+    """
+    Endpoint to retrieve the current user's password hashing salt and metadata for security auditing.
+    """
+    db_user = await service.user_repository.get_by_id(current_user.id)
+    if not db_user or not db_user.hashed_password:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User password hash not found")
+        
+    hashed = db_user.hashed_password
+    try:
+        parts = hashed.split("$")
+        if len(parts) >= 4:
+            algorithm = f"bcrypt ({parts[1]})"
+            rounds = int(parts[2])
+            salt_and_hash = parts[3]
+            salt_b64 = salt_and_hash[:22]
+            return HTTPResponse(
+                success=True,
+                data={
+                    "algorithm": algorithm,
+                    "rounds": rounds,
+                    "salt_b64": salt_b64,
+                    "entropy_info": "128-bit CSPRNG Salt"
+                }
+            )
+    except Exception:
+        pass
+        
+    raise HTTPException(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        detail="Failed to parse password security metadata"
+    )
 
 @router.put("/me", response_model=HTTPResponse)
 async def update_current_user(

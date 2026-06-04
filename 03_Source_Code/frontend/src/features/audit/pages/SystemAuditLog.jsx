@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { ArrowsClockwise, Download, Info, Warning, XCircle } from '@phosphor-icons/react';
+import { ArrowsClockwise, Download, Info, Warning, XCircle, Lock, Shield } from '@phosphor-icons/react';
 import toast from 'react-hot-toast';
 import apiClient from '../../../shared/services/api/apiClient';
 import { bookingService } from '../../bookings/services/bookingService';
@@ -220,6 +220,82 @@ export default function SystemAuditLog() {
       })
       .reverse();
   }, [rawLogs]);
+
+  // Aggregate security severity log counts
+  const levelCounts = useMemo(() => {
+    const counts = { INFO: 0, WARNING: 0, ERROR: 0 };
+    parsedLogs.forEach(log => {
+      if (counts[log.level] !== undefined) {
+        counts[log.level]++;
+      } else {
+        counts.INFO++;
+      }
+    });
+    return counts;
+  }, [parsedLogs]);
+
+  // Aggregate cryptographic operations (AES-GCM encryption & decryption)
+  const cryptoStats = useMemo(() => {
+    let encrypts = 0;
+    let decrypts = 0;
+    parsedLogs.forEach(log => {
+      if (log.event === 'booking_creation_successful') {
+        encrypts++;
+      }
+      const isDocPath = log.kvs?.some(kv => kv.key === 'path' && kv.val.includes('/document'));
+      if (isDocPath && log.event === 'request_processed') {
+        decrypts++;
+      }
+    });
+    return { encrypts, decrypts, total: encrypts + decrypts };
+  }, [parsedLogs]);
+
+  // Aggregate brute force indicator events
+  const bruteForceCount = useMemo(() => {
+    return parsedLogs.filter(log => 
+      log.event === 'auth_failed_invalid_password' || 
+      log.event === 'auth_failed_account_locked'
+    ).length;
+  }, [parsedLogs]);
+
+  // Aggregate Anti-IDOR access control violation events
+  const accessViolationsCount = useMemo(() => {
+    return parsedLogs.filter(log => 
+      log.event.includes('access_denied') || 
+      log.kvs?.some(kv => kv.key === 'status_code' && kv.val === '403')
+    ).length;
+  }, [parsedLogs]);
+
+  // Aggregate category donut chart data
+  const donutData = useMemo(() => {
+    const cAuth = categorizedLogs.auth.length;
+    const cBooking = categorizedLogs.booking.length;
+    const cFacility = categorizedLogs.facility.length;
+    const cSystem = categorizedLogs.system.length;
+    const total = cAuth + cBooking + cFacility + cSystem || 1;
+
+    const r = 30;
+    const circumference = 2 * Math.PI * r;
+
+    const pAuth = (cAuth / total) * 100;
+    const pBooking = (cBooking / total) * 100;
+    const pFacility = (cFacility / total) * 100;
+    const pSystem = (cSystem / total) * 100;
+
+    const offsetAuth = 0;
+    const offsetBooking = - (circumference * pAuth) / 100;
+    const offsetFacility = - (circumference * (pAuth + pBooking)) / 100;
+    const offsetSystem = - (circumference * (pAuth + pBooking + pFacility)) / 100;
+
+    return {
+      total,
+      cAuth, cBooking, cFacility, cSystem,
+      pAuth, pBooking, pFacility, pSystem,
+      circumference,
+      r,
+      offsetAuth, offsetBooking, offsetFacility, offsetSystem
+    };
+  }, [categorizedLogs]);
 
   const facilityMap = useMemo(() => {
     const map = {};
@@ -460,6 +536,12 @@ export default function SystemAuditLog() {
     },
   ];
 
+  // Calculate relative widths for horizontal SVG bar chart
+  const maxSeverityVal = Math.max(levelCounts.INFO, levelCounts.WARNING, levelCounts.ERROR, 1);
+  const infoWidth = Math.round((levelCounts.INFO / maxSeverityVal) * 160);
+  const warningWidth = Math.round((levelCounts.WARNING / maxSeverityVal) * 160);
+  const errorWidth = Math.round((levelCounts.ERROR / maxSeverityVal) * 160);
+
   return (
     <div className="flex flex-col gap-6 w-full animate-slide-up">
       <AdminPageHeader
@@ -470,6 +552,142 @@ export default function SystemAuditLog() {
         searchPlaceholder="Cari aktivitas, logger, atau metadata..."
         actions={headerActions}
       />
+
+      {/* SOC Analytics Dashboard Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Card 1: Crypto Ops */}
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+          <div className="space-y-1.5">
+            <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Operasi Kriptografi</span>
+            <div className="text-2xl font-black text-slate-800">{cryptoStats.total}</div>
+            <div className="text-[10px] text-emerald-600 font-bold flex items-center gap-1">
+              <span>{cryptoStats.encrypts} Enkripsi</span>
+              <span>•</span>
+              <span>{cryptoStats.decrypts} Dekripsi</span>
+            </div>
+          </div>
+          <div className="h-12 w-12 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center shrink-0">
+            <Lock size={24} weight="fill" />
+          </div>
+        </div>
+
+        {/* Card 2: Brute Force */}
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+          <div className="space-y-1.5">
+            <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Indikasi Brute Force</span>
+            <div className="text-2xl font-black text-slate-800">{bruteForceCount}</div>
+            <span className="text-[10px] text-gray-450 font-semibold block leading-none">Upaya login gagal & kunci akun</span>
+          </div>
+          <div className={`h-12 w-12 rounded-xl border flex items-center justify-center shrink-0 ${bruteForceCount > 0 ? 'bg-red-50 text-red-600 border-red-100 animate-pulse' : 'bg-slate-50 text-slate-400 border-slate-200'}`}>
+            <Warning size={24} weight="fill" />
+          </div>
+        </div>
+
+        {/* Card 3: IDOR access violations */}
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+          <div className="space-y-1.5">
+            <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Akses Ilegal Ditolak (Anti-IDOR)</span>
+            <div className="text-2xl font-black text-slate-800">{accessViolationsCount}</div>
+            <span className="text-[10px] text-gray-450 font-semibold block leading-none">Blokir request tidak sah (403 Forbidden)</span>
+          </div>
+          <div className={`h-12 w-12 rounded-xl border flex items-center justify-center shrink-0 ${accessViolationsCount > 0 ? 'bg-amber-50 text-amber-600 border-amber-100' : 'bg-slate-50 text-slate-400 border-slate-200'}`}>
+            <Shield size={24} weight="fill" />
+          </div>
+        </div>
+      </div>
+
+      {/* SOC Charts Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Severity Bar Chart */}
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <h4 className="font-black text-xs text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-2">Volume Severity Log</h4>
+          <div className="flex items-center justify-center py-2 min-h-[120px]">
+            <svg viewBox="0 0 250 110" width="100%" className="max-w-xs">
+              {/* INFO Bar */}
+              <text x="0" y="20" fill="#475569" fontSize="10" fontWeight="bold">INFO</text>
+              <rect x="55" y="10" width={infoWidth} height="12" rx="4" fill="#38bdf8" />
+              <text x={60 + infoWidth} y="20" fill="#475569" fontSize="10" fontWeight="black">{levelCounts.INFO}</text>
+              
+              {/* WARNING Bar */}
+              <text x="0" y="55" fill="#475569" fontSize="10" fontWeight="bold">WARN</text>
+              <rect x="55" y="45" width={warningWidth} height="12" rx="4" fill="#fbbf24" />
+              <text x={60 + warningWidth} y="55" fill="#475569" fontSize="10" fontWeight="black">{levelCounts.WARNING}</text>
+
+              {/* ERROR Bar */}
+              <text x="0" y="90" fill="#475569" fontSize="10" fontWeight="bold">ERROR</text>
+              <rect x="55" y="80" width={errorWidth} height="12" rx="4" fill="#f87171" />
+              <text x={60 + errorWidth} y="90" fill="#475569" fontSize="10" fontWeight="black">{levelCounts.ERROR}</text>
+            </svg>
+          </div>
+        </div>
+
+        {/* Category Donut Chart */}
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <h4 className="font-black text-xs text-slate-800 uppercase tracking-widest border-b border-slate-100 pb-2">Distribusi Kategori Keamanan</h4>
+          <div className="flex items-center justify-center py-2">
+            <div className="flex flex-col sm:flex-row items-center gap-6 w-full max-w-sm">
+              <svg viewBox="0 0 80 80" width="80" height="80" className="shrink-0">
+                <circle cx="40" cy="40" r={donutData.r} fill="transparent" stroke="#f1f5f9" strokeWidth="8" />
+                {donutData.cAuth > 0 && (
+                  <circle cx="40" cy="40" r={donutData.r} fill="transparent" stroke="#3b82f6" strokeWidth="8"
+                    strokeDasharray={`${donutData.circumference * donutData.pAuth / 100} ${donutData.circumference}`}
+                    strokeDashoffset={donutData.offsetAuth}
+                    transform="rotate(-90 40 40)" />
+                )}
+                {donutData.cBooking > 0 && (
+                  <circle cx="40" cy="40" r={donutData.r} fill="transparent" stroke="#10b981" strokeWidth="8"
+                    strokeDasharray={`${donutData.circumference * donutData.pBooking / 100} ${donutData.circumference}`}
+                    strokeDashoffset={donutData.offsetBooking}
+                    transform="rotate(-90 40 40)" />
+                )}
+                {donutData.cFacility > 0 && (
+                  <circle cx="40" cy="40" r={donutData.r} fill="transparent" stroke="#8b5cf6" strokeWidth="8"
+                    strokeDasharray={`${donutData.circumference * donutData.pFacility / 100} ${donutData.circumference}`}
+                    strokeDashoffset={donutData.offsetFacility}
+                    transform="rotate(-90 40 40)" />
+                )}
+                {donutData.cSystem > 0 && (
+                  <circle cx="40" cy="40" r={donutData.r} fill="transparent" stroke="#64748b" strokeWidth="8"
+                    strokeDasharray={`${donutData.circumference * donutData.pSystem / 100} ${donutData.circumference}`}
+                    strokeDashoffset={donutData.offsetSystem}
+                    transform="rotate(-90 40 40)" />
+                )}
+              </svg>
+              
+              <div className="flex-1 space-y-1.5 text-[10px] font-bold text-gray-500 w-full">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-blue-500 block"></span>
+                    <span>Autentikasi</span>
+                  </div>
+                  <span className="text-slate-700">{donutData.cAuth} ({Math.round(donutData.pAuth)}%)</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500 block"></span>
+                    <span>Peminjaman</span>
+                  </div>
+                  <span className="text-slate-700">{donutData.cBooking} ({Math.round(donutData.pBooking)}%)</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-purple-500 block"></span>
+                    <span>Fasilitas</span>
+                  </div>
+                  <span className="text-slate-700">{donutData.cFacility} ({Math.round(donutData.pFacility)}%)</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-slate-500 block"></span>
+                    <span>Sistem</span>
+                  </div>
+                  <span className="text-slate-700">{donutData.cSystem} ({Math.round(donutData.pSystem)}%)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="flex border-b border-slate-200 gap-1 overflow-x-auto whitespace-nowrap">
         {categoryTabs.map((tab) => (

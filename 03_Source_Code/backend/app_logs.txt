@@ -14250,3 +14250,225 @@ ValueError: Unable to load PEM file. See https://cryptography.io/en/latest/faq/#
 2026-06-04T12:34:26.906177Z [info     ] 172.18.0.1:57728 - "GET /facilities/ HTTP/1.1" 200 request_id=afaf868d-033f-43fa-83b9-efab56961f6e
 2026-06-04T12:34:26.906586Z [info     ] request_processed              [app.main] duration=0.0138s method=GET path=/facilities/ request_id=967ca38d-a76e-42e4-b42b-5dac479593ef status_code=200
 2026-06-04T12:34:26.907145Z [info     ] 172.18.0.1:57742 - "GET /facilities/ HTTP/1.1" 200 request_id=967ca38d-a76e-42e4-b42b-5dac479593ef
+2026-06-04T12:35:55.869408Z [info     ] request_processed              [app.main] duration=0.0260s method=GET path=/facilities/ request_id=7763a8bc-49e7-491d-a3a0-66b405ed287b status_code=200
+2026-06-04T12:35:55.870274Z [info     ] 172.18.0.1:35824 - "GET /facilities/ HTTP/1.1" 200 request_id=7763a8bc-49e7-491d-a3a0-66b405ed287b
+2026-06-04T12:35:55.870868Z [info     ] request_processed              [app.main] duration=0.0278s method=GET path=/facilities/ request_id=b471dd8c-f869-4319-ba1c-c7b7dcd94263 status_code=200
+2026-06-04T12:35:55.871423Z [info     ] 172.18.0.1:35798 - "GET /facilities/ HTTP/1.1" 200 request_id=b471dd8c-f869-4319-ba1c-c7b7dcd94263
+2026-06-04T12:35:55.877959Z [info     ] request_processed              [app.main] duration=0.0348s method=GET path=/bookings/ request_id=fcf8cf1b-53ce-4932-9418-dc3d0251a13c status_code=200
+2026-06-04T12:35:55.878727Z [info     ] 172.18.0.1:35814 - "GET /bookings/ HTTP/1.1" 200 request_id=fcf8cf1b-53ce-4932-9418-dc3d0251a13c
+2026-06-04T12:35:55.879379Z [info     ] request_processed              [app.main] duration=0.0150s method=GET path=/users/ request_id=a3b08e34-49c4-41a7-bc8f-c7a701403ce4 status_code=200
+2026-06-04T12:35:55.879831Z [info     ] 172.18.0.1:35832 - "GET /users/ HTTP/1.1" 200 request_id=a3b08e34-49c4-41a7-bc8f-c7a701403ce4
+2026-06-04T12:35:55.886392Z [info     ] request_processed              [app.main] duration=0.0039s method=GET path=/users/ request_id=7b2beb33-cbde-4e07-b727-3342127b905c status_code=200
+2026-06-04T12:35:55.887295Z [info     ] 172.18.0.1:35798 - "GET /users/ HTTP/1.1" 200 request_id=7b2beb33-cbde-4e07-b727-3342127b905c
+2026-06-04T12:35:55.893524Z [info     ] request_processed              [app.main] duration=0.0504s method=GET path=/bookings/ request_id=0e6b6112-700a-4596-a0f9-bed082e95f97 status_code=200
+2026-06-04T12:35:55.894364Z [info     ] 172.18.0.1:35800 - "GET /bookings/ HTTP/1.1" 200 request_id=0e6b6112-700a-4596-a0f9-bed082e95f97
+2026-06-04T12:45:02.137282Z [info     ] registration_attempt           [app.services.auth_service] email=login_ok@test.com request_id=776f37fd-3ad6-4b75-b543-46497455ade9
+2026-06-04T12:45:02.349886Z [info     ] registration_successful        [app.services.auth_service] email=login_ok@test.com request_id=776f37fd-3ad6-4b75-b543-46497455ade9 user_id=1
+2026-06-04T12:45:02.351962Z [info     ] request_processed              [app.main] duration=0.2301s method=POST path=/auth/register request_id=776f37fd-3ad6-4b75-b543-46497455ade9 status_code=201
+2026-06-04T12:45:02.353231Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=776f37fd-3ad6-4b75-b543-46497455ade9
+2026-06-04T12:45:02.556931Z [info     ] login_successful               [app.services.auth_service] email=login_ok@test.com request_id=5ab0d3fa-78c0-4c4a-ac56-ee00776bab8a role=civitas user_id=1
+2026-06-04T12:45:02.557984Z [info     ] request_processed              [app.main] duration=0.2024s method=POST path=/auth/login request_id=5ab0d3fa-78c0-4c4a-ac56-ee00776bab8a status_code=200
+2026-06-04T12:45:02.558789Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=5ab0d3fa-78c0-4c4a-ac56-ee00776bab8a
+2026-06-04T12:45:02.620975Z [info     ] registration_attempt           [app.services.auth_service] email=wrong_pw@test.com request_id=b83b52f4-d6fe-42d0-8a0b-9fcb3559a718
+2026-06-04T12:45:02.812400Z [info     ] registration_successful        [app.services.auth_service] email=wrong_pw@test.com request_id=b83b52f4-d6fe-42d0-8a0b-9fcb3559a718 user_id=2
+2026-06-04T12:45:02.813998Z [info     ] request_processed              [app.main] duration=0.1942s method=POST path=/auth/register request_id=b83b52f4-d6fe-42d0-8a0b-9fcb3559a718 status_code=201
+2026-06-04T12:45:02.814875Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=b83b52f4-d6fe-42d0-8a0b-9fcb3559a718
+2026-06-04T12:45:03.011132Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=1 email=wrong_pw@test.com remaining=4 request_id=044882a6-ad97-474a-b88a-0a49c1acd7ed user_id=2
+2026-06-04T12:45:03.012182Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=044882a6-ad97-474a-b88a-0a49c1acd7ed status_code=401
+2026-06-04T12:45:03.012816Z [info     ] request_processed              [app.main] duration=0.1951s method=POST path=/auth/login request_id=044882a6-ad97-474a-b88a-0a49c1acd7ed status_code=401
+2026-06-04T12:45:03.014011Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=044882a6-ad97-474a-b88a-0a49c1acd7ed
+2026-06-04T12:45:03.079957Z [info     ] registration_attempt           [app.services.auth_service] email=lockme@test.com request_id=50419d95-1648-42f9-9dcc-0367b7f4905e
+2026-06-04T12:45:03.264039Z [info     ] registration_successful        [app.services.auth_service] email=lockme@test.com request_id=50419d95-1648-42f9-9dcc-0367b7f4905e user_id=3
+2026-06-04T12:45:03.264840Z [info     ] request_processed              [app.main] duration=0.1868s method=POST path=/auth/register request_id=50419d95-1648-42f9-9dcc-0367b7f4905e status_code=201
+2026-06-04T12:45:03.265588Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=50419d95-1648-42f9-9dcc-0367b7f4905e
+2026-06-04T12:45:03.450235Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=1 email=lockme@test.com remaining=4 request_id=77110908-903e-4d83-89c1-1b97f9bbd8bf user_id=3
+2026-06-04T12:45:03.451244Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=77110908-903e-4d83-89c1-1b97f9bbd8bf status_code=401
+2026-06-04T12:45:03.451818Z [info     ] request_processed              [app.main] duration=0.1842s method=POST path=/auth/login request_id=77110908-903e-4d83-89c1-1b97f9bbd8bf status_code=401
+2026-06-04T12:45:03.452672Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=77110908-903e-4d83-89c1-1b97f9bbd8bf
+2026-06-04T12:45:03.637583Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=2 email=lockme@test.com remaining=3 request_id=2ec6be68-1c2a-40fb-882f-a024a00afd8e user_id=3
+2026-06-04T12:45:03.638588Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=2ec6be68-1c2a-40fb-882f-a024a00afd8e status_code=401
+2026-06-04T12:45:03.639122Z [info     ] request_processed              [app.main] duration=0.1850s method=POST path=/auth/login request_id=2ec6be68-1c2a-40fb-882f-a024a00afd8e status_code=401
+2026-06-04T12:45:03.639930Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=2ec6be68-1c2a-40fb-882f-a024a00afd8e
+2026-06-04T12:45:03.828301Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=3 email=lockme@test.com remaining=2 request_id=a4340fd4-719e-4175-aca3-1c2200150504 user_id=3
+2026-06-04T12:45:03.829351Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=a4340fd4-719e-4175-aca3-1c2200150504 status_code=401
+2026-06-04T12:45:03.829970Z [info     ] request_processed              [app.main] duration=0.1878s method=POST path=/auth/login request_id=a4340fd4-719e-4175-aca3-1c2200150504 status_code=401
+2026-06-04T12:45:03.830783Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=a4340fd4-719e-4175-aca3-1c2200150504
+2026-06-04T12:45:04.019946Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=4 email=lockme@test.com remaining=1 request_id=1f36de1c-832b-450c-9272-5a6ab276bca7 user_id=3
+2026-06-04T12:45:04.020666Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=1f36de1c-832b-450c-9272-5a6ab276bca7 status_code=401
+2026-06-04T12:45:04.021224Z [info     ] request_processed              [app.main] duration=0.1883s method=POST path=/auth/login request_id=1f36de1c-832b-450c-9272-5a6ab276bca7 status_code=401
+2026-06-04T12:45:04.022037Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=1f36de1c-832b-450c-9272-5a6ab276bca7
+2026-06-04T12:45:04.211550Z [warning  ] auth_failed_account_now_locked [app.services.auth_service] attempts=5 email=lockme@test.com locked_until=2026-06-04T13:00:04.027694+00:00 request_id=07e60ccf-c29b-49f1-a724-d4c3eeb5de91 user_id=3
+2026-06-04T12:45:04.212159Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=07e60ccf-c29b-49f1-a724-d4c3eeb5de91 status_code=401
+2026-06-04T12:45:04.212664Z [info     ] request_processed              [app.main] duration=0.1884s method=POST path=/auth/login request_id=07e60ccf-c29b-49f1-a724-d4c3eeb5de91 status_code=401
+2026-06-04T12:45:04.213328Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=07e60ccf-c29b-49f1-a724-d4c3eeb5de91
+2026-06-04T12:45:04.216936Z [warning  ] auth_failed_account_locked     [app.services.auth_service] email=lockme@test.com locked_until=2026-06-04T13:00:04.027694+00:00 request_id=0c0fb00a-7008-45d6-b596-1099437ec65d user_id=3
+2026-06-04T12:45:04.217449Z [error    ] http_exception                 [app.main] message='Account temporarily locked due to too many failed login attempts. Try again in 15 minute(s).' request_id=0c0fb00a-7008-45d6-b596-1099437ec65d status_code=403
+2026-06-04T12:45:04.217945Z [info     ] request_processed              [app.main] duration=0.0031s method=POST path=/auth/login request_id=0c0fb00a-7008-45d6-b596-1099437ec65d status_code=403
+2026-06-04T12:45:04.218664Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 403 Forbidden" request_id=0c0fb00a-7008-45d6-b596-1099437ec65d
+2026-06-04T12:45:04.287443Z [info     ] registration_attempt           [app.services.auth_service] email=civitas_noadmin@test.com request_id=82aa0854-08a6-43c2-a9b8-98e57ee3811b
+2026-06-04T12:45:04.478108Z [info     ] registration_successful        [app.services.auth_service] email=civitas_noadmin@test.com request_id=82aa0854-08a6-43c2-a9b8-98e57ee3811b user_id=4
+2026-06-04T12:45:04.479580Z [info     ] request_processed              [app.main] duration=0.1944s method=POST path=/auth/register request_id=82aa0854-08a6-43c2-a9b8-98e57ee3811b status_code=201
+2026-06-04T12:45:04.480582Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=82aa0854-08a6-43c2-a9b8-98e57ee3811b
+2026-06-04T12:45:04.676453Z [info     ] login_successful               [app.services.auth_service] email=civitas_noadmin@test.com request_id=5f0a26ee-117b-485d-8ddc-bc3b1573608d role=civitas user_id=4
+2026-06-04T12:45:04.677633Z [info     ] request_processed              [app.main] duration=0.1954s method=POST path=/auth/login request_id=5f0a26ee-117b-485d-8ddc-bc3b1573608d status_code=200
+2026-06-04T12:45:04.678262Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=5f0a26ee-117b-485d-8ddc-bc3b1573608d
+2026-06-04T12:45:04.694233Z [warning  ] admin_or_facility_manager_access_denied [app.main] request_id=4cfecbdc-d5c1-4097-8a80-df1a44f7617d user_id=4
+2026-06-04T12:45:04.695360Z [error    ] http_exception                 [app.main] message='Not enough permissions' request_id=4cfecbdc-d5c1-4097-8a80-df1a44f7617d status_code=403
+2026-06-04T12:45:04.696111Z [info     ] request_processed              [app.main] duration=0.0163s method=GET path=/users/ request_id=4cfecbdc-d5c1-4097-8a80-df1a44f7617d status_code=403
+2026-06-04T12:45:04.696876Z [info     ] HTTP Request: GET http://test/users/ "HTTP/1.1 403 Forbidden" request_id=4cfecbdc-d5c1-4097-8a80-df1a44f7617d
+2026-06-04T12:45:04.761858Z [info     ] registration_attempt           [app.services.auth_service] email=admin_user@test.com request_id=7eef0b16-db54-4889-8664-7b7615873404
+2026-06-04T12:45:04.952032Z [info     ] registration_successful        [app.services.auth_service] email=admin_user@test.com request_id=7eef0b16-db54-4889-8664-7b7615873404 user_id=5
+2026-06-04T12:45:04.953495Z [info     ] request_processed              [app.main] duration=0.1931s method=POST path=/auth/register request_id=7eef0b16-db54-4889-8664-7b7615873404 status_code=201
+2026-06-04T12:45:04.954443Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=7eef0b16-db54-4889-8664-7b7615873404
+2026-06-04T12:45:05.149467Z [info     ] login_successful               [app.services.auth_service] email=admin_user@test.com request_id=c1d61166-a824-43aa-adbf-3fa12887dd5d role=admin user_id=5
+2026-06-04T12:45:05.151053Z [info     ] request_processed              [app.main] duration=0.1943s method=POST path=/auth/login request_id=c1d61166-a824-43aa-adbf-3fa12887dd5d status_code=200
+2026-06-04T12:45:05.152015Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=c1d61166-a824-43aa-adbf-3fa12887dd5d
+2026-06-04T12:45:05.162101Z [info     ] request_processed              [app.main] duration=0.0075s method=GET path=/users/ request_id=16adb409-0adb-4483-b3d9-bd885e1dfd9b status_code=200
+2026-06-04T12:45:05.163164Z [info     ] HTTP Request: GET http://test/users/ "HTTP/1.1 200 OK" request_id=16adb409-0adb-4483-b3d9-bd885e1dfd9b
+2026-06-04T12:45:05.228875Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=18d14818-946c-4a6b-b0d9-b666b901aa21 status_code=401
+2026-06-04T12:45:05.229756Z [info     ] request_processed              [app.main] duration=0.0037s method=GET path=/users/me request_id=18d14818-946c-4a6b-b0d9-b666b901aa21 status_code=401
+2026-06-04T12:45:05.230499Z [info     ] HTTP Request: GET http://test/users/me "HTTP/1.1 401 Unauthorized" request_id=18d14818-946c-4a6b-b0d9-b666b901aa21
+2026-06-04T12:45:05.597464Z [info     ] registration_attempt           [app.services.auth_service] email=refresh_user@test.com request_id=8ea8864a-97c7-4e80-a8a6-b0b7b7a65687
+2026-06-04T12:45:05.784029Z [info     ] registration_successful        [app.services.auth_service] email=refresh_user@test.com request_id=8ea8864a-97c7-4e80-a8a6-b0b7b7a65687 user_id=6
+2026-06-04T12:45:05.784802Z [info     ] request_processed              [app.main] duration=0.1887s method=POST path=/auth/register request_id=8ea8864a-97c7-4e80-a8a6-b0b7b7a65687 status_code=201
+2026-06-04T12:45:05.785344Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=8ea8864a-97c7-4e80-a8a6-b0b7b7a65687
+2026-06-04T12:45:05.976868Z [info     ] login_successful               [app.services.auth_service] email=refresh_user@test.com request_id=fab7eb37-36d3-4d1b-8116-fee55c448e37 role=civitas user_id=6
+2026-06-04T12:45:05.978673Z [info     ] request_processed              [app.main] duration=0.1918s method=POST path=/auth/login request_id=fab7eb37-36d3-4d1b-8116-fee55c448e37 status_code=200
+2026-06-04T12:45:05.979650Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=fab7eb37-36d3-4d1b-8116-fee55c448e37
+2026-06-04T12:45:05.992058Z [info     ] token_refresh_successful       [app.services.auth_service] request_id=bb5d55a3-1c4f-4ee7-be7b-6fa4b470bb4c user_id=6
+2026-06-04T12:45:05.993147Z [info     ] request_processed              [app.main] duration=0.0114s method=POST path=/auth/refresh request_id=bb5d55a3-1c4f-4ee7-be7b-6fa4b470bb4c status_code=200
+2026-06-04T12:45:05.994020Z [info     ] HTTP Request: POST http://test/auth/refresh?refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2Iiwicm9sZSI6ImNpdml0YXMiLCJleHAiOjE3ODExODE5MDUsInR5cGUiOiJyZWZyZXNoIn0.WlRV1yKAgKn1h6tNojhGvVlpds67r-cXMSetfctWXRA "HTTP/1.1 200 OK" request_id=bb5d55a3-1c4f-4ee7-be7b-6fa4b470bb4c
+2026-06-04T12:45:06.058447Z [info     ] registration_attempt           [app.services.auth_service] email=logout_user@test.com request_id=9fb3f87f-d8b8-4958-a351-e50451579a76
+2026-06-04T12:45:06.245637Z [info     ] registration_successful        [app.services.auth_service] email=logout_user@test.com request_id=9fb3f87f-d8b8-4958-a351-e50451579a76 user_id=7
+2026-06-04T12:45:06.247255Z [info     ] request_processed              [app.main] duration=0.1913s method=POST path=/auth/register request_id=9fb3f87f-d8b8-4958-a351-e50451579a76 status_code=201
+2026-06-04T12:45:06.248110Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=9fb3f87f-d8b8-4958-a351-e50451579a76
+2026-06-04T12:45:06.443759Z [info     ] login_successful               [app.services.auth_service] email=logout_user@test.com request_id=0c83f568-96a4-42e1-94fa-fe0c2842e53d role=civitas user_id=7
+2026-06-04T12:45:06.444972Z [info     ] request_processed              [app.main] duration=0.1950s method=POST path=/auth/login request_id=0c83f568-96a4-42e1-94fa-fe0c2842e53d status_code=200
+2026-06-04T12:45:06.445737Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=0c83f568-96a4-42e1-94fa-fe0c2842e53d
+2026-06-04T12:45:06.456198Z [info     ] logout_successful              [app.services.auth_service] request_id=e46da523-00e1-4cca-8a83-dc3fa43aea35 user_id=7
+2026-06-04T12:45:06.456758Z [info     ] request_processed              [app.main] duration=0.0086s method=POST path=/auth/logout request_id=e46da523-00e1-4cca-8a83-dc3fa43aea35 status_code=200
+2026-06-04T12:45:06.457719Z [info     ] HTTP Request: POST http://test/auth/logout "HTTP/1.1 200 OK" request_id=e46da523-00e1-4cca-8a83-dc3fa43aea35
+2026-06-04T12:45:06.461258Z [warning  ] token_refresh_failed_session_not_found [app.services.auth_service] request_id=bebd4257-5bb3-4c97-aecb-899a050c5a8a user_id=7
+2026-06-04T12:45:06.461671Z [error    ] http_exception                 [app.main] message='Session not found or has been revoked' request_id=bebd4257-5bb3-4c97-aecb-899a050c5a8a status_code=401
+2026-06-04T12:45:06.462199Z [info     ] request_processed              [app.main] duration=0.0028s method=POST path=/auth/refresh request_id=bebd4257-5bb3-4c97-aecb-899a050c5a8a status_code=401
+2026-06-04T12:45:06.463022Z [info     ] HTTP Request: POST http://test/auth/refresh?refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Iiwicm9sZSI6ImNpdml0YXMiLCJleHAiOjE3ODExODE5MDYsInR5cGUiOiJyZWZyZXNoIn0.xyvwC8NbbFCzguMPJVm9uu3SYNKSGzdYpS5dn_-vJKw "HTTP/1.1 401 Unauthorized" request_id=bebd4257-5bb3-4c97-aecb-899a050c5a8a
+2026-06-04T12:45:06.527177Z [error    ] http_exception                 [app.main] message="Invalid token: Invalid header string: 'utf-8' codec can't decode byte 0x8a in position 0: invalid start byte" request_id=f7d20005-edbd-403e-8dc0-b10ce15a6565 status_code=401
+2026-06-04T12:45:06.528133Z [info     ] request_processed              [app.main] duration=0.0037s method=GET path=/users/me request_id=f7d20005-edbd-403e-8dc0-b10ce15a6565 status_code=401
+2026-06-04T12:45:06.529063Z [info     ] HTTP Request: GET http://test/users/me "HTTP/1.1 401 Unauthorized" request_id=f7d20005-edbd-403e-8dc0-b10ce15a6565
+2026-06-04T12:45:06.590163Z [info     ] registration_attempt           [app.services.auth_service] email=audit_ok@test.com request_id=0c7634e4-25cd-4a76-9eb5-a9c5504a928e
+2026-06-04T12:45:06.773999Z [info     ] registration_successful        [app.services.auth_service] email=audit_ok@test.com request_id=0c7634e4-25cd-4a76-9eb5-a9c5504a928e user_id=8
+2026-06-04T12:45:06.775149Z [info     ] request_processed              [app.main] duration=0.1867s method=POST path=/auth/register request_id=0c7634e4-25cd-4a76-9eb5-a9c5504a928e status_code=201
+2026-06-04T12:45:06.775787Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=0c7634e4-25cd-4a76-9eb5-a9c5504a928e
+2026-06-04T12:45:06.966977Z [info     ] login_successful               [app.services.auth_service] email=audit_ok@test.com request_id=ce4055c1-2e79-4e73-98f8-461fab658aca role=civitas user_id=8
+2026-06-04T12:45:06.967765Z [info     ] request_processed              [app.main] duration=0.1903s method=POST path=/auth/login request_id=ce4055c1-2e79-4e73-98f8-461fab658aca status_code=200
+2026-06-04T12:45:06.968395Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=ce4055c1-2e79-4e73-98f8-461fab658aca
+2026-06-04T12:45:06.978081Z [info     ] request_processed              [app.main] duration=0.0075s method=GET path=/users/me/security-audit request_id=85c602e0-f5e3-4ecb-99e2-85512cf0dc8d status_code=200
+2026-06-04T12:45:06.979080Z [info     ] HTTP Request: GET http://test/users/me/security-audit "HTTP/1.1 200 OK" request_id=85c602e0-f5e3-4ecb-99e2-85512cf0dc8d
+2026-06-04T12:45:07.045345Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=424ff78b-5f24-4798-aa8e-03d87c788a92 status_code=401
+2026-06-04T12:45:07.046084Z [info     ] request_processed              [app.main] duration=0.0016s method=GET path=/users/me/security-audit request_id=424ff78b-5f24-4798-aa8e-03d87c788a92 status_code=401
+2026-06-04T12:45:07.046703Z [info     ] HTTP Request: GET http://test/users/me/security-audit "HTTP/1.1 401 Unauthorized" request_id=424ff78b-5f24-4798-aa8e-03d87c788a92
+2026-06-04T12:46:03.038491Z [info     ] registration_attempt           [app.services.auth_service] email=login_ok@test.com request_id=ef6a9191-6ac2-4fc7-80b1-dd5f53f71633
+2026-06-04T12:46:03.256805Z [info     ] registration_successful        [app.services.auth_service] email=login_ok@test.com request_id=ef6a9191-6ac2-4fc7-80b1-dd5f53f71633 user_id=1
+2026-06-04T12:46:03.258925Z [info     ] request_processed              [app.main] duration=0.2387s method=POST path=/auth/register request_id=ef6a9191-6ac2-4fc7-80b1-dd5f53f71633 status_code=201
+2026-06-04T12:46:03.260254Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=ef6a9191-6ac2-4fc7-80b1-dd5f53f71633
+2026-06-04T12:46:03.470065Z [info     ] login_successful               [app.services.auth_service] email=login_ok@test.com request_id=cb372260-ec89-4c40-abb5-e9c19a294a56 role=civitas user_id=1
+2026-06-04T12:46:03.471084Z [info     ] request_processed              [app.main] duration=0.2084s method=POST path=/auth/login request_id=cb372260-ec89-4c40-abb5-e9c19a294a56 status_code=200
+2026-06-04T12:46:03.471818Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=cb372260-ec89-4c40-abb5-e9c19a294a56
+2026-06-04T12:46:03.541052Z [info     ] registration_attempt           [app.services.auth_service] email=wrong_pw@test.com request_id=70d3c16d-c2cf-4967-9e67-05aff6fc543d
+2026-06-04T12:46:03.728216Z [info     ] registration_successful        [app.services.auth_service] email=wrong_pw@test.com request_id=70d3c16d-c2cf-4967-9e67-05aff6fc543d user_id=2
+2026-06-04T12:46:03.729069Z [info     ] request_processed              [app.main] duration=0.1890s method=POST path=/auth/register request_id=70d3c16d-c2cf-4967-9e67-05aff6fc543d status_code=201
+2026-06-04T12:46:03.729661Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=70d3c16d-c2cf-4967-9e67-05aff6fc543d
+2026-06-04T12:46:03.916520Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=1 email=wrong_pw@test.com remaining=4 request_id=f7caa35b-91c9-448e-8993-7b6ad3578a73 user_id=2
+2026-06-04T12:46:03.917227Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=f7caa35b-91c9-448e-8993-7b6ad3578a73 status_code=401
+2026-06-04T12:46:03.917719Z [info     ] request_processed              [app.main] duration=0.1862s method=POST path=/auth/login request_id=f7caa35b-91c9-448e-8993-7b6ad3578a73 status_code=401
+2026-06-04T12:46:03.918471Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=f7caa35b-91c9-448e-8993-7b6ad3578a73
+2026-06-04T12:46:03.983611Z [info     ] registration_attempt           [app.services.auth_service] email=lockme@test.com request_id=8d78026f-e11b-40f4-8746-cef63a528cea
+2026-06-04T12:46:04.166812Z [info     ] registration_successful        [app.services.auth_service] email=lockme@test.com request_id=8d78026f-e11b-40f4-8746-cef63a528cea user_id=3
+2026-06-04T12:46:04.167807Z [info     ] request_processed              [app.main] duration=0.1851s method=POST path=/auth/register request_id=8d78026f-e11b-40f4-8746-cef63a528cea status_code=201
+2026-06-04T12:46:04.168424Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=8d78026f-e11b-40f4-8746-cef63a528cea
+2026-06-04T12:46:04.359296Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=1 email=lockme@test.com remaining=4 request_id=e980cc25-e8ab-4a9d-8499-2861f6dca3df user_id=3
+2026-06-04T12:46:04.359850Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=e980cc25-e8ab-4a9d-8499-2861f6dca3df status_code=401
+2026-06-04T12:46:04.360280Z [info     ] request_processed              [app.main] duration=0.1903s method=POST path=/auth/login request_id=e980cc25-e8ab-4a9d-8499-2861f6dca3df status_code=401
+2026-06-04T12:46:04.361078Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=e980cc25-e8ab-4a9d-8499-2861f6dca3df
+2026-06-04T12:46:04.545918Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=2 email=lockme@test.com remaining=3 request_id=062eca31-7af4-477e-a4c6-970a66cb1627 user_id=3
+2026-06-04T12:46:04.546652Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=062eca31-7af4-477e-a4c6-970a66cb1627 status_code=401
+2026-06-04T12:46:04.547078Z [info     ] request_processed              [app.main] duration=0.1844s method=POST path=/auth/login request_id=062eca31-7af4-477e-a4c6-970a66cb1627 status_code=401
+2026-06-04T12:46:04.547893Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=062eca31-7af4-477e-a4c6-970a66cb1627
+2026-06-04T12:46:04.733865Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=3 email=lockme@test.com remaining=2 request_id=45dbd29a-0252-4142-8d75-4f1c28c58a60 user_id=3
+2026-06-04T12:46:04.734491Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=45dbd29a-0252-4142-8d75-4f1c28c58a60 status_code=401
+2026-06-04T12:46:04.734928Z [info     ] request_processed              [app.main] duration=0.1853s method=POST path=/auth/login request_id=45dbd29a-0252-4142-8d75-4f1c28c58a60 status_code=401
+2026-06-04T12:46:04.735564Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=45dbd29a-0252-4142-8d75-4f1c28c58a60
+2026-06-04T12:46:04.918338Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=4 email=lockme@test.com remaining=1 request_id=57093a9e-1832-44f9-b3fa-37bf1f36f3ba user_id=3
+2026-06-04T12:46:04.919441Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=57093a9e-1832-44f9-b3fa-37bf1f36f3ba status_code=401
+2026-06-04T12:46:04.920097Z [info     ] request_processed              [app.main] duration=0.1826s method=POST path=/auth/login request_id=57093a9e-1832-44f9-b3fa-37bf1f36f3ba status_code=401
+2026-06-04T12:46:04.921102Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=57093a9e-1832-44f9-b3fa-37bf1f36f3ba
+2026-06-04T12:46:05.113599Z [warning  ] auth_failed_account_now_locked [app.services.auth_service] attempts=5 email=lockme@test.com locked_until=2026-06-04T13:01:04.925722+00:00 request_id=4840d5b4-fca2-4bee-9123-82a31725921f user_id=3
+2026-06-04T12:46:05.114235Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=4840d5b4-fca2-4bee-9123-82a31725921f status_code=401
+2026-06-04T12:46:05.114621Z [info     ] request_processed              [app.main] duration=0.1910s method=POST path=/auth/login request_id=4840d5b4-fca2-4bee-9123-82a31725921f status_code=401
+2026-06-04T12:46:05.115326Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=4840d5b4-fca2-4bee-9123-82a31725921f
+2026-06-04T12:46:05.119173Z [warning  ] auth_failed_account_locked     [app.services.auth_service] email=lockme@test.com locked_until=2026-06-04T13:01:04.925722+00:00 request_id=8e1ecc28-f3e4-4534-b7a9-f70a55be48a9 user_id=3
+2026-06-04T12:46:05.119585Z [error    ] http_exception                 [app.main] message='Account temporarily locked due to too many failed login attempts. Try again in 15 minute(s).' request_id=8e1ecc28-f3e4-4534-b7a9-f70a55be48a9 status_code=403
+2026-06-04T12:46:05.120048Z [info     ] request_processed              [app.main] duration=0.0025s method=POST path=/auth/login request_id=8e1ecc28-f3e4-4534-b7a9-f70a55be48a9 status_code=403
+2026-06-04T12:46:05.120723Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 403 Forbidden" request_id=8e1ecc28-f3e4-4534-b7a9-f70a55be48a9
+2026-06-04T12:46:05.187588Z [info     ] registration_attempt           [app.services.auth_service] email=civitas_noadmin@test.com request_id=c1870793-6851-425b-b708-4672cdaf2045
+2026-06-04T12:46:05.381891Z [info     ] registration_successful        [app.services.auth_service] email=civitas_noadmin@test.com request_id=c1870793-6851-425b-b708-4672cdaf2045 user_id=4
+2026-06-04T12:46:05.383587Z [info     ] request_processed              [app.main] duration=0.1976s method=POST path=/auth/register request_id=c1870793-6851-425b-b708-4672cdaf2045 status_code=201
+2026-06-04T12:46:05.384533Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=c1870793-6851-425b-b708-4672cdaf2045
+2026-06-04T12:46:05.589394Z [info     ] login_successful               [app.services.auth_service] email=civitas_noadmin@test.com request_id=0581858e-e04c-4c70-9a1d-7a0f33e5c8d2 role=civitas user_id=4
+2026-06-04T12:46:05.591465Z [info     ] request_processed              [app.main] duration=0.2049s method=POST path=/auth/login request_id=0581858e-e04c-4c70-9a1d-7a0f33e5c8d2 status_code=200
+2026-06-04T12:46:05.592639Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=0581858e-e04c-4c70-9a1d-7a0f33e5c8d2
+2026-06-04T12:46:05.610195Z [warning  ] admin_or_facility_manager_access_denied [app.main] request_id=aa317f5e-f866-4e7e-96d7-039b80d041b5 user_id=4
+2026-06-04T12:46:05.611343Z [error    ] http_exception                 [app.main] message='Not enough permissions' request_id=aa317f5e-f866-4e7e-96d7-039b80d041b5 status_code=403
+2026-06-04T12:46:05.612080Z [info     ] request_processed              [app.main] duration=0.0171s method=GET path=/users/ request_id=aa317f5e-f866-4e7e-96d7-039b80d041b5 status_code=403
+2026-06-04T12:46:05.613005Z [info     ] HTTP Request: GET http://test/users/ "HTTP/1.1 403 Forbidden" request_id=aa317f5e-f866-4e7e-96d7-039b80d041b5
+2026-06-04T12:46:05.681263Z [info     ] registration_attempt           [app.services.auth_service] email=admin_user@test.com request_id=ec34be64-145a-4d57-991d-b0e078a23f0b
+2026-06-04T12:46:05.866578Z [info     ] registration_successful        [app.services.auth_service] email=admin_user@test.com request_id=ec34be64-145a-4d57-991d-b0e078a23f0b user_id=5
+2026-06-04T12:46:05.867751Z [info     ] request_processed              [app.main] duration=0.1886s method=POST path=/auth/register request_id=ec34be64-145a-4d57-991d-b0e078a23f0b status_code=201
+2026-06-04T12:46:05.868614Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=ec34be64-145a-4d57-991d-b0e078a23f0b
+2026-06-04T12:46:06.062822Z [info     ] login_successful               [app.services.auth_service] email=admin_user@test.com request_id=3ba7cd6a-5e25-438a-a71b-c13d233c6a01 role=admin user_id=5
+2026-06-04T12:46:06.064752Z [info     ] request_processed              [app.main] duration=0.1941s method=POST path=/auth/login request_id=3ba7cd6a-5e25-438a-a71b-c13d233c6a01 status_code=200
+2026-06-04T12:46:06.065681Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=3ba7cd6a-5e25-438a-a71b-c13d233c6a01
+2026-06-04T12:46:06.076271Z [info     ] request_processed              [app.main] duration=0.0086s method=GET path=/users/ request_id=db3ee484-2e42-471e-b658-07785429122e status_code=200
+2026-06-04T12:46:06.077743Z [info     ] HTTP Request: GET http://test/users/ "HTTP/1.1 200 OK" request_id=db3ee484-2e42-471e-b658-07785429122e
+2026-06-04T12:46:06.146905Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=b5244de7-0d0c-4e1e-ade6-65a13abda645 status_code=401
+2026-06-04T12:46:06.147857Z [info     ] request_processed              [app.main] duration=0.0041s method=GET path=/users/me request_id=b5244de7-0d0c-4e1e-ade6-65a13abda645 status_code=401
+2026-06-04T12:46:06.148671Z [info     ] HTTP Request: GET http://test/users/me "HTTP/1.1 401 Unauthorized" request_id=b5244de7-0d0c-4e1e-ade6-65a13abda645
+2026-06-04T12:46:06.526195Z [info     ] registration_attempt           [app.services.auth_service] email=refresh_user@test.com request_id=eedb43e6-1897-47a1-a9c8-47950918c8f2
+2026-06-04T12:46:06.710732Z [info     ] registration_successful        [app.services.auth_service] email=refresh_user@test.com request_id=eedb43e6-1897-47a1-a9c8-47950918c8f2 user_id=6
+2026-06-04T12:46:06.711912Z [info     ] request_processed              [app.main] duration=0.1875s method=POST path=/auth/register request_id=eedb43e6-1897-47a1-a9c8-47950918c8f2 status_code=201
+2026-06-04T12:46:06.713027Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=eedb43e6-1897-47a1-a9c8-47950918c8f2
+2026-06-04T12:46:06.901821Z [info     ] login_successful               [app.services.auth_service] email=refresh_user@test.com request_id=4f8ca8f6-ab73-4cc8-bd83-f66250bdf4a1 role=civitas user_id=6
+2026-06-04T12:46:06.902948Z [info     ] request_processed              [app.main] duration=0.1878s method=POST path=/auth/login request_id=4f8ca8f6-ab73-4cc8-bd83-f66250bdf4a1 status_code=200
+2026-06-04T12:46:06.903831Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=4f8ca8f6-ab73-4cc8-bd83-f66250bdf4a1
+2026-06-04T12:46:06.918009Z [info     ] token_refresh_successful       [app.services.auth_service] request_id=883bff73-d0c3-4977-821e-7b6c5d2372a2 user_id=6
+2026-06-04T12:46:06.919403Z [info     ] request_processed              [app.main] duration=0.0138s method=POST path=/auth/refresh request_id=883bff73-d0c3-4977-821e-7b6c5d2372a2 status_code=200
+2026-06-04T12:46:06.920383Z [info     ] HTTP Request: POST http://test/auth/refresh?refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2Iiwicm9sZSI6ImNpdml0YXMiLCJleHAiOjE3ODExODE5NjYsInR5cGUiOiJyZWZyZXNoIn0.6dSFN14VDRMGO9gTe7rY1zK2yxsK0qRjnaIrTCIHwq8 "HTTP/1.1 200 OK" request_id=883bff73-d0c3-4977-821e-7b6c5d2372a2
+2026-06-04T12:46:06.986479Z [info     ] registration_attempt           [app.services.auth_service] email=logout_user@test.com request_id=f90fa422-7408-430d-a5b5-11b0f3df85a1
+2026-06-04T12:46:07.173003Z [info     ] registration_successful        [app.services.auth_service] email=logout_user@test.com request_id=f90fa422-7408-430d-a5b5-11b0f3df85a1 user_id=7
+2026-06-04T12:46:07.173821Z [info     ] request_processed              [app.main] duration=0.1887s method=POST path=/auth/register request_id=f90fa422-7408-430d-a5b5-11b0f3df85a1 status_code=201
+2026-06-04T12:46:07.174553Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=f90fa422-7408-430d-a5b5-11b0f3df85a1
+2026-06-04T12:46:07.368502Z [info     ] login_successful               [app.services.auth_service] email=logout_user@test.com request_id=ebeba738-3c30-46e4-b8aa-6c1cf1d15ed1 role=civitas user_id=7
+2026-06-04T12:46:07.369542Z [info     ] request_processed              [app.main] duration=0.1933s method=POST path=/auth/login request_id=ebeba738-3c30-46e4-b8aa-6c1cf1d15ed1 status_code=200
+2026-06-04T12:46:07.370169Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=ebeba738-3c30-46e4-b8aa-6c1cf1d15ed1
+2026-06-04T12:46:07.381396Z [info     ] logout_successful              [app.services.auth_service] request_id=97cfff94-9452-421b-9111-af7f81932c75 user_id=7
+2026-06-04T12:46:07.382814Z [info     ] request_processed              [app.main] duration=0.0108s method=POST path=/auth/logout request_id=97cfff94-9452-421b-9111-af7f81932c75 status_code=200
+2026-06-04T12:46:07.384094Z [info     ] HTTP Request: POST http://test/auth/logout "HTTP/1.1 200 OK" request_id=97cfff94-9452-421b-9111-af7f81932c75
+2026-06-04T12:46:07.389094Z [warning  ] token_refresh_failed_session_not_found [app.services.auth_service] request_id=a229a0aa-fcd8-480c-8ffc-bfbe005eb323 user_id=7
+2026-06-04T12:46:07.389548Z [error    ] http_exception                 [app.main] message='Session not found or has been revoked' request_id=a229a0aa-fcd8-480c-8ffc-bfbe005eb323 status_code=401
+2026-06-04T12:46:07.390119Z [info     ] request_processed              [app.main] duration=0.0036s method=POST path=/auth/refresh request_id=a229a0aa-fcd8-480c-8ffc-bfbe005eb323 status_code=401
+2026-06-04T12:46:07.390769Z [info     ] HTTP Request: POST http://test/auth/refresh?refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Iiwicm9sZSI6ImNpdml0YXMiLCJleHAiOjE3ODExODE5NjcsInR5cGUiOiJyZWZyZXNoIn0.4K1hYEbBWCWbjd65-PBsAIGb5rr816-keD9YmvEEGvc "HTTP/1.1 401 Unauthorized" request_id=a229a0aa-fcd8-480c-8ffc-bfbe005eb323
+2026-06-04T12:46:07.478065Z [error    ] http_exception                 [app.main] message="Invalid token: Invalid header string: 'utf-8' codec can't decode byte 0x8a in position 0: invalid start byte" request_id=ca39b80b-2d36-4d1c-91fb-b01f53f0d1d4 status_code=401
+2026-06-04T12:46:07.479008Z [info     ] request_processed              [app.main] duration=0.0038s method=GET path=/users/me request_id=ca39b80b-2d36-4d1c-91fb-b01f53f0d1d4 status_code=401
+2026-06-04T12:46:07.479998Z [info     ] HTTP Request: GET http://test/users/me "HTTP/1.1 401 Unauthorized" request_id=ca39b80b-2d36-4d1c-91fb-b01f53f0d1d4
+2026-06-04T12:46:07.545339Z [info     ] registration_attempt           [app.services.auth_service] email=audit_ok@test.com request_id=bdfb48f2-f187-4276-b934-94e76f2150aa
+2026-06-04T12:46:07.743974Z [info     ] registration_successful        [app.services.auth_service] email=audit_ok@test.com request_id=bdfb48f2-f187-4276-b934-94e76f2150aa user_id=8
+2026-06-04T12:46:07.746156Z [info     ] request_processed              [app.main] duration=0.2025s method=POST path=/auth/register request_id=bdfb48f2-f187-4276-b934-94e76f2150aa status_code=201
+2026-06-04T12:46:07.747087Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=bdfb48f2-f187-4276-b934-94e76f2150aa
+2026-06-04T12:46:07.938002Z [info     ] login_successful               [app.services.auth_service] email=audit_ok@test.com request_id=38c0b059-0e3f-44a1-946d-e34921f73a7e role=civitas user_id=8
+2026-06-04T12:46:07.939123Z [info     ] request_processed              [app.main] duration=0.1902s method=POST path=/auth/login request_id=38c0b059-0e3f-44a1-946d-e34921f73a7e status_code=200
+2026-06-04T12:46:07.939998Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=38c0b059-0e3f-44a1-946d-e34921f73a7e
+2026-06-04T12:46:07.949988Z [info     ] request_processed              [app.main] duration=0.0083s method=GET path=/users/me/security-audit request_id=72a3afbc-c7a3-4488-8def-e81e2c6037ce status_code=200
+2026-06-04T12:46:07.951180Z [info     ] HTTP Request: GET http://test/users/me/security-audit "HTTP/1.1 200 OK" request_id=72a3afbc-c7a3-4488-8def-e81e2c6037ce
+2026-06-04T12:46:08.020496Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=109d3a6f-cc7a-4ecc-86de-475058162333 status_code=401
+2026-06-04T12:46:08.021372Z [info     ] request_processed              [app.main] duration=0.0019s method=GET path=/users/me/security-audit request_id=109d3a6f-cc7a-4ecc-86de-475058162333 status_code=401
+2026-06-04T12:46:08.022124Z [info     ] HTTP Request: GET http://test/users/me/security-audit "HTTP/1.1 401 Unauthorized" request_id=109d3a6f-cc7a-4ecc-86de-475058162333

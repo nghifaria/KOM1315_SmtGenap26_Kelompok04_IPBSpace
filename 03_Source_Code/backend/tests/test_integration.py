@@ -333,3 +333,34 @@ class TestSessionJWTIntegration:
             headers={"Authorization": "Bearer ini.token.palsu"},
         )
         assert resp.status_code == 401
+
+
+# ===============================================================================
+# User Security Audit — Integration
+# ===============================================================================
+
+class TestUserSecurityAuditIntegration:
+    async def test_get_security_audit_success(self, client: AsyncClient):
+        """
+        GET /users/me/security-audit dengan token valid.
+        Ekspektasi: 200 OK, memuat detail algoritma bcrypt, rounds 12, dan salt 22 karakter.
+        """
+        body = await register_and_login(client, "audit_ok@test.com")
+        access_token = body["data"]["token"]["access_token"]
+
+        resp = await client.get("/users/me/security-audit", headers={"Authorization": f"Bearer {access_token}"})
+        assert resp.status_code == 200
+        
+        res_data = resp.json()
+        assert res_data["success"] is True
+        
+        audit_data = res_data["data"]
+        assert "bcrypt" in audit_data["algorithm"].lower()
+        assert audit_data["rounds"] == 12
+        assert len(audit_data["salt_b64"]) == 22
+        assert audit_data["entropy_info"] == "128-bit CSPRNG Salt"
+
+    async def test_get_security_audit_unauthenticated(self, client: AsyncClient):
+        """GET /users/me/security-audit tanpa token -> 401."""
+        resp = await client.get("/users/me/security-audit")
+        assert resp.status_code == 401

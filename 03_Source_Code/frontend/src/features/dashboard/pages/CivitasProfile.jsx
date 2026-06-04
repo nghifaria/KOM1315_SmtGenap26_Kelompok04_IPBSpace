@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../../context/AuthContext';
-import { User, IdentificationCard, EnvelopeSimple, Shield, PencilSimpleLine } from '@phosphor-icons/react';
+import { User, IdentificationCard, EnvelopeSimple, Shield, PencilSimpleLine, ShieldCheck, Fingerprint, LockKey } from '@phosphor-icons/react';
 import { toast } from 'react-hot-toast';
+import apiClient from '../../../shared/services/api/apiClient';
 
 export default function CivitasProfile() {
   const { user, updateProfile } = useAuth();
@@ -9,6 +10,51 @@ export default function CivitasProfile() {
   const [fullname, setFullname] = useState(user?.fullname || '');
   const [idnum, setIdnum] = useState(user?.idnum || '');
   const [email, setEmail] = useState(user?.email || '');
+
+  // Cryptographic audit states
+  const [auditData, setAuditData] = useState(null);
+  const [isAuditLoading, setIsAuditLoading] = useState(true);
+  const [testPassword, setTestPassword] = useState('');
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchSecurityAudit = async () => {
+      try {
+        const res = await apiClient.get('/users/me/security-audit');
+        const data = res?.data?.data ?? res?.data ?? res;
+        if (isMounted) {
+          setAuditData(data);
+        }
+      } catch (err) {
+        console.error('Failed to load security audit data:', err);
+      } finally {
+        if (isMounted) {
+          setIsAuditLoading(false);
+        }
+      }
+    };
+    fetchSecurityAudit();
+    return () => { isMounted = false; };
+  }, []);
+
+  const calculateEntropy = (password) => {
+    if (!password) return { bits: 0, label: 'Sangat Lemah', color: 'bg-red-500 text-red-600', width: 'w-0' };
+    
+    let poolSize = 0;
+    if (/[a-z]/.test(password)) poolSize += 26;
+    if (/[A-Z]/.test(password)) poolSize += 26;
+    if (/[0-9]/.test(password)) poolSize += 10;
+    if (/[^a-zA-Z0-9]/.test(password)) poolSize += 33; // special chars
+
+    const bits = Math.round(password.length * Math.log2(poolSize || 1));
+    
+    if (bits < 40) return { bits, label: 'Sangat Lemah (Kerentanan Brute-Force)', color: 'bg-red-500', width: 'w-1/4' };
+    if (bits < 60) return { bits, label: 'Sedang (Cukup Aman)', color: 'bg-amber-500', width: 'w-2/4' };
+    if (bits < 80) return { bits, label: 'Kuat (Aman)', color: 'bg-green-500', width: 'w-3/4' };
+    return { bits, label: 'Sangat Kuat (Sangat Aman)', color: 'bg-emerald-500', width: 'w-full' };
+  };
+
+  const entropy = calculateEntropy(testPassword);
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -53,7 +99,7 @@ export default function CivitasProfile() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column: Avatar & Summary Card */}
+          {/* Left Column: Avatar & Summary Card + Security Audit Card */}
           <div className="lg:col-span-1 space-y-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>
             <div className="bg-white rounded-card shadow-ambient border border-gray-100 p-6 flex flex-col items-center text-center relative overflow-hidden group">
               {/* Decorative accent top line */}
@@ -69,6 +115,99 @@ export default function CivitasProfile() {
               <span className="px-3 py-1 bg-primary-container/10 text-primary-container rounded-full text-xs font-black tracking-wide uppercase mb-2">
                 {user?.role === 'civitas' ? 'Civitas IPB' : user?.role || 'Pengguna'}
               </span>
+            </div>
+
+            {/* Cryptographic Security Audit Card */}
+            <div className="bg-white rounded-card shadow-ambient border border-gray-100 p-6 relative overflow-hidden group">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-emerald-500"></div>
+              
+              <h3 className="font-black text-gray-800 text-sm flex items-center gap-2 mb-4 border-b border-gray-100 pb-3">
+                <ShieldCheck size={20} className="text-emerald-600" weight="fill" />
+                Audit Kriptografi Akun
+              </h3>
+
+              {isAuditLoading ? (
+                <div className="py-4 text-center text-gray-400 text-xs font-semibold animate-pulse">
+                  Mengekstrak metadata kriptografis...
+                </div>
+              ) : auditData ? (
+                <div className="space-y-4 text-xs font-semibold text-gray-600">
+                  <div className="space-y-1">
+                    <span className="text-[10px] text-gray-400 uppercase tracking-widest block">Salt Acak (CSPRNG)</span>
+                    <div className="font-mono bg-slate-900 text-emerald-400 p-2.5 rounded-lg border border-slate-800 break-all select-all shadow-inner text-[10px] leading-relaxed">
+                      {auditData.salt_b64}
+                    </div>
+                    <span className="text-[9px] text-gray-450 block italic mt-0.5 leading-snug">
+                      *Salt 128-bit acak digenerate otomatis menggunakan fungsi kriptografis aman OS.
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <div className="bg-slate-50 border border-slate-100 p-2 rounded-lg">
+                      <span className="text-[9px] text-gray-400 uppercase tracking-wider block">Algoritma Hash</span>
+                      <span className="font-bold text-gray-700 text-[11px] block mt-0.5">{auditData.algorithm}</span>
+                    </div>
+                    <div className="bg-slate-50 border border-slate-100 p-2 rounded-lg">
+                      <span className="text-[9px] text-gray-400 uppercase tracking-wider block">Cost / Rounds</span>
+                      <span className="font-bold text-gray-700 text-[11px] block mt-0.5">2^{auditData.rounds} ({1 << auditData.rounds} iterasi)</span>
+                    </div>
+                  </div>
+
+                  <p className="text-[10px] text-gray-450 font-normal leading-relaxed pt-1">
+                    Kombinasi <strong>Salt unik</strong> dan <strong>key stretching ($2^{12}$ iterasi)</strong> mencegah serangan kamus (dictionary) dan rainbow table secara efektif.
+                  </p>
+                </div>
+              ) : (
+                <div className="py-2 text-center text-red-500 text-xs font-semibold">
+                  Gagal mengambil metadata keamanan.
+                </div>
+              )}
+            </div>
+
+            {/* Password Entropy Playground */}
+            <div className="bg-white rounded-card shadow-ambient border border-gray-100 p-6 relative overflow-hidden group">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-accent"></div>
+              
+              <h3 className="font-black text-gray-800 text-sm flex items-center gap-2 mb-4 border-b border-gray-100 pb-3">
+                <LockKey size={20} className="text-accent" weight="fill" />
+                Uji Entropi Kata Sandi
+              </h3>
+
+              <div className="space-y-4">
+                <div className="space-y-1.5">
+                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Masukkan Kata Sandi Simulasi</label>
+                  <input
+                    type="password"
+                    placeholder="Ketik password untuk diuji..."
+                    value={testPassword}
+                    onChange={(e) => setTestPassword(e.target.value)}
+                    className="w-full px-3 py-2 text-xs border border-gray-200 focus:border-accent rounded-lg outline-none font-semibold text-gray-700 placeholder:text-gray-400 transition-all shadow-inner"
+                  />
+                </div>
+
+                {testPassword && (
+                  <div className="space-y-2 text-xs font-semibold">
+                    <div className="flex justify-between items-center text-[10px] text-gray-500">
+                      <span>Nilai Entropi:</span>
+                      <span className="font-black text-primary">{entropy.bits} Bits</span>
+                    </div>
+
+                    {/* Progress bar */}
+                    <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                      <div className={`h-full ${entropy.color} ${entropy.width} transition-all duration-300`}></div>
+                    </div>
+
+                    <div className="text-[10px] flex items-center justify-between">
+                      <span className="text-gray-400">Klasifikasi:</span>
+                      <span className="font-bold text-slate-700">{entropy.label}</span>
+                    </div>
+                  </div>
+                )}
+
+                <p className="text-[10px] text-gray-400 font-normal leading-relaxed">
+                  Entropi mengukur tingkat keacakan kata sandi berdasarkan panjang dan variasi karakter. Entropi &gt; 60 bits dinilai aman dari serangan *brute force*.
+                </p>
+              </div>
             </div>
           </div>
 
