@@ -19,6 +19,7 @@ services:
     
     environment:
       - PYTHONPATH=/code
+      - PYTHONUNBUFFERED=1
 
   db:
     image: postgres:16

@@ -274,8 +274,7 @@ export default function SystemAuditLog() {
   // Aggregate brute force indicator events
   const bruteForceCount = useMemo(() => {
     return parsedLogs.filter(log => 
-      log.event === 'auth_failed_invalid_password' || 
-      log.event === 'auth_failed_account_locked'
+      log.event && log.event.startsWith('auth_failed')
     ).length;
   }, [parsedLogs]);
 

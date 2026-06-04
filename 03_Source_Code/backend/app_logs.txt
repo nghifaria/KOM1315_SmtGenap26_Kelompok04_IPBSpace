@@ -15083,3 +15083,587 @@ FileNotFoundError: Booking document not found: https://example.com/docs/surat_pe
 2026-06-04T12:57:45.156240Z [info     ] 172.18.0.1:42692 - "GET /facilities/ HTTP/1.1" 200 request_id=3a516400-f450-460a-b24c-456de7840500
 2026-06-04T12:57:45.167613Z [info     ] request_processed              [app.main] duration=0.0063s method=GET path=/facilities/ request_id=eab61694-d585-4f00-a2bf-950891d8464d status_code=200
 2026-06-04T12:57:45.168303Z [info     ] 172.18.0.1:42692 - "GET /facilities/ HTTP/1.1" 200 request_id=eab61694-d585-4f00-a2bf-950891d8464d
+2026-06-04T13:00:59.542746Z [info     ] request_processed              [app.main] duration=0.0220s method=GET path=/facilities/ request_id=2a371892-ead7-457c-aa45-253e59ce4ff6 status_code=200
+2026-06-04T13:00:59.543929Z [info     ] 172.18.0.1:48814 - "GET /facilities/ HTTP/1.1" 200 request_id=2a371892-ead7-457c-aa45-253e59ce4ff6
+2026-06-04T13:00:59.586365Z [info     ] request_processed              [app.main] duration=0.0656s method=GET path=/system/logs request_id=e67a87f7-86e2-427a-a8fc-404fb2cab214 status_code=200
+2026-06-04T13:00:59.587174Z [info     ] 172.18.0.1:48830 - "GET /system/logs HTTP/1.1" 200 request_id=e67a87f7-86e2-427a-a8fc-404fb2cab214
+2026-06-04T13:00:59.591077Z [info     ] request_processed              [app.main] duration=0.0705s method=GET path=/bookings/ request_id=94eac3c6-45fb-4bca-bdc5-e21f3c1b366c status_code=200
+2026-06-04T13:00:59.592243Z [info     ] 172.18.0.1:48816 - "GET /bookings/ HTTP/1.1" 200 request_id=94eac3c6-45fb-4bca-bdc5-e21f3c1b366c
+2026-06-04T13:00:59.596382Z [info     ] request_processed              [app.main] duration=0.0621s method=GET path=/users/ request_id=b3eafff5-3c12-4cac-8b9b-9a695638156a status_code=200
+2026-06-04T13:00:59.597415Z [info     ] 172.18.0.1:48840 - "GET /users/ HTTP/1.1" 200 request_id=b3eafff5-3c12-4cac-8b9b-9a695638156a
+2026-06-04T13:00:59.601824Z [info     ] request_processed              [app.main] duration=0.0529s method=GET path=/facilities/ request_id=a8492ce4-277c-4396-939e-02f9f4986936 status_code=200
+2026-06-04T13:00:59.602676Z [info     ] 172.18.0.1:48814 - "GET /facilities/ HTTP/1.1" 200 request_id=a8492ce4-277c-4396-939e-02f9f4986936
+2026-06-04T13:00:59.644642Z [info     ] request_processed              [app.main] duration=0.0353s method=GET path=/system/logs request_id=2b7ef391-edcf-478d-8104-9bbaa7d83fd9 status_code=200
+2026-06-04T13:00:59.645501Z [info     ] 172.18.0.1:48848 - "GET /system/logs HTTP/1.1" 200 request_id=2b7ef391-edcf-478d-8104-9bbaa7d83fd9
+2026-06-04T13:00:59.647473Z [info     ] request_processed              [app.main] duration=0.0440s method=GET path=/bookings/ request_id=809513f9-8479-4071-ab33-4bf7877c5aed status_code=200
+2026-06-04T13:00:59.648129Z [info     ] 172.18.0.1:48816 - "GET /bookings/ HTTP/1.1" 200 request_id=809513f9-8479-4071-ab33-4bf7877c5aed
+2026-06-04T13:00:59.650950Z [info     ] request_processed              [app.main] duration=0.0406s method=GET path=/users/ request_id=e5feb4a0-1d2d-41f9-8c14-e089e284f866 status_code=200
+2026-06-04T13:00:59.652276Z [info     ] 172.18.0.1:48830 - "GET /users/ HTTP/1.1" 200 request_id=e5feb4a0-1d2d-41f9-8c14-e089e284f866
+2026-06-04T13:01:28.276665Z [info     ] request_processed              [app.main] duration=0.0028s method=GET path=/users/me request_id=5eead34a-16c6-4e33-8334-d291096c3f65 status_code=200
+2026-06-04T13:01:28.277348Z [info     ] 172.18.0.1:38632 - "GET /users/me HTTP/1.1" 200 request_id=5eead34a-16c6-4e33-8334-d291096c3f65
+2026-06-04T13:01:28.284456Z [info     ] request_processed              [app.main] duration=0.0023s method=GET path=/users/me request_id=6da59f2e-9b0b-4fab-9e3b-1bbce5442262 status_code=200
+2026-06-04T13:01:28.285257Z [info     ] 172.18.0.1:38632 - "GET /users/me HTTP/1.1" 200 request_id=6da59f2e-9b0b-4fab-9e3b-1bbce5442262
+2026-06-04T13:01:28.365239Z [info     ] request_processed              [app.main] duration=0.0541s method=GET path=/facilities/ request_id=9e8c70ba-872a-4c56-9f71-3d35848b3dc7 status_code=200
+2026-06-04T13:01:28.366717Z [info     ] 172.18.0.1:38662 - "GET /facilities/ HTTP/1.1" 200 request_id=9e8c70ba-872a-4c56-9f71-3d35848b3dc7
+2026-06-04T13:01:28.367475Z [info     ] request_processed              [app.main] duration=0.0637s method=GET path=/system/logs request_id=fd322e4c-2d71-4d38-bce7-f157564072e9 status_code=200
+2026-06-04T13:01:28.368062Z [info     ] 172.18.0.1:38632 - "GET /system/logs HTTP/1.1" 200 request_id=fd322e4c-2d71-4d38-bce7-f157564072e9
+2026-06-04T13:01:28.384031Z [info     ] request_processed              [app.main] duration=0.0791s method=GET path=/bookings/ request_id=8ffea5fd-adee-478f-83a5-8a4aba1010ba status_code=200
+2026-06-04T13:01:28.384687Z [info     ] 172.18.0.1:38648 - "GET /bookings/ HTTP/1.1" 200 request_id=8ffea5fd-adee-478f-83a5-8a4aba1010ba
+2026-06-04T13:01:28.385452Z [info     ] request_processed              [app.main] duration=0.0743s method=GET path=/users/ request_id=9a69161e-6e50-407e-8706-b94a07b9dd7d status_code=200
+2026-06-04T13:01:28.385960Z [info     ] 172.18.0.1:38670 - "GET /users/ HTTP/1.1" 200 request_id=9a69161e-6e50-407e-8706-b94a07b9dd7d
+2026-06-04T13:01:28.389326Z [info     ] request_processed              [app.main] duration=0.0150s method=GET path=/facilities/ request_id=fe8982b1-4ce7-40b2-8537-2b3875526322 status_code=200
+2026-06-04T13:01:28.390069Z [info     ] 172.18.0.1:38662 - "GET /facilities/ HTTP/1.1" 200 request_id=fe8982b1-4ce7-40b2-8537-2b3875526322
+2026-06-04T13:01:28.437081Z [info     ] request_processed              [app.main] duration=0.0506s method=GET path=/system/logs request_id=1dcc352b-f4d6-422e-adfe-f91ebf96a66f status_code=200
+2026-06-04T13:01:28.438160Z [info     ] 172.18.0.1:38672 - "GET /system/logs HTTP/1.1" 200 request_id=1dcc352b-f4d6-422e-adfe-f91ebf96a66f
+2026-06-04T13:01:28.447524Z [info     ] request_processed              [app.main] duration=0.0584s method=GET path=/bookings/ request_id=512e133b-216c-451b-bc3b-9eb0349fd575 status_code=200
+2026-06-04T13:01:28.448593Z [info     ] 172.18.0.1:38632 - "GET /bookings/ HTTP/1.1" 200 request_id=512e133b-216c-451b-bc3b-9eb0349fd575
+2026-06-04T13:01:28.449213Z [info     ] request_processed              [app.main] duration=0.0535s method=GET path=/users/ request_id=d994c507-fd9c-4926-b648-d6faf4fc26c8 status_code=200
+2026-06-04T13:01:28.449742Z [info     ] 172.18.0.1:38648 - "GET /users/ HTTP/1.1" 200 request_id=d994c507-fd9c-4926-b648-d6faf4fc26c8
+2026-06-04T13:01:36.204169Z [info     ] 172.18.0.1:57260 - "OPTIONS /auth/logout HTTP/1.1" 200
+2026-06-04T13:01:36.255648Z [info     ] request_processed              [app.main] duration=0.0238s method=GET path=/facilities/ request_id=bb956779-d182-4a5e-961c-60d96cd03a81 status_code=200
+2026-06-04T13:01:36.256461Z [info     ] 172.18.0.1:57304 - "GET /facilities/ HTTP/1.1" 200 request_id=bb956779-d182-4a5e-961c-60d96cd03a81
+2026-06-04T13:01:36.257800Z [info     ] request_processed              [app.main] duration=0.0167s method=GET path=/facilities/ request_id=ce196654-6d9e-4786-9c1a-f01d52487c3e status_code=200
+2026-06-04T13:01:36.258546Z [info     ] 172.18.0.1:57314 - "GET /facilities/ HTTP/1.1" 200 request_id=ce196654-6d9e-4786-9c1a-f01d52487c3e
+2026-06-04T13:01:36.267931Z [info     ] request_processed              [app.main] duration=0.0440s method=GET path=/bookings/ request_id=53740957-51bc-4929-9d35-4c0d71de4c0a status_code=200
+2026-06-04T13:01:36.268723Z [info     ] 172.18.0.1:57264 - "GET /bookings/ HTTP/1.1" 200 request_id=53740957-51bc-4929-9d35-4c0d71de4c0a
+2026-06-04T13:01:36.269623Z [info     ] request_processed              [app.main] duration=0.0456s method=GET path=/users/ request_id=3a4e0b2e-f568-4ce0-8537-6784c2d406f5 status_code=200
+2026-06-04T13:01:36.270110Z [info     ] 172.18.0.1:57278 - "GET /users/ HTTP/1.1" 200 request_id=3a4e0b2e-f568-4ce0-8537-6784c2d406f5
+2026-06-04T13:01:36.291161Z [info     ] request_processed              [app.main] duration=0.0277s method=GET path=/users/ request_id=871cbab3-b9dd-40b2-9d14-9f2e814fe98f status_code=200
+2026-06-04T13:01:36.292254Z [info     ] 172.18.0.1:57304 - "GET /users/ HTTP/1.1" 200 request_id=871cbab3-b9dd-40b2-9d14-9f2e814fe98f
+2026-06-04T13:01:36.292971Z [info     ] logout_successful              [app.services.auth_service] request_id=d240c449-c251-4e16-9ac0-376a619bb2f1 user_id=15
+2026-06-04T13:01:36.294015Z [info     ] request_processed              [app.main] duration=0.0714s method=POST path=/auth/logout request_id=d240c449-c251-4e16-9ac0-376a619bb2f1 status_code=200
+2026-06-04T13:01:36.294816Z [info     ] 172.18.0.1:57260 - "POST /auth/logout HTTP/1.1" 200 request_id=d240c449-c251-4e16-9ac0-376a619bb2f1
+2026-06-04T13:01:36.310234Z [info     ] request_processed              [app.main] duration=0.0785s method=GET path=/bookings/ request_id=6461ec8a-68f7-4e40-992c-a312fe8d6756 status_code=200
+2026-06-04T13:01:41.638137Z [info     ] 172.18.0.1:57316 - "OPTIONS /auth/login HTTP/1.1" 200
+2026-06-04T13:01:41.650521Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=60f11fdb-7d3c-42e5-8c53-61e598f56b80
+2026-06-04T13:01:41.651835Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=60f11fdb-7d3c-42e5-8c53-61e598f56b80 status_code=401
+2026-06-04T13:01:41.652452Z [info     ] request_processed              [app.main] duration=0.0076s method=POST path=/auth/login request_id=60f11fdb-7d3c-42e5-8c53-61e598f56b80 status_code=401
+2026-06-04T13:01:41.653079Z [info     ] 172.18.0.1:57316 - "POST /auth/login HTTP/1.1" 401 request_id=60f11fdb-7d3c-42e5-8c53-61e598f56b80
+2026-06-04T13:01:42.960597Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=50d13358-dfb3-4365-8e5a-6805eb1a9b16
+2026-06-04T13:01:42.962299Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=50d13358-dfb3-4365-8e5a-6805eb1a9b16 status_code=401
+2026-06-04T13:01:42.963122Z [info     ] request_processed              [app.main] duration=0.0068s method=POST path=/auth/login request_id=50d13358-dfb3-4365-8e5a-6805eb1a9b16 status_code=401
+2026-06-04T13:01:42.963759Z [info     ] 172.18.0.1:57316 - "POST /auth/login HTTP/1.1" 401 request_id=50d13358-dfb3-4365-8e5a-6805eb1a9b16
+2026-06-04T13:01:43.614221Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=3477e4cb-21b1-470d-94f7-69a60c2caac1
+2026-06-04T13:01:43.615601Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=3477e4cb-21b1-470d-94f7-69a60c2caac1 status_code=401
+2026-06-04T13:01:43.616097Z [info     ] request_processed              [app.main] duration=0.0055s method=POST path=/auth/login request_id=3477e4cb-21b1-470d-94f7-69a60c2caac1 status_code=401
+2026-06-04T13:01:43.616623Z [info     ] 172.18.0.1:57316 - "POST /auth/login HTTP/1.1" 401 request_id=3477e4cb-21b1-470d-94f7-69a60c2caac1
+2026-06-04T13:01:44.476011Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=1d24c015-25d0-4168-b77d-875221963bb4
+2026-06-04T13:01:44.477315Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=1d24c015-25d0-4168-b77d-875221963bb4 status_code=401
+2026-06-04T13:01:44.477970Z [info     ] request_processed              [app.main] duration=0.0058s method=POST path=/auth/login request_id=1d24c015-25d0-4168-b77d-875221963bb4 status_code=401
+2026-06-04T13:01:44.478687Z [info     ] 172.18.0.1:57316 - "POST /auth/login HTTP/1.1" 401 request_id=1d24c015-25d0-4168-b77d-875221963bb4
+2026-06-04T13:01:45.151424Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=44672e41-0d71-42e5-aaad-44e55dc65594
+2026-06-04T13:01:45.152871Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=44672e41-0d71-42e5-aaad-44e55dc65594 status_code=401
+2026-06-04T13:01:45.153519Z [info     ] request_processed              [app.main] duration=0.0066s method=POST path=/auth/login request_id=44672e41-0d71-42e5-aaad-44e55dc65594 status_code=401
+2026-06-04T13:01:45.154196Z [info     ] 172.18.0.1:57316 - "POST /auth/login HTTP/1.1" 401 request_id=44672e41-0d71-42e5-aaad-44e55dc65594
+2026-06-04T13:01:45.927414Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=2a74f815-acc7-46c8-94f0-8ac93726a552
+2026-06-04T13:01:45.928889Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=2a74f815-acc7-46c8-94f0-8ac93726a552 status_code=401
+2026-06-04T13:01:45.929550Z [info     ] request_processed              [app.main] duration=0.0053s method=POST path=/auth/login request_id=2a74f815-acc7-46c8-94f0-8ac93726a552 status_code=401
+2026-06-04T13:01:45.930128Z [info     ] 172.18.0.1:57316 - "POST /auth/login HTTP/1.1" 401 request_id=2a74f815-acc7-46c8-94f0-8ac93726a552
+2026-06-04T13:01:46.344487Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=c884f01c-3da6-4240-b223-c3be1bb0d2a6
+2026-06-04T13:01:46.345712Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=c884f01c-3da6-4240-b223-c3be1bb0d2a6 status_code=401
+2026-06-04T13:01:46.346235Z [info     ] request_processed              [app.main] duration=0.0051s method=POST path=/auth/login request_id=c884f01c-3da6-4240-b223-c3be1bb0d2a6 status_code=401
+2026-06-04T13:01:46.346835Z [info     ] 172.18.0.1:57316 - "POST /auth/login HTTP/1.1" 401 request_id=c884f01c-3da6-4240-b223-c3be1bb0d2a6
+2026-06-04T13:01:50.615883Z [info     ] login_successful               [app.services.auth_service] email=admin@ipbspace.com request_id=78db47fb-e433-498b-a24a-f4fa71c72844 role=admin user_id=15
+2026-06-04T13:01:50.617537Z [info     ] request_processed              [app.main] duration=0.2002s method=POST path=/auth/login request_id=78db47fb-e433-498b-a24a-f4fa71c72844 status_code=200
+2026-06-04T13:01:50.618105Z [info     ] 172.18.0.1:57316 - "POST /auth/login HTTP/1.1" 200 request_id=78db47fb-e433-498b-a24a-f4fa71c72844
+2026-06-04T13:01:50.685451Z [info     ] request_processed              [app.main] duration=0.0090s method=GET path=/facilities/ request_id=20b51776-ae4b-4a51-bed2-52aa91793652 status_code=200
+2026-06-04T13:01:50.686396Z [info     ] 172.18.0.1:57316 - "GET /facilities/ HTTP/1.1" 200 request_id=20b51776-ae4b-4a51-bed2-52aa91793652
+2026-06-04T13:01:50.699306Z [info     ] request_processed              [app.main] duration=0.0079s method=GET path=/facilities/ request_id=141b08b8-6081-431e-8bc2-ee196a12fe0b status_code=200
+2026-06-04T13:01:50.700049Z [info     ] 172.18.0.1:57316 - "GET /facilities/ HTTP/1.1" 200 request_id=141b08b8-6081-431e-8bc2-ee196a12fe0b
+2026-06-04T13:01:52.390728Z [info     ] 172.18.0.1:35438 - "OPTIONS /bookings/ HTTP/1.1" 200
+2026-06-04T13:01:52.391594Z [info     ] 172.18.0.1:35442 - "OPTIONS /bookings/ HTTP/1.1" 200
+2026-06-04T13:01:52.394465Z [info     ] request_processed              [app.main] duration=0.0150s method=GET path=/facilities/ request_id=bfd30c76-2074-4d5c-bb39-b30451496492 status_code=200
+2026-06-04T13:01:52.395383Z [info     ] 172.18.0.1:35414 - "GET /facilities/ HTTP/1.1" 200 request_id=bfd30c76-2074-4d5c-bb39-b30451496492
+2026-06-04T13:01:52.432105Z [info     ] request_processed              [app.main] duration=0.0569s method=GET path=/system/logs request_id=ed8a8283-c419-474a-b307-f1e81c691c7d status_code=200
+2026-06-04T13:01:52.433061Z [info     ] 172.18.0.1:57316 - "GET /system/logs HTTP/1.1" 200 request_id=ed8a8283-c419-474a-b307-f1e81c691c7d
+2026-06-04T13:01:52.485133Z [info     ] request_processed              [app.main] duration=0.1058s method=GET path=/system/logs request_id=4452322c-c9bc-4ede-ab24-fde8679b73bf status_code=200
+2026-06-04T13:01:52.485933Z [info     ] 172.18.0.1:35400 - "GET /system/logs HTTP/1.1" 200 request_id=4452322c-c9bc-4ede-ab24-fde8679b73bf
+2026-06-04T13:01:52.491644Z [info     ] request_processed              [app.main] duration=0.1121s method=GET path=/users/ request_id=4797148d-9f19-4668-8e47-a1dc11e61cf3 status_code=200
+2026-06-04T13:01:52.492519Z [info     ] 172.18.0.1:35426 - "GET /users/ HTTP/1.1" 200 request_id=4797148d-9f19-4668-8e47-a1dc11e61cf3
+2026-06-04T13:01:52.495282Z [info     ] request_processed              [app.main] duration=0.0486s method=GET path=/facilities/ request_id=a7611b37-8851-495b-a23c-a78683b12b34 status_code=200
+2026-06-04T13:01:52.496116Z [info     ] 172.18.0.1:35414 - "GET /facilities/ HTTP/1.1" 200 request_id=a7611b37-8851-495b-a23c-a78683b12b34
+2026-06-04T13:01:52.502899Z [info     ] request_processed              [app.main] duration=0.0686s method=GET path=/bookings/ request_id=1a316e97-e6c3-433a-9f46-c95b687ee65d status_code=200
+2026-06-04T13:01:52.503665Z [info     ] 172.18.0.1:35438 - "GET /bookings/ HTTP/1.1" 200 request_id=1a316e97-e6c3-433a-9f46-c95b687ee65d
+2026-06-04T13:01:52.504140Z [info     ] request_processed              [app.main] duration=0.0699s method=GET path=/bookings/ request_id=4051fbf9-3c1f-4d7b-af95-cdb1c2362659 status_code=200
+2026-06-04T13:01:52.504742Z [info     ] 172.18.0.1:35442 - "GET /bookings/ HTTP/1.1" 200 request_id=4051fbf9-3c1f-4d7b-af95-cdb1c2362659
+2026-06-04T13:01:52.509814Z [info     ] request_processed              [app.main] duration=0.0094s method=GET path=/users/ request_id=8f3460d1-d730-4656-8573-9eb00f9155ea status_code=200
+2026-06-04T13:01:52.510719Z [info     ] 172.18.0.1:35400 - "GET /users/ HTTP/1.1" 200 request_id=8f3460d1-d730-4656-8573-9eb00f9155ea
+2026-06-04T13:02:30.339180Z [info     ] logout_successful              [app.services.auth_service] request_id=43c307d9-27c4-4853-afef-c56ff75a493b user_id=15
+2026-06-04T13:02:30.340110Z [info     ] request_processed              [app.main] duration=0.0077s method=POST path=/auth/logout request_id=43c307d9-27c4-4853-afef-c56ff75a493b status_code=200
+2026-06-04T13:02:30.340871Z [info     ] 172.18.0.1:46474 - "POST /auth/logout HTTP/1.1" 200 request_id=43c307d9-27c4-4853-afef-c56ff75a493b
+2026-06-04T13:02:30.417113Z [info     ] request_processed              [app.main] duration=0.0246s method=GET path=/facilities/ request_id=9af16cdd-ca64-415d-bc54-9ebdfe8fda2f status_code=200
+2026-06-04T13:02:30.418649Z [info     ] request_processed              [app.main] duration=0.0260s method=GET path=/facilities/ request_id=5d9a0836-1878-4ac4-bdd8-c56fa54fc7cb status_code=200
+2026-06-04T13:02:30.423863Z [info     ] request_processed              [app.main] duration=0.0400s method=GET path=/bookings/ request_id=186a24c4-f803-40d7-8364-dd4c23bf3201 status_code=200
+2026-06-04T13:02:30.427848Z [info     ] request_processed              [app.main] duration=0.0353s method=GET path=/bookings/ request_id=bfce097c-e757-4169-ae12-e13d9edf22a7 status_code=200
+2026-06-04T13:02:30.441998Z [info     ] request_processed              [app.main] duration=0.0494s method=GET path=/users/ request_id=59becb90-29f4-4ea3-be86-c3b14bf1a636 status_code=200
+2026-06-04T13:02:30.456213Z [info     ] request_processed              [app.main] duration=0.0635s method=GET path=/users/ request_id=15853b12-357d-4e6f-aba9-7912e5624f98 status_code=200
+2026-06-04T13:02:36.916544Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=lazuardi2@gmail.com request_id=36a33dd5-8c37-4dd1-96ba-bac7cf625837
+2026-06-04T13:02:36.918571Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=36a33dd5-8c37-4dd1-96ba-bac7cf625837 status_code=401
+2026-06-04T13:02:36.919254Z [info     ] request_processed              [app.main] duration=0.0088s method=POST path=/auth/login request_id=36a33dd5-8c37-4dd1-96ba-bac7cf625837 status_code=401
+2026-06-04T13:02:36.919810Z [info     ] 172.18.0.1:47488 - "POST /auth/login HTTP/1.1" 401 request_id=36a33dd5-8c37-4dd1-96ba-bac7cf625837
+2026-06-04T13:02:39.178507Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=lazuardi2@gmail.coma request_id=be6f15d6-559b-49b6-a8b9-1cc50666ac62
+2026-06-04T13:02:39.179854Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=be6f15d6-559b-49b6-a8b9-1cc50666ac62 status_code=401
+2026-06-04T13:02:39.180361Z [info     ] request_processed              [app.main] duration=0.0055s method=POST path=/auth/login request_id=be6f15d6-559b-49b6-a8b9-1cc50666ac62 status_code=401
+2026-06-04T13:02:39.180927Z [info     ] 172.18.0.1:47488 - "POST /auth/login HTTP/1.1" 401 request_id=be6f15d6-559b-49b6-a8b9-1cc50666ac62
+2026-06-04T13:02:41.837441Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=lazuardi2@gmail.coma request_id=3981321f-bee6-44bc-9986-dfe01fe9423a
+2026-06-04T13:02:41.838923Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=3981321f-bee6-44bc-9986-dfe01fe9423a status_code=401
+2026-06-04T13:02:41.839550Z [info     ] request_processed              [app.main] duration=0.0048s method=POST path=/auth/login request_id=3981321f-bee6-44bc-9986-dfe01fe9423a status_code=401
+2026-06-04T13:02:41.840254Z [info     ] 172.18.0.1:47488 - "POST /auth/login HTTP/1.1" 401 request_id=3981321f-bee6-44bc-9986-dfe01fe9423a
+2026-06-04T13:02:42.189373Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=lazuardi2@gmail.coma request_id=dff5edf2-712d-49b0-9e93-4c37e084e26a
+2026-06-04T13:02:42.190933Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=dff5edf2-712d-49b0-9e93-4c37e084e26a status_code=401
+2026-06-04T13:02:42.191527Z [info     ] request_processed              [app.main] duration=0.0056s method=POST path=/auth/login request_id=dff5edf2-712d-49b0-9e93-4c37e084e26a status_code=401
+2026-06-04T13:02:42.192195Z [info     ] 172.18.0.1:47488 - "POST /auth/login HTTP/1.1" 401 request_id=dff5edf2-712d-49b0-9e93-4c37e084e26a
+2026-06-04T13:02:42.657934Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=lazuardi2@gmail.coma request_id=e5322a87-16a0-444c-9bbd-8912cfb31aaf
+2026-06-04T13:02:42.659751Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=e5322a87-16a0-444c-9bbd-8912cfb31aaf status_code=401
+2026-06-04T13:02:42.660492Z [info     ] request_processed              [app.main] duration=0.0061s method=POST path=/auth/login request_id=e5322a87-16a0-444c-9bbd-8912cfb31aaf status_code=401
+2026-06-04T13:02:42.661161Z [info     ] 172.18.0.1:47488 - "POST /auth/login HTTP/1.1" 401 request_id=e5322a87-16a0-444c-9bbd-8912cfb31aaf
+2026-06-04T13:02:43.070861Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=lazuardi2@gmail.coma request_id=c761ca52-e36d-4c70-a40d-3a32dace78f6
+2026-06-04T13:02:43.072317Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=c761ca52-e36d-4c70-a40d-3a32dace78f6 status_code=401
+2026-06-04T13:02:43.072909Z [info     ] request_processed              [app.main] duration=0.0040s method=POST path=/auth/login request_id=c761ca52-e36d-4c70-a40d-3a32dace78f6 status_code=401
+2026-06-04T13:02:43.073378Z [info     ] 172.18.0.1:47488 - "POST /auth/login HTTP/1.1" 401 request_id=c761ca52-e36d-4c70-a40d-3a32dace78f6
+2026-06-04T13:02:47.548192Z [info     ] login_successful               [app.services.auth_service] email=civitas@ipbspace.com request_id=99a19861-f077-4f9a-a4ad-a2fc9afe6277 role=civitas user_id=18
+2026-06-04T13:02:47.549715Z [info     ] request_processed              [app.main] duration=0.1999s method=POST path=/auth/login request_id=99a19861-f077-4f9a-a4ad-a2fc9afe6277 status_code=200
+2026-06-04T13:02:47.550391Z [info     ] 172.18.0.1:47488 - "POST /auth/login HTTP/1.1" 200 request_id=99a19861-f077-4f9a-a4ad-a2fc9afe6277
+2026-06-04T13:02:47.588521Z [info     ] 172.18.0.1:47488 - "OPTIONS /facilities/ HTTP/1.1" 200
+2026-06-04T13:02:47.589436Z [info     ] 172.18.0.1:43858 - "OPTIONS /bookings/my HTTP/1.1" 200
+2026-06-04T13:02:47.605637Z [info     ] request_processed              [app.main] duration=0.0143s method=GET path=/facilities/ request_id=8b9e3dda-4ec1-442f-9dd1-6bf0400fdcba status_code=200
+2026-06-04T13:02:47.606366Z [info     ] 172.18.0.1:47488 - "GET /facilities/ HTTP/1.1" 200 request_id=8b9e3dda-4ec1-442f-9dd1-6bf0400fdcba
+2026-06-04T13:02:47.614954Z [info     ] request_processed              [app.main] duration=0.0172s method=GET path=/bookings/my request_id=b02ac0af-e192-423f-8a69-428bfc21d504 status_code=200
+2026-06-04T13:02:47.615524Z [info     ] 172.18.0.1:43858 - "GET /bookings/my HTTP/1.1" 200 request_id=b02ac0af-e192-423f-8a69-428bfc21d504
+2026-06-04T13:02:47.617203Z [info     ] request_processed              [app.main] duration=0.0076s method=GET path=/facilities/ request_id=e0c8099a-381f-4061-b9f7-c65caf3dd8ba status_code=200
+2026-06-04T13:02:47.617653Z [info     ] 172.18.0.1:47488 - "GET /facilities/ HTTP/1.1" 200 request_id=e0c8099a-381f-4061-b9f7-c65caf3dd8ba
+2026-06-04T13:02:47.628202Z [info     ] request_processed              [app.main] duration=0.0091s method=GET path=/bookings/my request_id=176377d2-e9dd-4104-a363-2c505f51e24d status_code=200
+2026-06-04T13:02:47.628851Z [info     ] 172.18.0.1:43858 - "GET /bookings/my HTTP/1.1" 200 request_id=176377d2-e9dd-4104-a363-2c505f51e24d
+2026-06-04T13:02:50.850326Z [info     ] logout_successful              [app.services.auth_service] request_id=9a0a1e4a-041d-4f93-bc1f-834e20b80f79 user_id=18
+2026-06-04T13:02:50.851207Z [info     ] request_processed              [app.main] duration=0.0111s method=POST path=/auth/logout request_id=9a0a1e4a-041d-4f93-bc1f-834e20b80f79 status_code=200
+2026-06-04T13:02:50.851777Z [info     ] 172.18.0.1:47488 - "POST /auth/logout HTTP/1.1" 200 request_id=9a0a1e4a-041d-4f93-bc1f-834e20b80f79
+2026-06-04T13:02:50.881542Z [info     ] request_processed              [app.main] duration=0.0111s method=GET path=/facilities/ request_id=55c27932-cfe1-4b32-8800-cf3f3b8c7f09 status_code=200
+2026-06-04T13:02:50.882282Z [info     ] 172.18.0.1:47488 - "GET /facilities/ HTTP/1.1" 200 request_id=55c27932-cfe1-4b32-8800-cf3f3b8c7f09
+2026-06-04T13:02:50.896689Z [info     ] request_processed              [app.main] duration=0.0103s method=GET path=/facilities/ request_id=f40c0edd-dbf9-41a8-a390-519a75c6bbdc status_code=200
+2026-06-04T13:02:50.897580Z [info     ] 172.18.0.1:47488 - "GET /facilities/ HTTP/1.1" 200 request_id=f40c0edd-dbf9-41a8-a390-519a75c6bbdc
+2026-06-04T13:02:57.247840Z [info     ] login_successful               [app.services.auth_service] email=admin@ipbspace.com request_id=17995ef4-506a-4229-b887-5033752e6661 role=admin user_id=15
+2026-06-04T13:02:57.249464Z [info     ] request_processed              [app.main] duration=0.1941s method=POST path=/auth/login request_id=17995ef4-506a-4229-b887-5033752e6661 status_code=200
+2026-06-04T13:02:57.250002Z [info     ] 172.18.0.1:44808 - "POST /auth/login HTTP/1.1" 200 request_id=17995ef4-506a-4229-b887-5033752e6661
+2026-06-04T13:02:57.311788Z [info     ] request_processed              [app.main] duration=0.0099s method=GET path=/facilities/ request_id=cd2abecc-a882-40df-aa1d-bcad408fa160 status_code=200
+2026-06-04T13:02:57.312308Z [info     ] 172.18.0.1:44808 - "GET /facilities/ HTTP/1.1" 200 request_id=cd2abecc-a882-40df-aa1d-bcad408fa160
+2026-06-04T13:02:57.325223Z [info     ] request_processed              [app.main] duration=0.0096s method=GET path=/facilities/ request_id=f29d7ff2-5dd5-4174-b5fd-75beac4a2665 status_code=200
+2026-06-04T13:02:57.326005Z [info     ] 172.18.0.1:44808 - "GET /facilities/ HTTP/1.1" 200 request_id=f29d7ff2-5dd5-4174-b5fd-75beac4a2665
+2026-06-04T13:02:58.705656Z [info     ] request_processed              [app.main] duration=0.0177s method=GET path=/facilities/ request_id=34c0ad41-e651-4761-a4b4-181fbc243fbf status_code=200
+2026-06-04T13:02:58.706775Z [info     ] 172.18.0.1:44808 - "GET /facilities/ HTTP/1.1" 200 request_id=34c0ad41-e651-4761-a4b4-181fbc243fbf
+2026-06-04T13:02:58.711044Z [info     ] 172.18.0.1:44854 - "OPTIONS /bookings/ HTTP/1.1" 200
+2026-06-04T13:02:58.711899Z [info     ] 172.18.0.1:44870 - "OPTIONS /bookings/ HTTP/1.1" 200
+2026-06-04T13:02:58.714593Z [info     ] 172.18.0.1:44808 - "OPTIONS /users/ HTTP/1.1" 200
+2026-06-04T13:02:58.715399Z [info     ] request_processed              [app.main] duration=0.0197s method=GET path=/facilities/ request_id=d69a0528-22cf-4c64-a7e2-417fadc66558 status_code=200
+2026-06-04T13:02:58.715971Z [info     ] 172.18.0.1:44826 - "GET /facilities/ HTTP/1.1" 200 request_id=d69a0528-22cf-4c64-a7e2-417fadc66558
+2026-06-04T13:02:58.794251Z [info     ] request_processed              [app.main] duration=0.0983s method=GET path=/system/logs request_id=bd72a2f0-ee12-415e-a1a7-1eb864ff6783 status_code=200
+2026-06-04T13:02:58.795959Z [info     ] 172.18.0.1:44824 - "GET /system/logs HTTP/1.1" 200 request_id=bd72a2f0-ee12-415e-a1a7-1eb864ff6783
+2026-06-04T13:02:58.796971Z [info     ] request_processed              [app.main] duration=0.1012s method=GET path=/system/logs request_id=a0f98a87-87fb-4d28-b094-30b8bfede209 status_code=200
+2026-06-04T13:02:58.797451Z [info     ] 172.18.0.1:44842 - "GET /system/logs HTTP/1.1" 200 request_id=a0f98a87-87fb-4d28-b094-30b8bfede209
+2026-06-04T13:02:58.817194Z [info     ] request_processed              [app.main] duration=0.0998s method=GET path=/bookings/ request_id=4264820e-66e7-42f0-876d-651bb4998305 status_code=200
+2026-06-04T13:02:58.817978Z [info     ] 172.18.0.1:44854 - "GET /bookings/ HTTP/1.1" 200 request_id=4264820e-66e7-42f0-876d-651bb4998305
+2026-06-04T13:02:58.818451Z [info     ] request_processed              [app.main] duration=0.1011s method=GET path=/bookings/ request_id=61c7d420-340e-4274-8b3d-729f7b514dab status_code=200
+2026-06-04T13:02:58.818896Z [info     ] 172.18.0.1:44870 - "GET /bookings/ HTTP/1.1" 200 request_id=61c7d420-340e-4274-8b3d-729f7b514dab
+2026-06-04T13:02:58.819529Z [info     ] request_processed              [app.main] duration=0.0897s method=GET path=/users/ request_id=a972b314-d021-4eeb-824d-00493a7a21a0 status_code=200
+2026-06-04T13:02:58.819963Z [info     ] 172.18.0.1:44808 - "GET /users/ HTTP/1.1" 200 request_id=a972b314-d021-4eeb-824d-00493a7a21a0
+2026-06-04T13:02:58.827481Z [info     ] request_processed              [app.main] duration=0.0051s method=GET path=/users/ request_id=726e25ea-85da-4c70-9328-296207e26c81 status_code=200
+2026-06-04T13:02:58.828291Z [info     ] 172.18.0.1:44824 - "GET /users/ HTTP/1.1" 200 request_id=726e25ea-85da-4c70-9328-296207e26c81
+2026-06-04T13:04:52.977814Z [info     ] Started server process [13]
+2026-06-04T13:04:52.978424Z [info     ] Waiting for application startup.
+2026-06-04T13:04:53.012214Z [info     ] database_migration_successful  [app.main] message="Column 'validated_by' checked/added to bookings table"
+2026-06-04T13:04:53.012884Z [info     ] Application startup complete.
+2026-06-04T13:04:53.013404Z [info     ] Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-06-04T13:04:56.620983Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=a06428bb-7406-44a3-9c0c-ecfee2776d9f
+2026-06-04T13:04:56.622666Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=a06428bb-7406-44a3-9c0c-ecfee2776d9f status_code=401
+2026-06-04T13:04:56.623481Z [info     ] request_processed              [app.main] duration=0.0440s method=POST path=/auth/login request_id=a06428bb-7406-44a3-9c0c-ecfee2776d9f status_code=401
+2026-06-04T13:04:56.624456Z [info     ] 172.18.0.1:54184 - "POST /auth/login HTTP/1.1" 401 request_id=a06428bb-7406-44a3-9c0c-ecfee2776d9f
+2026-06-04T13:04:57.103287Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=b3f097d1-bdc4-4f5e-9a27-b6c8a8f5aaf8
+2026-06-04T13:04:57.104779Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=b3f097d1-bdc4-4f5e-9a27-b6c8a8f5aaf8 status_code=401
+2026-06-04T13:04:57.105316Z [info     ] request_processed              [app.main] duration=0.0059s method=POST path=/auth/login request_id=b3f097d1-bdc4-4f5e-9a27-b6c8a8f5aaf8 status_code=401
+2026-06-04T13:04:57.105797Z [info     ] 172.18.0.1:54184 - "POST /auth/login HTTP/1.1" 401 request_id=b3f097d1-bdc4-4f5e-9a27-b6c8a8f5aaf8
+2026-06-04T13:04:57.566965Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=847c23ea-b6ae-400f-8d31-c7598ae452d5
+2026-06-04T13:04:57.568524Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=847c23ea-b6ae-400f-8d31-c7598ae452d5 status_code=401
+2026-06-04T13:04:57.569061Z [info     ] request_processed              [app.main] duration=0.0054s method=POST path=/auth/login request_id=847c23ea-b6ae-400f-8d31-c7598ae452d5 status_code=401
+2026-06-04T13:04:57.569645Z [info     ] 172.18.0.1:54184 - "POST /auth/login HTTP/1.1" 401 request_id=847c23ea-b6ae-400f-8d31-c7598ae452d5
+2026-06-04T13:04:57.923986Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=131f0284-b3ca-45bf-ab17-812df5973c5c
+2026-06-04T13:04:57.925884Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=131f0284-b3ca-45bf-ab17-812df5973c5c status_code=401
+2026-06-04T13:04:57.926945Z [info     ] request_processed              [app.main] duration=0.0056s method=POST path=/auth/login request_id=131f0284-b3ca-45bf-ab17-812df5973c5c status_code=401
+2026-06-04T13:04:57.927804Z [info     ] 172.18.0.1:54184 - "POST /auth/login HTTP/1.1" 401 request_id=131f0284-b3ca-45bf-ab17-812df5973c5c
+2026-06-04T13:05:03.864534Z [info     ] login_successful               [app.services.auth_service] email=admin@ipbspace.com request_id=b0310a9c-a031-42a7-93e2-8815c8d0b23f role=admin user_id=22
+2026-06-04T13:05:03.865400Z [info     ] request_processed              [app.main] duration=0.2000s method=POST path=/auth/login request_id=b0310a9c-a031-42a7-93e2-8815c8d0b23f status_code=200
+2026-06-04T13:05:03.865840Z [info     ] 172.18.0.1:35556 - "POST /auth/login HTTP/1.1" 200 request_id=b0310a9c-a031-42a7-93e2-8815c8d0b23f
+2026-06-04T13:05:03.914716Z [info     ] 172.18.0.1:35556 - "OPTIONS /facilities/ HTTP/1.1" 200
+2026-06-04T13:05:03.976569Z [info     ] request_processed              [app.main] duration=0.0583s method=GET path=/facilities/ request_id=29b4ef6a-3cd9-4055-873f-6f5384fe9c47 status_code=200
+2026-06-04T13:05:03.977461Z [info     ] 172.18.0.1:35556 - "GET /facilities/ HTTP/1.1" 200 request_id=29b4ef6a-3cd9-4055-873f-6f5384fe9c47
+2026-06-04T13:05:03.991281Z [info     ] request_processed              [app.main] duration=0.0106s method=GET path=/facilities/ request_id=0ab4797e-6c22-4878-b2ff-6b93dd1a303b status_code=200
+2026-06-04T13:05:03.992847Z [info     ] 172.18.0.1:35556 - "GET /facilities/ HTTP/1.1" 200 request_id=0ab4797e-6c22-4878-b2ff-6b93dd1a303b
+2026-06-04T13:05:05.447587Z [info     ] request_processed              [app.main] duration=0.0987s method=GET path=/system/logs request_id=de981c66-7221-4fae-a15c-7c720b4800fb status_code=200
+2026-06-04T13:05:05.448421Z [info     ] 172.18.0.1:35556 - "GET /system/logs HTTP/1.1" 200 request_id=de981c66-7221-4fae-a15c-7c720b4800fb
+2026-06-04T13:05:05.535264Z [info     ] request_processed              [app.main] duration=0.0636s method=GET path=/facilities/ request_id=aed140ca-48a4-4abf-9602-4b6482fad3f2 status_code=200
+2026-06-04T13:05:05.535958Z [info     ] 172.18.0.1:35556 - "GET /facilities/ HTTP/1.1" 200 request_id=aed140ca-48a4-4abf-9602-4b6482fad3f2
+2026-06-04T13:05:05.541167Z [info     ] request_processed              [app.main] duration=0.1779s method=GET path=/facilities/ request_id=6998f5ba-37f9-45f4-b02a-e5f4852d60c1 status_code=200
+2026-06-04T13:05:05.543040Z [info     ] 172.18.0.1:35580 - "GET /facilities/ HTTP/1.1" 200 request_id=6998f5ba-37f9-45f4-b02a-e5f4852d60c1
+2026-06-04T13:05:05.552015Z [info     ] request_processed              [app.main] duration=0.0122s method=GET path=/users/ request_id=b1d90d21-0ce5-4141-9743-e2144bf25b04 status_code=200
+2026-06-04T13:05:05.553264Z [info     ] 172.18.0.1:35556 - "GET /users/ HTTP/1.1" 200 request_id=b1d90d21-0ce5-4141-9743-e2144bf25b04
+2026-06-04T13:05:05.597357Z [info     ] request_processed              [app.main] duration=0.2344s method=GET path=/system/logs request_id=a5348861-3611-4bf7-b473-4aed2d7f5e63 status_code=200
+2026-06-04T13:05:05.598054Z [info     ] 172.18.0.1:35560 - "GET /system/logs HTTP/1.1" 200 request_id=a5348861-3611-4bf7-b473-4aed2d7f5e63
+2026-06-04T13:05:05.605758Z [info     ] request_processed              [app.main] duration=0.2426s method=GET path=/bookings/ request_id=5f723cdb-8547-4622-bdc8-69f10f1ae44a status_code=200
+2026-06-04T13:05:05.606691Z [info     ] 172.18.0.1:35564 - "GET /bookings/ HTTP/1.1" 200 request_id=5f723cdb-8547-4622-bdc8-69f10f1ae44a
+2026-06-04T13:05:05.610688Z [info     ] request_processed              [app.main] duration=0.2475s method=GET path=/bookings/ request_id=19d106e8-259d-4822-84aa-3813e9b18725 status_code=200
+2026-06-04T13:05:05.611392Z [info     ] 172.18.0.1:35594 - "GET /bookings/ HTTP/1.1" 200 request_id=19d106e8-259d-4822-84aa-3813e9b18725
+2026-06-04T13:05:05.613849Z [info     ] request_processed              [app.main] duration=0.2506s method=GET path=/users/ request_id=57f21d31-e18d-4383-a193-ac66ded80168 status_code=200
+2026-06-04T13:05:05.614617Z [info     ] 172.18.0.1:35598 - "GET /users/ HTTP/1.1" 200 request_id=57f21d31-e18d-4383-a193-ac66ded80168
+2026-06-04T13:06:02.456939Z [info     ] Started server process [13]
+2026-06-04T13:06:02.457693Z [info     ] Waiting for application startup.
+2026-06-04T13:06:02.489352Z [info     ] database_migration_successful  [app.main] message="Column 'validated_by' checked/added to bookings table"
+2026-06-04T13:06:02.489952Z [info     ] Application startup complete.
+2026-06-04T13:06:02.490704Z [info     ] Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-06-04T13:06:04.136921Z [info     ] registration_attempt           [app.services.auth_service] email=login_ok@test.com request_id=eb77303e-50b8-4dc4-9f5d-81fc2b4622bd
+2026-06-04T13:06:04.365961Z [info     ] registration_successful        [app.services.auth_service] email=login_ok@test.com request_id=eb77303e-50b8-4dc4-9f5d-81fc2b4622bd user_id=1
+2026-06-04T13:06:04.367362Z [info     ] request_processed              [app.main] duration=0.2485s method=POST path=/auth/register request_id=eb77303e-50b8-4dc4-9f5d-81fc2b4622bd status_code=201
+2026-06-04T13:06:04.368507Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=eb77303e-50b8-4dc4-9f5d-81fc2b4622bd
+2026-06-04T13:06:04.578846Z [info     ] login_successful               [app.services.auth_service] email=login_ok@test.com request_id=a949ee52-f2cd-4339-9fb5-dc5a3679e948 role=civitas user_id=1
+2026-06-04T13:06:04.579884Z [info     ] request_processed              [app.main] duration=0.2080s method=POST path=/auth/login request_id=a949ee52-f2cd-4339-9fb5-dc5a3679e948 status_code=200
+2026-06-04T13:06:04.580705Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=a949ee52-f2cd-4339-9fb5-dc5a3679e948
+2026-06-04T13:06:04.651190Z [info     ] registration_attempt           [app.services.auth_service] email=wrong_pw@test.com request_id=c9825ebf-4fc7-47d1-98de-29712a0cd989
+2026-06-04T13:06:04.846886Z [info     ] registration_successful        [app.services.auth_service] email=wrong_pw@test.com request_id=c9825ebf-4fc7-47d1-98de-29712a0cd989 user_id=2
+2026-06-04T13:06:04.847885Z [info     ] request_processed              [app.main] duration=0.1981s method=POST path=/auth/register request_id=c9825ebf-4fc7-47d1-98de-29712a0cd989 status_code=201
+2026-06-04T13:06:04.848547Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=c9825ebf-4fc7-47d1-98de-29712a0cd989
+2026-06-04T13:06:05.037689Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=1 email=wrong_pw@test.com remaining=4 request_id=991fb722-10ad-4cc0-b1a0-bd8c56bebbb2 user_id=2
+2026-06-04T13:06:05.039219Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=991fb722-10ad-4cc0-b1a0-bd8c56bebbb2 status_code=401
+2026-06-04T13:06:05.040152Z [info     ] request_processed              [app.main] duration=0.1892s method=POST path=/auth/login request_id=991fb722-10ad-4cc0-b1a0-bd8c56bebbb2 status_code=401
+2026-06-04T13:06:05.041637Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=991fb722-10ad-4cc0-b1a0-bd8c56bebbb2
+2026-06-04T13:06:05.109976Z [info     ] registration_attempt           [app.services.auth_service] email=lockme@test.com request_id=c534ace4-28a4-442f-a68a-2ffc7ebaea22
+2026-06-04T13:06:05.305648Z [info     ] registration_successful        [app.services.auth_service] email=lockme@test.com request_id=c534ace4-28a4-442f-a68a-2ffc7ebaea22 user_id=3
+2026-06-04T13:06:05.307616Z [info     ] request_processed              [app.main] duration=0.1986s method=POST path=/auth/register request_id=c534ace4-28a4-442f-a68a-2ffc7ebaea22 status_code=201
+2026-06-04T13:06:05.309231Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=c534ace4-28a4-442f-a68a-2ffc7ebaea22
+2026-06-04T13:06:05.499575Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=1 email=lockme@test.com remaining=4 request_id=25041cd7-c125-40cd-9de1-abb58b587e34 user_id=3
+2026-06-04T13:06:05.500732Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=25041cd7-c125-40cd-9de1-abb58b587e34 status_code=401
+2026-06-04T13:06:05.501262Z [info     ] request_processed              [app.main] duration=0.1900s method=POST path=/auth/login request_id=25041cd7-c125-40cd-9de1-abb58b587e34 status_code=401
+2026-06-04T13:06:05.502180Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=25041cd7-c125-40cd-9de1-abb58b587e34
+2026-06-04T13:06:05.692157Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=2 email=lockme@test.com remaining=3 request_id=0e6af753-ec2a-4268-8014-71e1ed33d600 user_id=3
+2026-06-04T13:06:05.692868Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=0e6af753-ec2a-4268-8014-71e1ed33d600 status_code=401
+2026-06-04T13:06:05.693467Z [info     ] request_processed              [app.main] duration=0.1892s method=POST path=/auth/login request_id=0e6af753-ec2a-4268-8014-71e1ed33d600 status_code=401
+2026-06-04T13:06:05.694307Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=0e6af753-ec2a-4268-8014-71e1ed33d600
+2026-06-04T13:06:05.885942Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=3 email=lockme@test.com remaining=2 request_id=3a22d14a-378c-46c2-b648-dfbc19936c72 user_id=3
+2026-06-04T13:06:05.886965Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=3a22d14a-378c-46c2-b648-dfbc19936c72 status_code=401
+2026-06-04T13:06:05.887627Z [info     ] request_processed              [app.main] duration=0.1916s method=POST path=/auth/login request_id=3a22d14a-378c-46c2-b648-dfbc19936c72 status_code=401
+2026-06-04T13:06:05.888575Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=3a22d14a-378c-46c2-b648-dfbc19936c72
+2026-06-04T13:06:06.084452Z [warning  ] auth_failed_invalid_password   [app.services.auth_service] attempts=4 email=lockme@test.com remaining=1 request_id=606c9665-bcf2-4395-9de3-1e4b545cbf3b user_id=3
+2026-06-04T13:06:06.085488Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=606c9665-bcf2-4395-9de3-1e4b545cbf3b status_code=401
+2026-06-04T13:06:06.086028Z [info     ] request_processed              [app.main] duration=0.1949s method=POST path=/auth/login request_id=606c9665-bcf2-4395-9de3-1e4b545cbf3b status_code=401
+2026-06-04T13:06:06.086788Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=606c9665-bcf2-4395-9de3-1e4b545cbf3b
+2026-06-04T13:06:06.284647Z [warning  ] auth_failed_account_now_locked [app.services.auth_service] attempts=5 email=lockme@test.com locked_until=2026-06-04T13:21:06.090524+00:00 request_id=be5c9d7e-f948-4b7f-b93c-6426c4e3d5ae user_id=3
+2026-06-04T13:06:06.285214Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=be5c9d7e-f948-4b7f-b93c-6426c4e3d5ae status_code=401
+2026-06-04T13:06:06.285619Z [info     ] request_processed              [app.main] duration=0.1971s method=POST path=/auth/login request_id=be5c9d7e-f948-4b7f-b93c-6426c4e3d5ae status_code=401
+2026-06-04T13:06:06.286189Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 401 Unauthorized" request_id=be5c9d7e-f948-4b7f-b93c-6426c4e3d5ae
+2026-06-04T13:06:06.289804Z [warning  ] auth_failed_account_locked     [app.services.auth_service] email=lockme@test.com locked_until=2026-06-04T13:21:06.090524+00:00 request_id=254c7a2a-aed5-4fb4-b6f6-6debfc0ecf3e user_id=3
+2026-06-04T13:06:06.290303Z [error    ] http_exception                 [app.main] message='Account temporarily locked due to too many failed login attempts. Try again in 15 minute(s).' request_id=254c7a2a-aed5-4fb4-b6f6-6debfc0ecf3e status_code=403
+2026-06-04T13:06:06.290983Z [info     ] request_processed              [app.main] duration=0.0032s method=POST path=/auth/login request_id=254c7a2a-aed5-4fb4-b6f6-6debfc0ecf3e status_code=403
+2026-06-04T13:06:06.292464Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 403 Forbidden" request_id=254c7a2a-aed5-4fb4-b6f6-6debfc0ecf3e
+2026-06-04T13:06:06.361794Z [info     ] registration_attempt           [app.services.auth_service] email=civitas_noadmin@test.com request_id=73d599f7-a3ce-4983-a637-d8096dfaf03c
+2026-06-04T13:06:06.560254Z [info     ] registration_successful        [app.services.auth_service] email=civitas_noadmin@test.com request_id=73d599f7-a3ce-4983-a637-d8096dfaf03c user_id=4
+2026-06-04T13:06:06.561263Z [info     ] request_processed              [app.main] duration=0.2010s method=POST path=/auth/register request_id=73d599f7-a3ce-4983-a637-d8096dfaf03c status_code=201
+2026-06-04T13:06:06.561992Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=73d599f7-a3ce-4983-a637-d8096dfaf03c
+2026-06-04T13:06:06.758142Z [info     ] login_successful               [app.services.auth_service] email=civitas_noadmin@test.com request_id=6b10fcf9-c476-4248-9dbc-c0e47ba846b8 role=civitas user_id=4
+2026-06-04T13:06:06.759204Z [info     ] request_processed              [app.main] duration=0.1956s method=POST path=/auth/login request_id=6b10fcf9-c476-4248-9dbc-c0e47ba846b8 status_code=200
+2026-06-04T13:06:06.759990Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=6b10fcf9-c476-4248-9dbc-c0e47ba846b8
+2026-06-04T13:06:06.774547Z [warning  ] admin_or_facility_manager_access_denied [app.main] request_id=91d910c1-a2e9-4f23-907b-2b950cf78220 user_id=4
+2026-06-04T13:06:06.775255Z [error    ] http_exception                 [app.main] message='Not enough permissions' request_id=91d910c1-a2e9-4f23-907b-2b950cf78220 status_code=403
+2026-06-04T13:06:06.775742Z [info     ] request_processed              [app.main] duration=0.0135s method=GET path=/users/ request_id=91d910c1-a2e9-4f23-907b-2b950cf78220 status_code=403
+2026-06-04T13:06:06.776572Z [info     ] HTTP Request: GET http://test/users/ "HTTP/1.1 403 Forbidden" request_id=91d910c1-a2e9-4f23-907b-2b950cf78220
+2026-06-04T13:06:06.838632Z [info     ] registration_attempt           [app.services.auth_service] email=admin_user@test.com request_id=0408999c-54c5-4749-a0ef-a5c74358c77b
+2026-06-04T13:06:07.026591Z [info     ] registration_successful        [app.services.auth_service] email=admin_user@test.com request_id=0408999c-54c5-4749-a0ef-a5c74358c77b user_id=5
+2026-06-04T13:06:07.028938Z [info     ] request_processed              [app.main] duration=0.1916s method=POST path=/auth/register request_id=0408999c-54c5-4749-a0ef-a5c74358c77b status_code=201
+2026-06-04T13:06:07.030185Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=0408999c-54c5-4749-a0ef-a5c74358c77b
+2026-06-04T13:06:07.226173Z [info     ] login_successful               [app.services.auth_service] email=admin_user@test.com request_id=334922a1-69ef-42ca-ab61-4c19d0f83e00 role=admin user_id=5
+2026-06-04T13:06:07.228989Z [info     ] request_processed              [app.main] duration=0.1958s method=POST path=/auth/login request_id=334922a1-69ef-42ca-ab61-4c19d0f83e00 status_code=200
+2026-06-04T13:06:07.230352Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=334922a1-69ef-42ca-ab61-4c19d0f83e00
+2026-06-04T13:06:07.239892Z [info     ] request_processed              [app.main] duration=0.0071s method=GET path=/users/ request_id=b1d174b6-0719-48fe-b4ec-660be53b04d6 status_code=200
+2026-06-04T13:06:07.240643Z [info     ] HTTP Request: GET http://test/users/ "HTTP/1.1 200 OK" request_id=b1d174b6-0719-48fe-b4ec-660be53b04d6
+2026-06-04T13:06:07.314734Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=2c8fe42e-0dcc-4af8-b48d-672c63544508 status_code=401
+2026-06-04T13:06:07.315632Z [info     ] request_processed              [app.main] duration=0.0049s method=GET path=/users/me request_id=2c8fe42e-0dcc-4af8-b48d-672c63544508 status_code=401
+2026-06-04T13:06:07.316340Z [info     ] HTTP Request: GET http://test/users/me "HTTP/1.1 401 Unauthorized" request_id=2c8fe42e-0dcc-4af8-b48d-672c63544508
+2026-06-04T13:06:07.707797Z [info     ] registration_attempt           [app.services.auth_service] email=refresh_user@test.com request_id=622b0944-42e5-4b2c-9e44-98128a8f55fd
+2026-06-04T13:06:07.893229Z [info     ] registration_successful        [app.services.auth_service] email=refresh_user@test.com request_id=622b0944-42e5-4b2c-9e44-98128a8f55fd user_id=6
+2026-06-04T13:06:07.894026Z [info     ] request_processed              [app.main] duration=0.1874s method=POST path=/auth/register request_id=622b0944-42e5-4b2c-9e44-98128a8f55fd status_code=201
+2026-06-04T13:06:07.894851Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=622b0944-42e5-4b2c-9e44-98128a8f55fd
+2026-06-04T13:06:08.093864Z [info     ] login_successful               [app.services.auth_service] email=refresh_user@test.com request_id=dc4fe633-3d4e-40a1-9c7b-df14ef7e186c role=civitas user_id=6
+2026-06-04T13:06:08.095654Z [info     ] request_processed              [app.main] duration=0.1987s method=POST path=/auth/login request_id=dc4fe633-3d4e-40a1-9c7b-df14ef7e186c status_code=200
+2026-06-04T13:06:08.096982Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=dc4fe633-3d4e-40a1-9c7b-df14ef7e186c
+2026-06-04T13:06:08.109112Z [info     ] token_refresh_successful       [app.services.auth_service] request_id=56bf7e05-cb62-42fb-b94f-4324037fd49d user_id=6
+2026-06-04T13:06:08.110030Z [info     ] request_processed              [app.main] duration=0.0103s method=POST path=/auth/refresh request_id=56bf7e05-cb62-42fb-b94f-4324037fd49d status_code=200
+2026-06-04T13:06:08.110767Z [info     ] HTTP Request: POST http://test/auth/refresh?refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2Iiwicm9sZSI6ImNpdml0YXMiLCJleHAiOjE3ODExODMxNjgsInR5cGUiOiJyZWZyZXNoIn0.hQ7Cg-SJW6wIQw1gIohL_9AuQPzthq7RQgjFPS-kbvU "HTTP/1.1 200 OK" request_id=56bf7e05-cb62-42fb-b94f-4324037fd49d
+2026-06-04T13:06:08.178040Z [info     ] registration_attempt           [app.services.auth_service] email=logout_user@test.com request_id=a93550a8-0706-44ab-a92d-3cfe1e95f77e
+2026-06-04T13:06:08.371561Z [info     ] registration_successful        [app.services.auth_service] email=logout_user@test.com request_id=a93550a8-0706-44ab-a92d-3cfe1e95f77e user_id=7
+2026-06-04T13:06:08.373180Z [info     ] request_processed              [app.main] duration=0.1963s method=POST path=/auth/register request_id=a93550a8-0706-44ab-a92d-3cfe1e95f77e status_code=201
+2026-06-04T13:06:08.374231Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=a93550a8-0706-44ab-a92d-3cfe1e95f77e
+2026-06-04T13:06:08.568146Z [info     ] login_successful               [app.services.auth_service] email=logout_user@test.com request_id=22b0e791-3519-4235-96f2-d7b10752e0de role=civitas user_id=7
+2026-06-04T13:06:08.569721Z [info     ] request_processed              [app.main] duration=0.1928s method=POST path=/auth/login request_id=22b0e791-3519-4235-96f2-d7b10752e0de status_code=200
+2026-06-04T13:06:08.570705Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=22b0e791-3519-4235-96f2-d7b10752e0de
+2026-06-04T13:06:08.589906Z [info     ] logout_successful              [app.services.auth_service] request_id=29d554f8-f3f7-4717-aa0a-e4101b27075b user_id=7
+2026-06-04T13:06:08.591282Z [info     ] request_processed              [app.main] duration=0.0183s method=POST path=/auth/logout request_id=29d554f8-f3f7-4717-aa0a-e4101b27075b status_code=200
+2026-06-04T13:06:08.592527Z [info     ] HTTP Request: POST http://test/auth/logout "HTTP/1.1 200 OK" request_id=29d554f8-f3f7-4717-aa0a-e4101b27075b
+2026-06-04T13:06:08.597572Z [warning  ] token_refresh_failed_session_not_found [app.services.auth_service] request_id=bf391c4b-5349-4539-ae5a-c7a883339d02 user_id=7
+2026-06-04T13:06:08.598340Z [error    ] http_exception                 [app.main] message='Session not found or has been revoked' request_id=bf391c4b-5349-4539-ae5a-c7a883339d02 status_code=401
+2026-06-04T13:06:08.599038Z [info     ] request_processed              [app.main] duration=0.0041s method=POST path=/auth/refresh request_id=bf391c4b-5349-4539-ae5a-c7a883339d02 status_code=401
+2026-06-04T13:06:08.599859Z [info     ] HTTP Request: POST http://test/auth/refresh?refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Iiwicm9sZSI6ImNpdml0YXMiLCJleHAiOjE3ODExODMxNjgsInR5cGUiOiJyZWZyZXNoIn0.8v0uMG0IUZXIhvNNkb18dpY2Kl-m2UgIhEh9xln7iPk "HTTP/1.1 401 Unauthorized" request_id=bf391c4b-5349-4539-ae5a-c7a883339d02
+2026-06-04T13:06:08.666093Z [error    ] http_exception                 [app.main] message="Invalid token: Invalid header string: 'utf-8' codec can't decode byte 0x8a in position 0: invalid start byte" request_id=4dd138d2-c05a-4c7a-bbf6-9ed69193adf0 status_code=401
+2026-06-04T13:06:08.667205Z [info     ] request_processed              [app.main] duration=0.0045s method=GET path=/users/me request_id=4dd138d2-c05a-4c7a-bbf6-9ed69193adf0 status_code=401
+2026-06-04T13:06:08.668005Z [info     ] HTTP Request: GET http://test/users/me "HTTP/1.1 401 Unauthorized" request_id=4dd138d2-c05a-4c7a-bbf6-9ed69193adf0
+2026-06-04T13:06:08.734117Z [info     ] registration_attempt           [app.services.auth_service] email=audit_ok@test.com request_id=75679d9c-c4ee-4c9e-8a84-7178c2b76eed
+2026-06-04T13:06:08.920834Z [info     ] registration_successful        [app.services.auth_service] email=audit_ok@test.com request_id=75679d9c-c4ee-4c9e-8a84-7178c2b76eed user_id=8
+2026-06-04T13:06:08.921918Z [info     ] request_processed              [app.main] duration=0.1894s method=POST path=/auth/register request_id=75679d9c-c4ee-4c9e-8a84-7178c2b76eed status_code=201
+2026-06-04T13:06:08.922955Z [info     ] HTTP Request: POST http://test/auth/register "HTTP/1.1 201 Created" request_id=75679d9c-c4ee-4c9e-8a84-7178c2b76eed
+2026-06-04T13:06:09.118974Z [info     ] login_successful               [app.services.auth_service] email=audit_ok@test.com request_id=0873a6f8-05d3-498c-b8f3-09d66e50ca15 role=civitas user_id=8
+2026-06-04T13:06:09.120460Z [info     ] request_processed              [app.main] duration=0.1956s method=POST path=/auth/login request_id=0873a6f8-05d3-498c-b8f3-09d66e50ca15 status_code=200
+2026-06-04T13:06:09.121285Z [info     ] HTTP Request: POST http://test/auth/login "HTTP/1.1 200 OK" request_id=0873a6f8-05d3-498c-b8f3-09d66e50ca15
+2026-06-04T13:06:09.130039Z [info     ] request_processed              [app.main] duration=0.0064s method=GET path=/users/me/security-audit request_id=1800c405-4b9c-4853-8016-588758a4642b status_code=200
+2026-06-04T13:06:09.130826Z [info     ] HTTP Request: GET http://test/users/me/security-audit "HTTP/1.1 200 OK" request_id=1800c405-4b9c-4853-8016-588758a4642b
+2026-06-04T13:06:09.202316Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=e29cd9f9-91c3-4e56-92a7-43a247afe867 status_code=401
+2026-06-04T13:06:09.202946Z [info     ] request_processed              [app.main] duration=0.0015s method=GET path=/users/me/security-audit request_id=e29cd9f9-91c3-4e56-92a7-43a247afe867 status_code=401
+2026-06-04T13:06:09.203551Z [info     ] HTTP Request: GET http://test/users/me/security-audit "HTTP/1.1 401 Unauthorized" request_id=e29cd9f9-91c3-4e56-92a7-43a247afe867
+2026-06-04T13:10:28.253024Z [info     ] 172.18.0.1:49900 - "OPTIONS /auth/logout HTTP/1.1" 200
+2026-06-04T13:10:28.443573Z [warning  ] logout_session_not_found       [app.services.auth_service] request_id=71df6e4e-de93-4382-bbde-920f648642a8 user_id=22
+2026-06-04T13:10:28.470652Z [info     ] request_processed              [app.main] duration=0.1889s method=POST path=/auth/logout request_id=71df6e4e-de93-4382-bbde-920f648642a8 status_code=200
+2026-06-04T13:10:28.471762Z [info     ] 172.18.0.1:49900 - "POST /auth/logout HTTP/1.1" 200 request_id=71df6e4e-de93-4382-bbde-920f648642a8
+2026-06-04T13:10:28.600011Z [info     ] request_processed              [app.main] duration=0.2787s method=GET path=/facilities/ request_id=e407e115-1dc0-4701-8dde-bd9ce763bf90 status_code=200
+2026-06-04T13:10:28.602568Z [info     ] request_processed              [app.main] duration=0.2813s method=GET path=/facilities/ request_id=0f05c142-27e4-47ff-8edc-519f9e6c2a2e status_code=200
+2026-06-04T13:10:28.617818Z [error    ] http_exception                 [app.main] message='User not found' request_id=40aa3095-2a93-4d5c-bf06-bb5cf3dbea46 status_code=404
+2026-06-04T13:10:28.618769Z [info     ] request_processed              [app.main] duration=0.0415s method=GET path=/users/ request_id=40aa3095-2a93-4d5c-bf06-bb5cf3dbea46 status_code=404
+2026-06-04T13:10:28.619461Z [error    ] http_exception                 [app.main] message='User not found' request_id=92dfad2a-e605-4dae-8b8f-655ac62c8f34 status_code=404
+2026-06-04T13:10:28.619886Z [error    ] http_exception                 [app.main] message='User not found' request_id=09037995-5550-42b6-a423-9d3696fc5120 status_code=404
+2026-06-04T13:10:28.620470Z [info     ] request_processed              [app.main] duration=0.2994s method=GET path=/bookings/ request_id=92dfad2a-e605-4dae-8b8f-655ac62c8f34 status_code=404
+2026-06-04T13:10:28.620859Z [info     ] request_processed              [app.main] duration=0.2997s method=GET path=/bookings/ request_id=09037995-5550-42b6-a423-9d3696fc5120 status_code=404
+2026-06-04T13:10:28.622360Z [error    ] http_exception                 [app.main] message='User not found' request_id=c7482c0c-6c3b-44ef-ab02-8922a51cec5d status_code=404
+2026-06-04T13:10:28.622901Z [info     ] request_processed              [app.main] duration=0.3016s method=GET path=/users/ request_id=c7482c0c-6c3b-44ef-ab02-8922a51cec5d status_code=404
+2026-06-04T13:10:36.159769Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=6adc2b58-ae86-4ef1-b714-0486c8fabdbd
+2026-06-04T13:10:36.161135Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=6adc2b58-ae86-4ef1-b714-0486c8fabdbd status_code=401
+2026-06-04T13:10:36.161675Z [info     ] request_processed              [app.main] duration=0.0298s method=POST path=/auth/login request_id=6adc2b58-ae86-4ef1-b714-0486c8fabdbd status_code=401
+2026-06-04T13:10:36.162145Z [info     ] 172.18.0.1:46248 - "POST /auth/login HTTP/1.1" 401 request_id=6adc2b58-ae86-4ef1-b714-0486c8fabdbd
+2026-06-04T13:10:36.744310Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=2a7e7e3b-4b2e-4306-97fa-91465322a600
+2026-06-04T13:10:36.745953Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=2a7e7e3b-4b2e-4306-97fa-91465322a600 status_code=401
+2026-06-04T13:10:36.746704Z [info     ] request_processed              [app.main] duration=0.0163s method=POST path=/auth/login request_id=2a7e7e3b-4b2e-4306-97fa-91465322a600 status_code=401
+2026-06-04T13:10:36.747354Z [info     ] 172.18.0.1:46248 - "POST /auth/login HTTP/1.1" 401 request_id=2a7e7e3b-4b2e-4306-97fa-91465322a600
+2026-06-04T13:10:37.502776Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=7e28fe70-2258-4e82-bac3-8ca45fd6e036
+2026-06-04T13:10:37.504457Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=7e28fe70-2258-4e82-bac3-8ca45fd6e036 status_code=401
+2026-06-04T13:10:37.505053Z [info     ] request_processed              [app.main] duration=0.0069s method=POST path=/auth/login request_id=7e28fe70-2258-4e82-bac3-8ca45fd6e036 status_code=401
+2026-06-04T13:10:37.505680Z [info     ] 172.18.0.1:46248 - "POST /auth/login HTTP/1.1" 401 request_id=7e28fe70-2258-4e82-bac3-8ca45fd6e036
+2026-06-04T13:10:44.252784Z [info     ] login_successful               [app.services.auth_service] email=admin@ipbspace.com request_id=0152bfbc-bee0-45c6-8b23-5a2a93f65a3c role=admin user_id=29
+2026-06-04T13:10:44.254327Z [info     ] request_processed              [app.main] duration=0.2038s method=POST path=/auth/login request_id=0152bfbc-bee0-45c6-8b23-5a2a93f65a3c status_code=200
+2026-06-04T13:10:44.254895Z [info     ] 172.18.0.1:52726 - "POST /auth/login HTTP/1.1" 200 request_id=0152bfbc-bee0-45c6-8b23-5a2a93f65a3c
+2026-06-04T13:10:44.300670Z [info     ] 172.18.0.1:52726 - "OPTIONS /facilities/ HTTP/1.1" 200
+2026-06-04T13:10:44.302632Z [info     ] 172.18.0.1:52740 - "OPTIONS /facilities/ HTTP/1.1" 200
+2026-06-04T13:10:44.323678Z [info     ] request_processed              [app.main] duration=0.0117s method=GET path=/facilities/ request_id=fd8b38fc-d6cf-4d6e-854c-0f9baa74dd74 status_code=200
+2026-06-04T13:10:44.324566Z [info     ] 172.18.0.1:52740 - "GET /facilities/ HTTP/1.1" 200 request_id=fd8b38fc-d6cf-4d6e-854c-0f9baa74dd74
+2026-06-04T13:10:44.325013Z [info     ] request_processed              [app.main] duration=0.0201s method=GET path=/facilities/ request_id=cb223528-9cc1-46f1-bf56-0c3b6c070568 status_code=200
+2026-06-04T13:10:44.325577Z [info     ] 172.18.0.1:52726 - "GET /facilities/ HTTP/1.1" 200 request_id=cb223528-9cc1-46f1-bf56-0c3b6c070568
+2026-06-04T13:10:45.744662Z [info     ] 172.18.0.1:52726 - "OPTIONS /system/logs HTTP/1.1" 200
+2026-06-04T13:10:45.745564Z [info     ] 172.18.0.1:52748 - "OPTIONS /bookings/ HTTP/1.1" 200
+2026-06-04T13:10:45.746415Z [info     ] 172.18.0.1:52754 - "OPTIONS /users/ HTTP/1.1" 200
+2026-06-04T13:10:45.767511Z [info     ] request_processed              [app.main] duration=0.0300s method=GET path=/facilities/ request_id=59cd3148-b9d7-48ab-ada4-01e7d966b490 status_code=200
+2026-06-04T13:10:45.769485Z [info     ] 172.18.0.1:52740 - "GET /facilities/ HTTP/1.1" 200 request_id=59cd3148-b9d7-48ab-ada4-01e7d966b490
+2026-06-04T13:10:45.822614Z [info     ] request_processed              [app.main] duration=0.0745s method=GET path=/system/logs request_id=4c4b92eb-0975-4015-ae5a-601cd7a790a4 status_code=200
+2026-06-04T13:10:45.823401Z [info     ] 172.18.0.1:52726 - "GET /system/logs HTTP/1.1" 200 request_id=4c4b92eb-0975-4015-ae5a-601cd7a790a4
+2026-06-04T13:10:45.825411Z [info     ] request_processed              [app.main] duration=0.0509s method=GET path=/facilities/ request_id=5da61b28-0b31-45cd-bf41-1c240e6f9d8f status_code=200
+2026-06-04T13:10:45.826186Z [info     ] 172.18.0.1:52740 - "GET /facilities/ HTTP/1.1" 200 request_id=5da61b28-0b31-45cd-bf41-1c240e6f9d8f
+2026-06-04T13:10:45.840692Z [info     ] request_processed              [app.main] duration=0.0752s method=GET path=/users/ request_id=a2045466-1b58-4aaf-aa07-1fd13ac5ba27 status_code=200
+2026-06-04T13:10:45.841884Z [info     ] 172.18.0.1:52754 - "GET /users/ HTTP/1.1" 200 request_id=a2045466-1b58-4aaf-aa07-1fd13ac5ba27
+2026-06-04T13:10:45.846632Z [info     ] request_processed              [app.main] duration=0.0890s method=GET path=/bookings/ request_id=006f6aa4-3174-471c-b70b-3fe861c6b73f status_code=200
+2026-06-04T13:10:45.847593Z [info     ] 172.18.0.1:52748 - "GET /bookings/ HTTP/1.1" 200 request_id=006f6aa4-3174-471c-b70b-3fe861c6b73f
+2026-06-04T13:10:45.895236Z [info     ] request_processed              [app.main] duration=0.0517s method=GET path=/system/logs request_id=edb9cd4a-2513-4b7b-9df1-945e9e300d23 status_code=200
+2026-06-04T13:10:45.896425Z [info     ] 172.18.0.1:52760 - "GET /system/logs HTTP/1.1" 200 request_id=edb9cd4a-2513-4b7b-9df1-945e9e300d23
+2026-06-04T13:10:45.905307Z [info     ] request_processed              [app.main] duration=0.0567s method=GET path=/users/ request_id=821b1c63-2e18-446a-adb6-65cee91680f9 status_code=200
+2026-06-04T13:10:45.906462Z [info     ] 172.18.0.1:52726 - "GET /users/ HTTP/1.1" 200 request_id=821b1c63-2e18-446a-adb6-65cee91680f9
+2026-06-04T13:10:45.910814Z [info     ] request_processed              [app.main] duration=0.0589s method=GET path=/bookings/ request_id=f20618b9-b01a-4e26-9fee-4b53ac124fc6 status_code=200
+2026-06-04T13:10:45.911487Z [info     ] 172.18.0.1:52740 - "GET /bookings/ HTTP/1.1" 200 request_id=f20618b9-b01a-4e26-9fee-4b53ac124fc6
+2026-06-04T13:10:54.371589Z [info     ] logout_successful              [app.services.auth_service] request_id=4e0ce78e-d273-48d6-8396-01ee3227e988 user_id=29
+2026-06-04T13:10:54.372406Z [info     ] request_processed              [app.main] duration=0.0092s method=POST path=/auth/logout request_id=4e0ce78e-d273-48d6-8396-01ee3227e988 status_code=200
+2026-06-04T13:10:54.373016Z [info     ] 172.18.0.1:41826 - "POST /auth/logout HTTP/1.1" 200 request_id=4e0ce78e-d273-48d6-8396-01ee3227e988
+2026-06-04T13:10:54.417858Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=6a3b5e87-a5d9-4718-851a-c957be68f0c3 status_code=401
+2026-06-04T13:10:54.418661Z [info     ] request_processed              [app.main] duration=0.0070s method=GET path=/bookings/ request_id=6a3b5e87-a5d9-4718-851a-c957be68f0c3 status_code=401
+2026-06-04T13:10:54.419171Z [info     ] 172.18.0.1:41826 - "GET /bookings/ HTTP/1.1" 401 request_id=6a3b5e87-a5d9-4718-851a-c957be68f0c3
+2026-06-04T13:10:54.446345Z [info     ] request_processed              [app.main] duration=0.0220s method=GET path=/facilities/ request_id=0d8c2e8e-91d3-4510-a2ed-aaef9c567d37 status_code=200
+2026-06-04T13:10:54.447255Z [info     ] 172.18.0.1:41826 - "GET /facilities/ HTTP/1.1" 200 request_id=0d8c2e8e-91d3-4510-a2ed-aaef9c567d37
+2026-06-04T13:10:54.449162Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=dff9cd11-5b53-436b-91d1-2a8cf72d4136 status_code=401
+2026-06-04T13:10:54.450005Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=d3c82742-5b19-4210-8e20-7110886932f3 status_code=401
+2026-06-04T13:10:54.450377Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=a9886df7-f6dc-4eab-8331-0ef885596231 status_code=401
+2026-06-04T13:10:54.451420Z [info     ] request_processed              [app.main] duration=0.0195s method=GET path=/users/ request_id=dff9cd11-5b53-436b-91d1-2a8cf72d4136 status_code=401
+2026-06-04T13:10:54.452016Z [info     ] request_processed              [app.main] duration=0.0201s method=GET path=/bookings/ request_id=d3c82742-5b19-4210-8e20-7110886932f3 status_code=401
+2026-06-04T13:10:54.452373Z [info     ] request_processed              [app.main] duration=0.0202s method=GET path=/users/ request_id=a9886df7-f6dc-4eab-8331-0ef885596231 status_code=401
+2026-06-04T13:10:54.453836Z [info     ] request_processed              [app.main] duration=0.0218s method=GET path=/facilities/ request_id=e837fbcf-42a3-4371-8497-c90c89631a58 status_code=200
+2026-06-04T13:11:01.612426Z [info     ] login_successful               [app.services.auth_service] email=admin@ipbspace.com request_id=0102cc05-f6e1-4cd4-8ded-20a44145fa8c role=admin user_id=29
+2026-06-04T13:11:01.614047Z [info     ] request_processed              [app.main] duration=0.1941s method=POST path=/auth/login request_id=0102cc05-f6e1-4cd4-8ded-20a44145fa8c status_code=200
+2026-06-04T13:11:01.614568Z [info     ] 172.18.0.1:41874 - "POST /auth/login HTTP/1.1" 200 request_id=0102cc05-f6e1-4cd4-8ded-20a44145fa8c
+2026-06-04T13:11:01.667737Z [info     ] 172.18.0.1:41874 - "OPTIONS /facilities/ HTTP/1.1" 200
+2026-06-04T13:11:01.681187Z [info     ] request_processed              [app.main] duration=0.0094s method=GET path=/facilities/ request_id=7dd79cf0-c21e-411e-ba5a-4b7becab85cf status_code=200
+2026-06-04T13:11:01.682576Z [info     ] 172.18.0.1:41874 - "GET /facilities/ HTTP/1.1" 200 request_id=7dd79cf0-c21e-411e-ba5a-4b7becab85cf
+2026-06-04T13:11:01.698294Z [info     ] request_processed              [app.main] duration=0.0111s method=GET path=/facilities/ request_id=dbf21fbf-9450-4ce4-8752-2869c7d7a465 status_code=200
+2026-06-04T13:11:01.700043Z [info     ] 172.18.0.1:41874 - "GET /facilities/ HTTP/1.1" 200 request_id=dbf21fbf-9450-4ce4-8752-2869c7d7a465
+2026-06-04T13:11:02.509842Z [info     ] request_processed              [app.main] duration=0.0148s method=GET path=/facilities/ request_id=4290c04e-0563-4997-9e37-7e5fbb8e2fcb status_code=200
+2026-06-04T13:11:02.510725Z [info     ] 172.18.0.1:41874 - "GET /facilities/ HTTP/1.1" 200 request_id=4290c04e-0563-4997-9e37-7e5fbb8e2fcb
+2026-06-04T13:11:02.511812Z [info     ] 172.18.0.1:53586 - "OPTIONS /bookings/ HTTP/1.1" 200
+2026-06-04T13:11:02.512705Z [info     ] 172.18.0.1:53600 - "OPTIONS /bookings/ HTTP/1.1" 200
+2026-06-04T13:11:02.518397Z [info     ] 172.18.0.1:41874 - "OPTIONS /users/ HTTP/1.1" 200
+2026-06-04T13:11:02.519099Z [info     ] 172.18.0.1:53586 - "OPTIONS /users/ HTTP/1.1" 200
+2026-06-04T13:11:02.520131Z [info     ] request_processed              [app.main] duration=0.0182s method=GET path=/facilities/ request_id=872c115a-9697-412c-890c-24749c7e37d8 status_code=200
+2026-06-04T13:11:02.520592Z [info     ] 172.18.0.1:53574 - "GET /facilities/ HTTP/1.1" 200 request_id=872c115a-9697-412c-890c-24749c7e37d8
+2026-06-04T13:11:02.592406Z [info     ] request_processed              [app.main] duration=0.0906s method=GET path=/system/logs request_id=7d979f2f-cb69-4ae7-ba9e-6fdfc9780302 status_code=200
+2026-06-04T13:11:02.599153Z [info     ] 172.18.0.1:53560 - "GET /system/logs HTTP/1.1" 200 request_id=7d979f2f-cb69-4ae7-ba9e-6fdfc9780302
+2026-06-04T13:11:02.599820Z [info     ] request_processed              [app.main] duration=0.0979s method=GET path=/system/logs request_id=7f847ef4-cfa6-4f2b-8c62-31cfc845002e status_code=200
+2026-06-04T13:11:02.600313Z [info     ] 172.18.0.1:53566 - "GET /system/logs HTTP/1.1" 200 request_id=7f847ef4-cfa6-4f2b-8c62-31cfc845002e
+2026-06-04T13:11:02.620708Z [info     ] request_processed              [app.main] duration=0.0955s method=GET path=/bookings/ request_id=c651169a-382f-4b42-8e27-cb642ab96255 status_code=200
+2026-06-04T13:11:02.621371Z [info     ] 172.18.0.1:41874 - "GET /bookings/ HTTP/1.1" 200 request_id=c651169a-382f-4b42-8e27-cb642ab96255
+2026-06-04T13:11:02.622204Z [info     ] request_processed              [app.main] duration=0.0906s method=GET path=/users/ request_id=132d8884-d09a-4965-b98f-ddedd13d89e1 status_code=200
+2026-06-04T13:11:02.622913Z [info     ] 172.18.0.1:53586 - "GET /users/ HTTP/1.1" 200 request_id=132d8884-d09a-4965-b98f-ddedd13d89e1
+2026-06-04T13:11:02.638245Z [info     ] request_processed              [app.main] duration=0.1181s method=GET path=/bookings/ request_id=4c25bb47-c6e3-4ff8-8530-e4c5e0d858d8 status_code=200
+2026-06-04T13:11:02.638940Z [info     ] 172.18.0.1:53600 - "GET /bookings/ HTTP/1.1" 200 request_id=4c25bb47-c6e3-4ff8-8530-e4c5e0d858d8
+2026-06-04T13:11:02.653342Z [info     ] request_processed              [app.main] duration=0.1209s method=GET path=/users/ request_id=5963f587-2467-4477-abd7-880ca603f817 status_code=200
+2026-06-04T13:11:02.654040Z [info     ] 172.18.0.1:53574 - "GET /users/ HTTP/1.1" 200 request_id=5963f587-2467-4477-abd7-880ca603f817
+2026-06-04T13:11:09.617196Z [info     ] logout_successful              [app.services.auth_service] request_id=bbc72749-148e-4d3b-8385-34bbe6475753 user_id=29
+2026-06-04T13:11:09.618112Z [info     ] request_processed              [app.main] duration=0.0095s method=POST path=/auth/logout request_id=bbc72749-148e-4d3b-8385-34bbe6475753 status_code=200
+2026-06-04T13:11:09.618685Z [info     ] 172.18.0.1:53602 - "POST /auth/logout HTTP/1.1" 200 request_id=bbc72749-148e-4d3b-8385-34bbe6475753
+2026-06-04T13:11:15.370173Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=5603912e-dac2-4446-b564-a7c53b2240e3
+2026-06-04T13:11:15.371540Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=5603912e-dac2-4446-b564-a7c53b2240e3 status_code=401
+2026-06-04T13:11:15.372210Z [info     ] request_processed              [app.main] duration=0.0063s method=POST path=/auth/login request_id=5603912e-dac2-4446-b564-a7c53b2240e3 status_code=401
+2026-06-04T13:11:15.372892Z [info     ] 172.18.0.1:44798 - "POST /auth/login HTTP/1.1" 401 request_id=5603912e-dac2-4446-b564-a7c53b2240e3
+2026-06-04T13:11:16.567850Z [warning  ] auth_failed_user_not_found     [app.services.auth_service] email=admin@gmail.com request_id=691eee50-a884-41e3-a8a2-999970448cf0
+2026-06-04T13:11:16.569115Z [error    ] http_exception                 [app.main] message='Invalid credentials' request_id=691eee50-a884-41e3-a8a2-999970448cf0 status_code=401
+2026-06-04T13:11:16.569622Z [info     ] request_processed              [app.main] duration=0.0052s method=POST path=/auth/login request_id=691eee50-a884-41e3-a8a2-999970448cf0 status_code=401
+2026-06-04T13:11:16.570090Z [info     ] 172.18.0.1:44798 - "POST /auth/login HTTP/1.1" 401 request_id=691eee50-a884-41e3-a8a2-999970448cf0
+2026-06-04T13:11:22.939439Z [info     ] login_successful               [app.services.auth_service] email=admin@ipbspace.com request_id=5f219931-1fad-4706-8cc6-e0f61da7e9ba role=admin user_id=29
+2026-06-04T13:11:22.940549Z [info     ] request_processed              [app.main] duration=0.1927s method=POST path=/auth/login request_id=5f219931-1fad-4706-8cc6-e0f61da7e9ba status_code=200
+2026-06-04T13:11:22.941427Z [info     ] 172.18.0.1:60866 - "POST /auth/login HTTP/1.1" 200 request_id=5f219931-1fad-4706-8cc6-e0f61da7e9ba
+2026-06-04T13:11:22.997937Z [info     ] 172.18.0.1:60866 - "OPTIONS /facilities/ HTTP/1.1" 200
+2026-06-04T13:11:23.015078Z [info     ] request_processed              [app.main] duration=0.0085s method=GET path=/facilities/ request_id=1ef9af57-58e9-48ed-9d4b-6857c039722b status_code=200
+2026-06-04T13:11:23.015844Z [info     ] 172.18.0.1:60866 - "GET /facilities/ HTTP/1.1" 200 request_id=1ef9af57-58e9-48ed-9d4b-6857c039722b
+2026-06-04T13:11:23.028989Z [info     ] request_processed              [app.main] duration=0.0077s method=GET path=/facilities/ request_id=66158c0d-b7b7-4299-87d2-4d50c6bc34ae status_code=200
+2026-06-04T13:11:23.029808Z [info     ] 172.18.0.1:60866 - "GET /facilities/ HTTP/1.1" 200 request_id=66158c0d-b7b7-4299-87d2-4d50c6bc34ae
+2026-06-04T13:11:24.180369Z [info     ] 172.18.0.1:60876 - "OPTIONS /bookings/ HTTP/1.1" 200
+2026-06-04T13:11:24.181329Z [info     ] 172.18.0.1:60884 - "OPTIONS /users/ HTTP/1.1" 200
+2026-06-04T13:11:24.185285Z [info     ] request_processed              [app.main] duration=0.0132s method=GET path=/facilities/ request_id=53b808f5-665f-4e15-8aa5-b30fdc49d209 status_code=200
+2026-06-04T13:11:24.186022Z [info     ] 172.18.0.1:60874 - "GET /facilities/ HTTP/1.1" 200 request_id=53b808f5-665f-4e15-8aa5-b30fdc49d209
+2026-06-04T13:11:24.240280Z [info     ] request_processed              [app.main] duration=0.0697s method=GET path=/system/logs request_id=d4602083-8113-44fd-a662-d438938dd111 status_code=200
+2026-06-04T13:11:24.241720Z [info     ] 172.18.0.1:60866 - "GET /system/logs HTTP/1.1" 200 request_id=d4602083-8113-44fd-a662-d438938dd111
+2026-06-04T13:11:24.256629Z [info     ] request_processed              [app.main] duration=0.0226s method=GET path=/facilities/ request_id=1c8b0a68-5ee5-42e3-8061-fa9dd06a14e1 status_code=200
+2026-06-04T13:11:24.258324Z [info     ] 172.18.0.1:60874 - "GET /facilities/ HTTP/1.1" 200 request_id=1c8b0a68-5ee5-42e3-8061-fa9dd06a14e1
+2026-06-04T13:11:24.265395Z [info     ] request_processed              [app.main] duration=0.0786s method=GET path=/users/ request_id=96f0a089-c8eb-4af5-83a1-fff5a7302a80 status_code=200
+2026-06-04T13:11:24.266206Z [info     ] 172.18.0.1:60884 - "GET /users/ HTTP/1.1" 200 request_id=96f0a089-c8eb-4af5-83a1-fff5a7302a80
+2026-06-04T13:11:24.268514Z [info     ] request_processed              [app.main] duration=0.0816s method=GET path=/bookings/ request_id=f51d458d-c103-4713-8126-1d528537cc71 status_code=200
+2026-06-04T13:11:24.269162Z [info     ] 172.18.0.1:60876 - "GET /bookings/ HTTP/1.1" 200 request_id=f51d458d-c103-4713-8126-1d528537cc71
+2026-06-04T13:11:24.319433Z [info     ] request_processed              [app.main] duration=0.0568s method=GET path=/system/logs request_id=93056d40-a528-41b6-90c2-9fae322efd91 status_code=200
+2026-06-04T13:11:24.320822Z [info     ] 172.18.0.1:60898 - "GET /system/logs HTTP/1.1" 200 request_id=93056d40-a528-41b6-90c2-9fae322efd91
+2026-06-04T13:11:24.335626Z [info     ] request_processed              [app.main] duration=0.0632s method=GET path=/users/ request_id=07607760-419d-4b89-9c0b-6c3f6d405f31 status_code=200
+2026-06-04T13:11:24.338913Z [info     ] 172.18.0.1:60866 - "GET /users/ HTTP/1.1" 200 request_id=07607760-419d-4b89-9c0b-6c3f6d405f31
+2026-06-04T13:11:24.342159Z [info     ] request_processed              [app.main] duration=0.0685s method=GET path=/bookings/ request_id=f499268e-37a6-4679-831c-d85e15fd2f0d status_code=200
+2026-06-04T13:11:24.343088Z [info     ] 172.18.0.1:60874 - "GET /bookings/ HTTP/1.1" 200 request_id=f499268e-37a6-4679-831c-d85e15fd2f0d
+2026-06-04T13:11:48.024346Z [info     ] 172.18.0.1:42510 - "OPTIONS /users/me HTTP/1.1" 200
+2026-06-04T13:11:48.025394Z [info     ] 172.18.0.1:42512 - "OPTIONS /users/me HTTP/1.1" 200
+2026-06-04T13:11:48.050179Z [info     ] request_processed              [app.main] duration=0.0075s method=GET path=/users/me request_id=1660ec04-8fd7-42a8-809a-a116372e1cfe status_code=200
+2026-06-04T13:11:48.051067Z [info     ] 172.18.0.1:42510 - "GET /users/me HTTP/1.1" 200 request_id=1660ec04-8fd7-42a8-809a-a116372e1cfe
+2026-06-04T13:11:48.051555Z [info     ] request_processed              [app.main] duration=0.0091s method=GET path=/users/me request_id=d35477de-6b37-4fb0-9492-9fa85a50bc74 status_code=200
+2026-06-04T13:11:48.052280Z [info     ] 172.18.0.1:42512 - "GET /users/me HTTP/1.1" 200 request_id=d35477de-6b37-4fb0-9492-9fa85a50bc74
+2026-06-04T13:11:50.482253Z [info     ] request_processed              [app.main] duration=0.0162s method=GET path=/facilities/ request_id=371dee50-b22d-4017-9740-f0681d46a1cc status_code=200
+2026-06-04T13:11:50.483288Z [info     ] 172.18.0.1:42512 - "GET /facilities/ HTTP/1.1" 200 request_id=371dee50-b22d-4017-9740-f0681d46a1cc
+2026-06-04T13:11:50.496919Z [info     ] request_processed              [app.main] duration=0.0308s method=GET path=/bookings/ request_id=16813b7e-426e-4c79-b94e-6fed4f43b41b status_code=200
+2026-06-04T13:11:50.497758Z [info     ] 172.18.0.1:42510 - "GET /bookings/ HTTP/1.1" 200 request_id=16813b7e-426e-4c79-b94e-6fed4f43b41b
+2026-06-04T13:11:50.501571Z [info     ] request_processed              [app.main] duration=0.0132s method=GET path=/facilities/ request_id=5c27b8d6-7392-4067-868a-bfdf217f37fc status_code=200
+2026-06-04T13:11:50.502149Z [info     ] 172.18.0.1:42512 - "GET /facilities/ HTTP/1.1" 200 request_id=5c27b8d6-7392-4067-868a-bfdf217f37fc
+2026-06-04T13:11:50.509777Z [info     ] request_processed              [app.main] duration=0.0300s method=GET path=/users/ request_id=db0d52e9-0569-446d-89dc-a3a2305661c2 status_code=200
+2026-06-04T13:11:50.510512Z [info     ] 172.18.0.1:42522 - "GET /users/ HTTP/1.1" 200 request_id=db0d52e9-0569-446d-89dc-a3a2305661c2
+2026-06-04T13:11:50.517912Z [info     ] request_processed              [app.main] duration=0.0144s method=GET path=/bookings/ request_id=2384df0c-4282-487c-8c94-68ecead9139f status_code=200
+2026-06-04T13:11:50.518886Z [info     ] 172.18.0.1:42510 - "GET /bookings/ HTTP/1.1" 200 request_id=2384df0c-4282-487c-8c94-68ecead9139f
+2026-06-04T13:11:50.522938Z [info     ] request_processed              [app.main] duration=0.0094s method=GET path=/users/ request_id=2aeef6d5-af8a-484b-962e-c57040299a99 status_code=200
+2026-06-04T13:11:50.523741Z [info     ] 172.18.0.1:42512 - "GET /users/ HTTP/1.1" 200 request_id=2aeef6d5-af8a-484b-962e-c57040299a99
+2026-06-04T13:11:52.040478Z [info     ] request_processed              [app.main] duration=0.0195s method=GET path=/facilities/ request_id=05162bb0-c84a-4a39-b9dd-388094c904b5 status_code=200
+2026-06-04T13:11:52.041463Z [info     ] 172.18.0.1:42522 - "GET /facilities/ HTTP/1.1" 200 request_id=05162bb0-c84a-4a39-b9dd-388094c904b5
+2026-06-04T13:11:52.099814Z [info     ] request_processed              [app.main] duration=0.0850s method=GET path=/system/logs request_id=47ff37b8-d0fe-4e2e-9ffb-1267ea5d3bbc status_code=200
+2026-06-04T13:11:52.101501Z [info     ] 172.18.0.1:42510 - "GET /system/logs HTTP/1.1" 200 request_id=47ff37b8-d0fe-4e2e-9ffb-1267ea5d3bbc
+2026-06-04T13:11:52.104012Z [info     ] request_processed              [app.main] duration=0.0895s method=GET path=/bookings/ request_id=ba9ee132-4729-4983-a681-63ad9dfd88b5 status_code=200
+2026-06-04T13:11:52.104584Z [info     ] 172.18.0.1:42512 - "GET /bookings/ HTTP/1.1" 200 request_id=ba9ee132-4729-4983-a681-63ad9dfd88b5
+2026-06-04T13:11:52.144233Z [info     ] request_processed              [app.main] duration=0.0916s method=GET path=/facilities/ request_id=4af71eb0-1531-4da2-bb1e-e803795ccb00 status_code=200
+2026-06-04T13:11:52.146177Z [info     ] 172.18.0.1:42522 - "GET /facilities/ HTTP/1.1" 200 request_id=4af71eb0-1531-4da2-bb1e-e803795ccb00
+2026-06-04T13:11:52.148458Z [info     ] request_processed              [app.main] duration=0.1171s method=GET path=/system/logs request_id=7a10a255-22c3-49a7-8725-edee50357411 status_code=200
+2026-06-04T13:11:52.149352Z [info     ] 172.18.0.1:52926 - "GET /system/logs HTTP/1.1" 200 request_id=7a10a255-22c3-49a7-8725-edee50357411
+2026-06-04T13:11:52.154247Z [info     ] request_processed              [app.main] duration=0.1227s method=GET path=/users/ request_id=04bf316f-8de3-48d8-a863-2bb139294d05 status_code=200
+2026-06-04T13:11:52.155015Z [info     ] 172.18.0.1:52924 - "GET /users/ HTTP/1.1" 200 request_id=04bf316f-8de3-48d8-a863-2bb139294d05
+2026-06-04T13:11:52.186427Z [info     ] request_processed              [app.main] duration=0.0358s method=GET path=/users/ request_id=4b5a7239-4f12-423c-88a5-c5e529ff3fde status_code=200
+2026-06-04T13:11:52.187316Z [info     ] 172.18.0.1:42512 - "GET /users/ HTTP/1.1" 200 request_id=4b5a7239-4f12-423c-88a5-c5e529ff3fde
+2026-06-04T13:11:52.201739Z [info     ] request_processed              [app.main] duration=0.1701s method=GET path=/bookings/ request_id=d7e3438d-8303-4e63-a244-6207dc6afc3a status_code=200
+2026-06-04T13:11:52.202800Z [info     ] 172.18.0.1:52922 - "GET /bookings/ HTTP/1.1" 200 request_id=d7e3438d-8303-4e63-a244-6207dc6afc3a
+2026-06-04T13:13:18.862103Z [info     ] request_processed              [app.main] duration=0.0004s method=GET path=/docs request_id=cb503501-6142-41b3-9b1c-184abf20e049 status_code=200
+2026-06-04T13:13:18.863394Z [info     ] 172.18.0.1:37746 - "GET /docs HTTP/1.1" 200 request_id=cb503501-6142-41b3-9b1c-184abf20e049
+2026-06-04T13:13:19.465206Z [info     ] request_processed              [app.main] duration=0.0876s method=GET path=/openapi.json request_id=1d84ce4e-4773-4f13-b07e-cec9d4de2148 status_code=200
+2026-06-04T13:13:19.466517Z [info     ] 172.18.0.1:37746 - "GET /openapi.json HTTP/1.1" 200 request_id=1d84ce4e-4773-4f13-b07e-cec9d4de2148
+2026-06-04T13:15:07.716524Z [error    ] http_exception                 [app.main] message='Invalid JSON body or content-type' request_id=e4da31a0-5ac8-4cd2-9518-e99266b089b0 status_code=400
+2026-06-04T13:15:07.717372Z [info     ] request_processed              [app.main] duration=0.0025s method=POST path=/auth/login request_id=e4da31a0-5ac8-4cd2-9518-e99266b089b0 status_code=400
+2026-06-04T13:15:07.718153Z [info     ] 172.18.0.1:37394 - "POST /auth/login HTTP/1.1" 400 request_id=e4da31a0-5ac8-4cd2-9518-e99266b089b0
+2026-06-04T13:15:16.023825Z [error    ] http_exception                 [app.main] message='Invalid JSON body or content-type' request_id=f6ba3a2d-873e-49f6-a62a-044225dec992 status_code=400
+2026-06-04T13:15:16.024809Z [info     ] request_processed              [app.main] duration=0.0021s method=POST path=/auth/login request_id=f6ba3a2d-873e-49f6-a62a-044225dec992 status_code=400
+2026-06-04T13:15:16.025424Z [info     ] 172.18.0.1:46204 - "POST /auth/login HTTP/1.1" 400 request_id=f6ba3a2d-873e-49f6-a62a-044225dec992
+2026-06-04T13:15:16.960987Z [error    ] http_exception                 [app.main] message='Invalid JSON body or content-type' request_id=7cb55a2a-a0ae-48f2-b01a-159e0e0d2f23 status_code=400
+2026-06-04T13:15:16.961622Z [info     ] request_processed              [app.main] duration=0.0013s method=POST path=/auth/login request_id=7cb55a2a-a0ae-48f2-b01a-159e0e0d2f23 status_code=400
+2026-06-04T13:15:16.962248Z [info     ] 172.18.0.1:46204 - "POST /auth/login HTTP/1.1" 400 request_id=7cb55a2a-a0ae-48f2-b01a-159e0e0d2f23
+2026-06-04T13:15:17.928777Z [error    ] http_exception                 [app.main] message='Invalid JSON body or content-type' request_id=94e70a6d-d8ea-4ab1-b634-a2cb20cdc8d4 status_code=400
+2026-06-04T13:15:17.929387Z [info     ] request_processed              [app.main] duration=0.0012s method=POST path=/auth/login request_id=94e70a6d-d8ea-4ab1-b634-a2cb20cdc8d4 status_code=400
+2026-06-04T13:15:17.929935Z [info     ] 172.18.0.1:46204 - "POST /auth/login HTTP/1.1" 400 request_id=94e70a6d-d8ea-4ab1-b634-a2cb20cdc8d4
+2026-06-04T13:15:18.403746Z [error    ] http_exception                 [app.main] message='Invalid JSON body or content-type' request_id=261cdc52-83e2-47ec-bcfc-9db9e58ee165 status_code=400
+2026-06-04T13:15:18.404364Z [info     ] request_processed              [app.main] duration=0.0013s method=POST path=/auth/login request_id=261cdc52-83e2-47ec-bcfc-9db9e58ee165 status_code=400
+2026-06-04T13:15:18.404811Z [info     ] 172.18.0.1:46204 - "POST /auth/login HTTP/1.1" 400 request_id=261cdc52-83e2-47ec-bcfc-9db9e58ee165
+2026-06-04T13:15:25.873955Z [info     ] request_processed              [app.main] duration=0.0059s method=GET path=/users/me request_id=f4d40a89-2958-4ca6-8966-4d8e9b3fb65a status_code=200
+2026-06-04T13:15:25.875338Z [info     ] 172.18.0.1:41866 - "GET /users/me HTTP/1.1" 200 request_id=f4d40a89-2958-4ca6-8966-4d8e9b3fb65a
+2026-06-04T13:15:25.884235Z [info     ] request_processed              [app.main] duration=0.0031s method=GET path=/users/me request_id=88d63678-46d2-4f97-861a-dd3564cee0e0 status_code=200
+2026-06-04T13:15:25.886804Z [info     ] 172.18.0.1:41866 - "GET /users/me HTTP/1.1" 200 request_id=88d63678-46d2-4f97-861a-dd3564cee0e0
+2026-06-04T13:15:25.990470Z [info     ] request_processed              [app.main] duration=0.0684s method=GET path=/system/logs request_id=fa0da209-2acd-48f4-a58c-663c2abf316c status_code=200
+2026-06-04T13:15:25.991188Z [info     ] 172.18.0.1:41866 - "GET /system/logs HTTP/1.1" 200 request_id=fa0da209-2acd-48f4-a58c-663c2abf316c
+2026-06-04T13:15:25.993606Z [info     ] request_processed              [app.main] duration=0.0680s method=GET path=/facilities/ request_id=6fb20266-9df0-46a2-b82d-66877dae3255 status_code=200
+2026-06-04T13:15:25.994380Z [info     ] 172.18.0.1:41876 - "GET /facilities/ HTTP/1.1" 200 request_id=6fb20266-9df0-46a2-b82d-66877dae3255
+2026-06-04T13:15:26.038808Z [info     ] request_processed              [app.main] duration=0.1135s method=GET path=/system/logs request_id=93ee0058-de4e-4ff6-9f2a-36c385270c03 status_code=200
+2026-06-04T13:15:26.039872Z [info     ] 172.18.0.1:41868 - "GET /system/logs HTTP/1.1" 200 request_id=93ee0058-de4e-4ff6-9f2a-36c385270c03
+2026-06-04T13:15:26.042876Z [info     ] request_processed              [app.main] duration=0.1171s method=GET path=/bookings/ request_id=a618922d-5d23-4b86-94b6-e61732edea6e status_code=200
+2026-06-04T13:15:26.043534Z [info     ] 172.18.0.1:41888 - "GET /bookings/ HTTP/1.1" 200 request_id=a618922d-5d23-4b86-94b6-e61732edea6e
+2026-06-04T13:15:26.043970Z [info     ] request_processed              [app.main] duration=0.1183s method=GET path=/users/ request_id=8bb9d862-6f6b-4ec9-a2d6-6b94bcda3d12 status_code=200
+2026-06-04T13:15:26.044588Z [info     ] 172.18.0.1:41882 - "GET /users/ HTTP/1.1" 200 request_id=8bb9d862-6f6b-4ec9-a2d6-6b94bcda3d12
+2026-06-04T13:15:26.047344Z [info     ] request_processed              [app.main] duration=0.0467s method=GET path=/facilities/ request_id=d7307bdb-3de8-4736-8195-2940b73cfc34 status_code=200
+2026-06-04T13:15:26.048349Z [info     ] 172.18.0.1:41876 - "GET /facilities/ HTTP/1.1" 200 request_id=d7307bdb-3de8-4736-8195-2940b73cfc34
+2026-06-04T13:15:26.066131Z [info     ] request_processed              [app.main] duration=0.0118s method=GET path=/users/ request_id=a86afec1-dca5-4e93-a5d8-be1d7ea24c2e status_code=200
+2026-06-04T13:15:26.066883Z [info     ] 172.18.0.1:41888 - "GET /users/ HTTP/1.1" 200 request_id=a86afec1-dca5-4e93-a5d8-be1d7ea24c2e
+2026-06-04T13:15:26.069110Z [info     ] request_processed              [app.main] duration=0.0149s method=GET path=/bookings/ request_id=a3ff07b2-1e83-454c-9ec4-a2134c10aa36 status_code=200
+2026-06-04T13:15:26.069806Z [info     ] 172.18.0.1:41866 - "GET /bookings/ HTTP/1.1" 200 request_id=a3ff07b2-1e83-454c-9ec4-a2134c10aa36
+2026-06-04T13:16:29.582421Z [info     ] request_processed              [app.main] duration=0.0049s method=GET path=/users/me request_id=5c3980ed-a415-4681-be5b-67fca5260521 status_code=200
+2026-06-04T13:16:29.583562Z [info     ] 172.18.0.1:38056 - "GET /users/me HTTP/1.1" 200 request_id=5c3980ed-a415-4681-be5b-67fca5260521
+2026-06-04T13:16:29.592506Z [info     ] request_processed              [app.main] duration=0.0045s method=GET path=/users/me request_id=ff7fb0dc-6783-4d14-b186-81d620c3456b status_code=200
+2026-06-04T13:16:29.593979Z [info     ] 172.18.0.1:38056 - "GET /users/me HTTP/1.1" 200 request_id=ff7fb0dc-6783-4d14-b186-81d620c3456b
+2026-06-04T13:17:07.136283Z [info     ] request_processed              [app.main] duration=0.0230s method=GET path=/facilities/ request_id=c1fa9062-b7ae-42cf-ace7-23be438e35a6 status_code=200
+2026-06-04T13:17:07.137052Z [info     ] 172.18.0.1:57472 - "GET /facilities/ HTTP/1.1" 200 request_id=c1fa9062-b7ae-42cf-ace7-23be438e35a6
+2026-06-04T13:17:07.140653Z [info     ] request_processed              [app.main] duration=0.0193s method=GET path=/facilities/ request_id=b9911e06-a39e-4451-afea-f2b6b598da6f status_code=200
+2026-06-04T13:17:07.141291Z [info     ] 172.18.0.1:57496 - "GET /facilities/ HTTP/1.1" 200 request_id=b9911e06-a39e-4451-afea-f2b6b598da6f
+2026-06-04T13:17:07.146367Z [info     ] request_processed              [app.main] duration=0.0330s method=GET path=/users/ request_id=35737f9e-dca0-4a76-b052-9e1f4bdeb681 status_code=200
+2026-06-04T13:17:07.146977Z [info     ] 172.18.0.1:57474 - "GET /users/ HTTP/1.1" 200 request_id=35737f9e-dca0-4a76-b052-9e1f4bdeb681
+2026-06-04T13:17:07.149889Z [info     ] request_processed              [app.main] duration=0.0286s method=GET path=/bookings/ request_id=47f6cf63-2ab3-429b-9f5d-617316c4f09c status_code=200
+2026-06-04T13:17:07.150629Z [info     ] 172.18.0.1:57486 - "GET /bookings/ HTTP/1.1" 200 request_id=47f6cf63-2ab3-429b-9f5d-617316c4f09c
+2026-06-04T13:17:07.151689Z [info     ] request_processed              [app.main] duration=0.0204s method=GET path=/users/ request_id=7b1721b4-275b-405f-a53a-6774f8d01162 status_code=200
+2026-06-04T13:17:07.152128Z [info     ] 172.18.0.1:57506 - "GET /users/ HTTP/1.1" 200 request_id=7b1721b4-275b-405f-a53a-6774f8d01162
+2026-06-04T13:17:07.162018Z [info     ] request_processed              [app.main] duration=0.0081s method=GET path=/bookings/ request_id=39d0b289-0b84-44db-aa34-064a8b57c6ab status_code=200
+2026-06-04T13:17:07.162693Z [info     ] 172.18.0.1:57472 - "GET /bookings/ HTTP/1.1" 200 request_id=39d0b289-0b84-44db-aa34-064a8b57c6ab
+2026-06-04T13:17:08.876889Z [info     ] request_processed              [app.main] duration=0.0101s method=GET path=/facilities/ request_id=32e57091-0f19-4d7e-a5fb-72dee66e484c status_code=200
+2026-06-04T13:17:08.877508Z [info     ] 172.18.0.1:57474 - "GET /facilities/ HTTP/1.1" 200 request_id=32e57091-0f19-4d7e-a5fb-72dee66e484c
+2026-06-04T13:17:08.933614Z [info     ] request_processed              [app.main] duration=0.0721s method=GET path=/system/logs request_id=98991ef1-fe01-4bec-b1e3-9b5d9d31b5e6 status_code=200
+2026-06-04T13:17:08.934579Z [info     ] 172.18.0.1:57472 - "GET /system/logs HTTP/1.1" 200 request_id=98991ef1-fe01-4bec-b1e3-9b5d9d31b5e6
+2026-06-04T13:17:08.935121Z [info     ] request_processed              [app.main] duration=0.0743s method=GET path=/system/logs request_id=274a8a65-b182-4912-aa7b-db9f30735b13 status_code=200
+2026-06-04T13:17:08.935763Z [info     ] 172.18.0.1:57496 - "GET /system/logs HTTP/1.1" 200 request_id=274a8a65-b182-4912-aa7b-db9f30735b13
+2026-06-04T13:17:08.948436Z [info     ] request_processed              [app.main] duration=0.0817s method=GET path=/users/ request_id=df3280ea-b494-4331-822c-f412f589a431 status_code=200
+2026-06-04T13:17:08.949125Z [info     ] 172.18.0.1:57506 - "GET /users/ HTTP/1.1" 200 request_id=df3280ea-b494-4331-822c-f412f589a431
+2026-06-04T13:17:08.950827Z [info     ] request_processed              [app.main] duration=0.0890s method=GET path=/bookings/ request_id=697e4d34-761c-40d3-9137-be4cfc9b1a4f status_code=200
+2026-06-04T13:17:08.951730Z [info     ] 172.18.0.1:57486 - "GET /bookings/ HTTP/1.1" 200 request_id=697e4d34-761c-40d3-9137-be4cfc9b1a4f
+2026-06-04T13:17:08.962994Z [info     ] request_processed              [app.main] duration=0.0264s method=GET path=/facilities/ request_id=8af5b25f-c390-48fe-89b7-b5053e20406e status_code=200
+2026-06-04T13:17:08.964113Z [info     ] 172.18.0.1:57474 - "GET /facilities/ HTTP/1.1" 200 request_id=8af5b25f-c390-48fe-89b7-b5053e20406e
+2026-06-04T13:17:08.977630Z [info     ] request_processed              [app.main] duration=0.0123s method=GET path=/users/ request_id=2cf6b4e9-b775-404a-91e4-d0e86b53ffa4 status_code=200
+2026-06-04T13:17:08.978373Z [info     ] 172.18.0.1:57506 - "GET /users/ HTTP/1.1" 200 request_id=2cf6b4e9-b775-404a-91e4-d0e86b53ffa4
+2026-06-04T13:17:08.980098Z [info     ] request_processed              [app.main] duration=0.0146s method=GET path=/bookings/ request_id=e1ea24f7-b471-4d96-87d3-26f48b59a1fa status_code=200
+2026-06-04T13:17:08.980757Z [info     ] 172.18.0.1:57486 - "GET /bookings/ HTTP/1.1" 200 request_id=e1ea24f7-b471-4d96-87d3-26f48b59a1fa
+2026-06-04T13:17:55.556666Z [error    ] http_exception                 [app.main] message='Invalid JSON body or content-type' request_id=c662b2ed-94e4-4729-af2a-ef4de2ecfdbf status_code=400
+2026-06-04T13:17:55.557754Z [info     ] request_processed              [app.main] duration=0.0027s method=POST path=/auth/login request_id=c662b2ed-94e4-4729-af2a-ef4de2ecfdbf status_code=400
+2026-06-04T13:17:55.558306Z [info     ] 172.18.0.1:37204 - "POST /auth/login HTTP/1.1" 400 request_id=c662b2ed-94e4-4729-af2a-ef4de2ecfdbf
+2026-06-04T13:17:58.184007Z [error    ] http_exception                 [app.main] message='Invalid JSON body or content-type' request_id=42903eec-f51b-4368-9cb9-61d354079a14 status_code=400
+2026-06-04T13:17:58.184935Z [info     ] request_processed              [app.main] duration=0.0016s method=POST path=/auth/login request_id=42903eec-f51b-4368-9cb9-61d354079a14 status_code=400
+2026-06-04T13:17:58.186563Z [info     ] 172.18.0.1:37204 - "POST /auth/login HTTP/1.1" 400 request_id=42903eec-f51b-4368-9cb9-61d354079a14
