@@ -1,0 +1,11 @@
+# Folder hasil kompilasi python
+__pycache__/
+*.py[cod]
+
+# File rahasia berisi password/key (Wajib disembunyikan)
+.env
+
+# Folder virtual environment
+venv/
+env/
+.venv/
