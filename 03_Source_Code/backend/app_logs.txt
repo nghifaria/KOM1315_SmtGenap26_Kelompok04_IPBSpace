@@ -14472,3 +14472,449 @@ ValueError: Unable to load PEM file. See https://cryptography.io/en/latest/faq/#
 2026-06-04T12:46:08.020496Z [error    ] http_exception                 [app.main] message='Not authenticated' request_id=109d3a6f-cc7a-4ecc-86de-475058162333 status_code=401
 2026-06-04T12:46:08.021372Z [info     ] request_processed              [app.main] duration=0.0019s method=GET path=/users/me/security-audit request_id=109d3a6f-cc7a-4ecc-86de-475058162333 status_code=401
 2026-06-04T12:46:08.022124Z [info     ] HTTP Request: GET http://test/users/me/security-audit "HTTP/1.1 401 Unauthorized" request_id=109d3a6f-cc7a-4ecc-86de-475058162333
+2026-06-04T12:48:10.993796Z [info     ] 172.18.0.1:46206 - "OPTIONS /facilities/ HTTP/1.1" 200
+2026-06-04T12:48:10.995065Z [info     ] 172.18.0.1:46204 - "OPTIONS /facilities/ HTTP/1.1" 200
+2026-06-04T12:48:11.015784Z [info     ] request_processed              [app.main] duration=0.0098s method=GET path=/facilities/ request_id=1a1c5e5c-e167-44be-97ce-1e34ed24f115 status_code=200
+2026-06-04T12:48:11.017178Z [info     ] 172.18.0.1:46204 - "GET /facilities/ HTTP/1.1" 200 request_id=1a1c5e5c-e167-44be-97ce-1e34ed24f115
+2026-06-04T12:48:11.018040Z [info     ] request_processed              [app.main] duration=0.0204s method=GET path=/facilities/ request_id=ab7f6082-fd7d-4863-8f1f-4f9f88acd268 status_code=200
+2026-06-04T12:48:11.018717Z [info     ] 172.18.0.1:46206 - "GET /facilities/ HTTP/1.1" 200 request_id=ab7f6082-fd7d-4863-8f1f-4f9f88acd268
+2026-06-04T12:48:11.583580Z [info     ] 172.18.0.1:46220 - "OPTIONS /users/ HTTP/1.1" 200
+2026-06-04T12:48:11.584445Z [info     ] 172.18.0.1:46230 - "OPTIONS /bookings/ HTTP/1.1" 200
+2026-06-04T12:48:11.585015Z [info     ] 172.18.0.1:46236 - "OPTIONS /users/ HTTP/1.1" 200
+2026-06-04T12:48:11.585515Z [info     ] 172.18.0.1:46242 - "OPTIONS /bookings/ HTTP/1.1" 200
+2026-06-04T12:48:11.591026Z [info     ] request_processed              [app.main] duration=0.0213s method=GET path=/facilities/ request_id=be7eb2e7-2e22-4e18-8cb4-30d82a60cd11 status_code=200
+2026-06-04T12:48:11.592372Z [info     ] 172.18.0.1:46204 - "GET /facilities/ HTTP/1.1" 200 request_id=be7eb2e7-2e22-4e18-8cb4-30d82a60cd11
+2026-06-04T12:48:11.593043Z [info     ] request_processed              [app.main] duration=0.0164s method=GET path=/facilities/ request_id=33f3768d-7d7e-4aa1-ace9-e8aa75592319 status_code=200
+2026-06-04T12:48:11.593596Z [info     ] 172.18.0.1:46206 - "GET /facilities/ HTTP/1.1" 200 request_id=33f3768d-7d7e-4aa1-ace9-e8aa75592319
+2026-06-04T12:48:11.618827Z [info     ] request_processed              [app.main] duration=0.0232s method=GET path=/bookings/ request_id=c1c1ae95-d51a-406f-9f4f-a537f62060ae status_code=200
+2026-06-04T12:48:11.619772Z [info     ] 172.18.0.1:46230 - "GET /bookings/ HTTP/1.1" 200 request_id=c1c1ae95-d51a-406f-9f4f-a537f62060ae
+2026-06-04T12:48:11.620272Z [info     ] request_processed              [app.main] duration=0.0246s method=GET path=/bookings/ request_id=2904b2e3-fedd-47b5-8651-ee9b7ce2d21d status_code=200
+2026-06-04T12:48:11.620804Z [info     ] 172.18.0.1:46242 - "GET /bookings/ HTTP/1.1" 200 request_id=2904b2e3-fedd-47b5-8651-ee9b7ce2d21d
+2026-06-04T12:48:11.621827Z [info     ] request_processed              [app.main] duration=0.0260s method=GET path=/users/ request_id=3d262f0a-507d-497e-948f-5499f048c97e status_code=200
+2026-06-04T12:48:11.622420Z [info     ] 172.18.0.1:46220 - "GET /users/ HTTP/1.1" 200 request_id=3d262f0a-507d-497e-948f-5499f048c97e
+2026-06-04T12:48:11.622991Z [info     ] request_processed              [app.main] duration=0.0271s method=GET path=/users/ request_id=96488b47-5e2b-404f-859f-8132fd4c5d9f status_code=200
+2026-06-04T12:48:11.623772Z [info     ] 172.18.0.1:46236 - "GET /users/ HTTP/1.1" 200 request_id=96488b47-5e2b-404f-859f-8132fd4c5d9f
+2026-06-04T12:48:12.005996Z [info     ] request_processed              [app.main] duration=0.0349s method=GET path=/facilities/ request_id=201c7104-51f6-4f3f-822a-535880c423f2 status_code=200
+2026-06-04T12:48:12.007122Z [info     ] 172.18.0.1:46206 - "GET /facilities/ HTTP/1.1" 200 request_id=201c7104-51f6-4f3f-822a-535880c423f2
+2026-06-04T12:48:12.008798Z [info     ] request_processed              [app.main] duration=0.0240s method=GET path=/facilities/ request_id=da9c81c0-9700-48db-b353-18edacafe7a3 status_code=200
+2026-06-04T12:48:12.009645Z [info     ] 172.18.0.1:46220 - "GET /facilities/ HTTP/1.1" 200 request_id=da9c81c0-9700-48db-b353-18edacafe7a3
+2026-06-04T12:48:12.019840Z [info     ] request_processed              [app.main] duration=0.0489s method=GET path=/bookings/ request_id=cf9764de-f0c3-4cc2-98a4-18f7d6649f2a status_code=200
+2026-06-04T12:48:12.020998Z [info     ] 172.18.0.1:46204 - "GET /bookings/ HTTP/1.1" 200 request_id=cf9764de-f0c3-4cc2-98a4-18f7d6649f2a
+2026-06-04T12:48:12.021600Z [info     ] request_processed              [app.main] duration=0.0369s method=GET path=/users/ request_id=b45da740-0920-4809-bf0d-558c9d0ff721 status_code=200
+2026-06-04T12:48:12.022020Z [info     ] 172.18.0.1:46236 - "GET /users/ HTTP/1.1" 200 request_id=b45da740-0920-4809-bf0d-558c9d0ff721
+2026-06-04T12:48:12.038234Z [info     ] request_processed              [app.main] duration=0.0536s method=GET path=/bookings/ request_id=bf953404-1513-4a59-a340-95616d992b67 status_code=200
+2026-06-04T12:48:12.039991Z [info     ] 172.18.0.1:46242 - "GET /bookings/ HTTP/1.1" 200 request_id=bf953404-1513-4a59-a340-95616d992b67
+2026-06-04T12:48:12.061030Z [info     ] request_processed              [app.main] duration=0.0763s method=GET path=/users/ request_id=45a007f9-0abc-4693-a7d6-8ed4632536fc status_code=200
+2026-06-04T12:48:12.062122Z [info     ] 172.18.0.1:46230 - "GET /users/ HTTP/1.1" 200 request_id=45a007f9-0abc-4693-a7d6-8ed4632536fc
+2026-06-04T12:48:12.815843Z [info     ] request_processed              [app.main] duration=0.0405s method=GET path=/facilities/ request_id=7a30605d-d3b4-431b-bdaf-ea5589f5db3c status_code=200
+2026-06-04T12:48:12.816927Z [info     ] 172.18.0.1:46206 - "GET /facilities/ HTTP/1.1" 200 request_id=7a30605d-d3b4-431b-bdaf-ea5589f5db3c
+2026-06-04T12:48:12.817654Z [info     ] request_processed              [app.main] duration=0.0309s method=GET path=/facilities/ request_id=09eb06e2-4628-4a8e-a009-583a7bb64429 status_code=200
+2026-06-04T12:48:12.818241Z [info     ] 172.18.0.1:46204 - "GET /facilities/ HTTP/1.1" 200 request_id=09eb06e2-4628-4a8e-a009-583a7bb64429
+2026-06-04T12:48:12.820116Z [info     ] request_processed              [app.main] duration=0.0329s method=GET path=/facilities/ request_id=b90f9716-0c07-4455-ba20-1c01aa9dfc1c status_code=200
+2026-06-04T12:48:12.820844Z [info     ] 172.18.0.1:46236 - "GET /facilities/ HTTP/1.1" 200 request_id=b90f9716-0c07-4455-ba20-1c01aa9dfc1c
+2026-06-04T12:48:12.839416Z [info     ] request_processed              [app.main] duration=0.0642s method=GET path=/users/ request_id=fc1c1ae4-12f4-46da-b077-29b6d3c71fbb status_code=200
+2026-06-04T12:48:12.840359Z [info     ] 172.18.0.1:46220 - "GET /users/ HTTP/1.1" 200 request_id=fc1c1ae4-12f4-46da-b077-29b6d3c71fbb
+2026-06-04T12:48:12.844169Z [info     ] request_processed              [app.main] duration=0.0571s method=GET path=/users/ request_id=d8aecf3e-e6e0-4f0f-b5a1-f0212a5c9c56 status_code=200
+2026-06-04T12:48:12.845545Z [info     ] 172.18.0.1:46242 - "GET /users/ HTTP/1.1" 200 request_id=d8aecf3e-e6e0-4f0f-b5a1-f0212a5c9c56
+2026-06-04T12:48:12.884616Z [info     ] request_processed              [app.main] duration=0.0602s method=GET path=/users/ request_id=d1237050-d575-4c92-b9e2-9cffa6ce60cf status_code=200
+2026-06-04T12:48:12.885293Z [info     ] 172.18.0.1:46206 - "GET /users/ HTTP/1.1" 200 request_id=d1237050-d575-4c92-b9e2-9cffa6ce60cf
+2026-06-04T12:48:12.889039Z [info     ] request_processed              [app.main] duration=0.0295s method=GET path=/bookings/ request_id=39f7ae89-f97f-4616-a889-31b3819ce64e status_code=200
+2026-06-04T12:48:12.890003Z [info     ] 172.18.0.1:46220 - "GET /bookings/ HTTP/1.1" 200 request_id=39f7ae89-f97f-4616-a889-31b3819ce64e
+2026-06-04T12:48:12.893673Z [info     ] request_processed              [app.main] duration=0.0588s method=GET path=/users/ request_id=74965e75-49d1-4c41-b390-12b9de4cd7ab status_code=200
+2026-06-04T12:48:12.895005Z [info     ] 172.18.0.1:46236 - "GET /users/ HTTP/1.1" 200 request_id=74965e75-49d1-4c41-b390-12b9de4cd7ab
+2026-06-04T12:48:12.899453Z [info     ] request_processed              [app.main] duration=0.0751s method=GET path=/facilities/ request_id=db8135a9-1a02-455d-84fb-fc65a0fe285b status_code=200
+2026-06-04T12:48:12.900433Z [info     ] 172.18.0.1:46204 - "GET /facilities/ HTTP/1.1" 200 request_id=db8135a9-1a02-455d-84fb-fc65a0fe285b
+2026-06-04T12:48:12.908633Z [info     ] request_processed              [app.main] duration=0.1215s method=GET path=/bookings/ request_id=dc52e7fa-d0d4-4778-9d90-60e5d7968080 status_code=200
+2026-06-04T12:48:12.909883Z [info     ] 172.18.0.1:46230 - "GET /bookings/ HTTP/1.1" 200 request_id=dc52e7fa-d0d4-4778-9d90-60e5d7968080
+2026-06-04T12:48:13.683262Z [info     ] request_processed              [app.main] duration=0.0283s method=GET path=/facilities/ request_id=2c6f83ae-5799-4510-b35b-324f1311f27a status_code=200
+2026-06-04T12:48:13.684323Z [info     ] 172.18.0.1:46206 - "GET /facilities/ HTTP/1.1" 200 request_id=2c6f83ae-5799-4510-b35b-324f1311f27a
+2026-06-04T12:48:13.685465Z [info     ] request_processed              [app.main] duration=0.0305s method=GET path=/facilities/ request_id=96eb2f9a-85b2-4e17-ab08-4041d2ff7518 status_code=200
+2026-06-04T12:48:13.685959Z [info     ] 172.18.0.1:46204 - "GET /facilities/ HTTP/1.1" 200 request_id=96eb2f9a-85b2-4e17-ab08-4041d2ff7518
+2026-06-04T12:48:13.694105Z [info     ] request_processed              [app.main] duration=0.0389s method=GET path=/users/ request_id=cfe46e03-d5c6-4438-bfd9-78a1fbc78ff5 status_code=200
+2026-06-04T12:48:13.695120Z [info     ] 172.18.0.1:46242 - "GET /users/ HTTP/1.1" 200 request_id=cfe46e03-d5c6-4438-bfd9-78a1fbc78ff5
+2026-06-04T12:48:13.695639Z [info     ] request_processed              [app.main] duration=0.0409s method=GET path=/users/ request_id=86f2ab6d-c4d2-4cf8-84fc-60a9c8d8c179 status_code=200
+2026-06-04T12:48:13.696302Z [info     ] 172.18.0.1:46220 - "GET /users/ HTTP/1.1" 200 request_id=86f2ab6d-c4d2-4cf8-84fc-60a9c8d8c179
+2026-06-04T12:48:13.697025Z [info     ] request_processed              [app.main] duration=0.0420s method=GET path=/bookings/ request_id=3a0ed502-3da1-4b7f-afda-30d8f7deaa1f status_code=200
+2026-06-04T12:48:13.697553Z [info     ] 172.18.0.1:46236 - "GET /bookings/ HTTP/1.1" 200 request_id=3a0ed502-3da1-4b7f-afda-30d8f7deaa1f
+2026-06-04T12:48:13.731114Z [info     ] request_processed              [app.main] duration=0.0608s method=GET path=/bookings/ request_id=ee7780bb-a444-41c4-b95f-0d216960b8ed status_code=200
+2026-06-04T12:48:13.732275Z [info     ] 172.18.0.1:46230 - "GET /bookings/ HTTP/1.1" 200 request_id=ee7780bb-a444-41c4-b95f-0d216960b8ed
+2026-06-04T12:48:14.154645Z [info     ] request_processed              [app.main] duration=0.0094s method=GET path=/facilities/ request_id=88516df8-33b0-4b7f-b1aa-2c70d270cc9c status_code=200
+2026-06-04T12:48:14.155612Z [info     ] 172.18.0.1:46206 - "GET /facilities/ HTTP/1.1" 200 request_id=88516df8-33b0-4b7f-b1aa-2c70d270cc9c
+2026-06-04T12:48:14.167548Z [info     ] request_processed              [app.main] duration=0.0075s method=GET path=/facilities/ request_id=17bd53ea-7d01-45e8-b796-30a104849499 status_code=200
+2026-06-04T12:48:14.168313Z [info     ] 172.18.0.1:46204 - "GET /facilities/ HTTP/1.1" 200 request_id=17bd53ea-7d01-45e8-b796-30a104849499
+2026-06-04T12:48:14.536856Z [info     ] request_processed              [app.main] duration=0.0297s method=GET path=/facilities/ request_id=55dc5d31-4b94-4392-933f-5335d42b150f status_code=200
+2026-06-04T12:48:14.538036Z [info     ] 172.18.0.1:46220 - "GET /facilities/ HTTP/1.1" 200 request_id=55dc5d31-4b94-4392-933f-5335d42b150f
+2026-06-04T12:48:14.538691Z [info     ] request_processed              [app.main] duration=0.0201s method=GET path=/facilities/ request_id=fa8c04ff-61bc-43ed-a8c9-aaa483d260a4 status_code=200
+2026-06-04T12:48:14.539347Z [info     ] 172.18.0.1:46206 - "GET /facilities/ HTTP/1.1" 200 request_id=fa8c04ff-61bc-43ed-a8c9-aaa483d260a4
+2026-06-04T12:48:14.549493Z [info     ] request_processed              [app.main] duration=0.0220s method=GET path=/users/ request_id=65a2e3e6-5849-4ecb-8c5e-61d45682bae0 status_code=200
+2026-06-04T12:48:14.550205Z [info     ] 172.18.0.1:46242 - "GET /users/ HTTP/1.1" 200 request_id=65a2e3e6-5849-4ecb-8c5e-61d45682bae0
+2026-06-04T12:48:14.550664Z [info     ] request_processed              [app.main] duration=0.0437s method=GET path=/bookings/ request_id=11c896e4-b281-4f1a-a7aa-b0e9a763dde6 status_code=200
+2026-06-04T12:48:14.551205Z [info     ] 172.18.0.1:46236 - "GET /bookings/ HTTP/1.1" 200 request_id=11c896e4-b281-4f1a-a7aa-b0e9a763dde6
+2026-06-04T12:48:14.568196Z [info     ] request_processed              [app.main] duration=0.0494s method=GET path=/bookings/ request_id=3e0d6f33-8988-461f-9699-3169486759fe status_code=200
+2026-06-04T12:48:14.569363Z [info     ] 172.18.0.1:46204 - "GET /bookings/ HTTP/1.1" 200 request_id=3e0d6f33-8988-461f-9699-3169486759fe
+2026-06-04T12:48:14.588061Z [info     ] request_processed              [app.main] duration=0.0605s method=GET path=/users/ request_id=5c20bf24-8352-4e9b-93a7-6727b74b96d7 status_code=200
+2026-06-04T12:48:14.589146Z [info     ] 172.18.0.1:46230 - "GET /users/ HTTP/1.1" 200 request_id=5c20bf24-8352-4e9b-93a7-6727b74b96d7
+2026-06-04T12:48:25.652831Z [info     ] 172.18.0.1:51446 - "OPTIONS /auth/logout HTTP/1.1" 200
+2026-06-04T12:48:25.662673Z [info     ] logout_successful              [app.services.auth_service] request_id=f8e22457-7dc7-40ae-9ab5-7e70fd89932e user_id=9
+2026-06-04T12:48:25.664211Z [info     ] request_processed              [app.main] duration=0.0079s method=POST path=/auth/logout request_id=f8e22457-7dc7-40ae-9ab5-7e70fd89932e status_code=200
+2026-06-04T12:48:25.664989Z [info     ] 172.18.0.1:51446 - "POST /auth/logout HTTP/1.1" 200 request_id=f8e22457-7dc7-40ae-9ab5-7e70fd89932e
+2026-06-04T12:48:25.710587Z [info     ] request_processed              [app.main] duration=0.0223s method=GET path=/facilities/ request_id=0aff06a9-41d0-4b09-8600-b4bdf14116e7 status_code=200
+2026-06-04T12:48:25.711350Z [info     ] request_processed              [app.main] duration=0.0228s method=GET path=/facilities/ request_id=a603a3dc-76ce-47d9-ba85-436e8873b4c0 status_code=200
+2026-06-04T12:48:25.714716Z [info     ] request_processed              [app.main] duration=0.0372s method=GET path=/bookings/ request_id=82d695f6-664f-44a1-9049-406c2c099b69 status_code=200
+2026-06-04T12:48:25.718093Z [info     ] request_processed              [app.main] duration=0.0298s method=GET path=/users/ request_id=d44e3a22-154e-4657-8dda-9edacefd3e92 status_code=200
+2026-06-04T12:48:25.720557Z [info     ] request_processed              [app.main] duration=0.0321s method=GET path=/bookings/ request_id=396d6d24-01ca-4566-9b2d-88b2a2fc56eb status_code=200
+2026-06-04T12:48:31.182173Z [info     ] 172.18.0.1:51488 - "OPTIONS /auth/login HTTP/1.1" 200
+2026-06-04T12:48:31.381559Z [info     ] login_successful               [app.services.auth_service] email=civitas@ipbspace.com request_id=0443905b-3fe4-45b5-838e-1695938feb01 role=civitas user_id=11
+2026-06-04T12:48:31.382701Z [info     ] request_processed              [app.main] duration=0.1966s method=POST path=/auth/login request_id=0443905b-3fe4-45b5-838e-1695938feb01 status_code=200
+2026-06-04T12:48:31.383224Z [info     ] 172.18.0.1:51488 - "POST /auth/login HTTP/1.1" 200 request_id=0443905b-3fe4-45b5-838e-1695938feb01
+2026-06-04T12:48:31.435378Z [info     ] 172.18.0.1:51488 - "OPTIONS /bookings/my HTTP/1.1" 200
+2026-06-04T12:48:31.437255Z [info     ] 172.18.0.1:51496 - "OPTIONS /bookings/my HTTP/1.1" 200
+2026-06-04T12:48:31.438047Z [info     ] 172.18.0.1:51498 - "OPTIONS /facilities/ HTTP/1.1" 200
+2026-06-04T12:48:31.471602Z [info     ] request_processed              [app.main] duration=0.0257s method=GET path=/facilities/ request_id=46d879de-7d00-49c6-80c4-3083fb98b0e2 status_code=200
+2026-06-04T12:48:31.472650Z [info     ] 172.18.0.1:51498 - "GET /facilities/ HTTP/1.1" 200 request_id=46d879de-7d00-49c6-80c4-3083fb98b0e2
+2026-06-04T12:48:31.486503Z [info     ] request_processed              [app.main] duration=0.0408s method=GET path=/bookings/my request_id=758df2a7-dded-4dec-8759-1c364f7417f4 status_code=200
+2026-06-04T12:48:31.487365Z [info     ] 172.18.0.1:51496 - "GET /bookings/my HTTP/1.1" 200 request_id=758df2a7-dded-4dec-8759-1c364f7417f4
+2026-06-04T12:48:31.487894Z [info     ] request_processed              [app.main] duration=0.0488s method=GET path=/bookings/my request_id=5130292b-4391-4019-90a2-7b8eb6a1e01d status_code=200
+2026-06-04T12:48:31.488405Z [info     ] 172.18.0.1:51488 - "GET /bookings/my HTTP/1.1" 200 request_id=5130292b-4391-4019-90a2-7b8eb6a1e01d
+2026-06-04T12:48:31.490877Z [info     ] request_processed              [app.main] duration=0.0136s method=GET path=/facilities/ request_id=404f3aa2-b8e1-4cee-9741-4f40c75fc24d status_code=200
+2026-06-04T12:48:31.491469Z [info     ] 172.18.0.1:51498 - "GET /facilities/ HTTP/1.1" 200 request_id=404f3aa2-b8e1-4cee-9741-4f40c75fc24d
+2026-06-04T12:48:44.042124Z [info     ] request_processed              [app.main] duration=0.0145s method=GET path=/facilities/ request_id=1d4f6d8f-a4e3-47c2-8aec-0b4daf818696 status_code=200
+2026-06-04T12:48:44.043221Z [info     ] 172.18.0.1:58374 - "GET /facilities/ HTTP/1.1" 200 request_id=1d4f6d8f-a4e3-47c2-8aec-0b4daf818696
+2026-06-04T12:48:44.053697Z [info     ] request_processed              [app.main] duration=0.0260s method=GET path=/bookings/my request_id=7210103d-0ea3-4f01-92d9-1723f210affd status_code=200
+2026-06-04T12:48:44.054682Z [info     ] 172.18.0.1:58362 - "GET /bookings/my HTTP/1.1" 200 request_id=7210103d-0ea3-4f01-92d9-1723f210affd
+2026-06-04T12:48:44.059651Z [info     ] request_processed              [app.main] duration=0.0125s method=GET path=/facilities/ request_id=b9818ea1-f039-4234-a9f4-beaa91ef4f54 status_code=200
+2026-06-04T12:48:44.060343Z [info     ] 172.18.0.1:58374 - "GET /facilities/ HTTP/1.1" 200 request_id=b9818ea1-f039-4234-a9f4-beaa91ef4f54
+2026-06-04T12:48:44.072853Z [info     ] request_processed              [app.main] duration=0.0116s method=GET path=/bookings/my request_id=db6843c1-78d5-4144-a719-40a447f8e400 status_code=200
+2026-06-04T12:48:44.073990Z [info     ] 172.18.0.1:58362 - "GET /bookings/my HTTP/1.1" 200 request_id=db6843c1-78d5-4144-a719-40a447f8e400
+2026-06-04T12:48:46.069799Z [info     ] 172.18.0.1:58374 - "OPTIONS /bookings/8 HTTP/1.1" 200
+2026-06-04T12:48:46.070731Z [info     ] 172.18.0.1:58362 - "OPTIONS /bookings/8 HTTP/1.1" 200
+2026-06-04T12:48:46.100547Z [info     ] request_processed              [app.main] duration=0.0245s method=GET path=/bookings/8 request_id=37e5da00-b948-4556-b6b6-fb3a5442a648 status_code=200
+2026-06-04T12:48:46.101531Z [info     ] 172.18.0.1:58374 - "GET /bookings/8 HTTP/1.1" 200 request_id=37e5da00-b948-4556-b6b6-fb3a5442a648
+2026-06-04T12:48:46.103008Z [info     ] request_processed              [app.main] duration=0.0270s method=GET path=/bookings/8 request_id=8a29865e-78a8-4a13-9659-ea8590b230f1 status_code=200
+2026-06-04T12:48:46.103489Z [info     ] 172.18.0.1:58362 - "GET /bookings/8 HTTP/1.1" 200 request_id=8a29865e-78a8-4a13-9659-ea8590b230f1
+2026-06-04T12:48:46.112529Z [info     ] 172.18.0.1:58374 - "OPTIONS /facilities/8 HTTP/1.1" 200
+2026-06-04T12:48:46.113214Z [info     ] 172.18.0.1:58362 - "OPTIONS /facilities/8 HTTP/1.1" 200
+2026-06-04T12:48:46.132505Z [info     ] request_processed              [app.main] duration=0.0168s method=GET path=/facilities/8 request_id=4c732cfc-5d79-4bf9-9ae9-66975fd09da1 status_code=200
+2026-06-04T12:48:46.133378Z [info     ] 172.18.0.1:58374 - "GET /facilities/8 HTTP/1.1" 200 request_id=4c732cfc-5d79-4bf9-9ae9-66975fd09da1
+2026-06-04T12:48:46.134671Z [info     ] request_processed              [app.main] duration=0.0105s method=GET path=/facilities/8 request_id=f4ea9806-41ca-413a-92ba-cb95d4f12001 status_code=200
+2026-06-04T12:48:46.135173Z [info     ] 172.18.0.1:58362 - "GET /facilities/8 HTTP/1.1" 200 request_id=f4ea9806-41ca-413a-92ba-cb95d4f12001
+2026-06-04T12:48:52.552264Z [info     ] request_processed              [app.main] duration=0.0253s method=GET path=/facilities/ request_id=d775a54b-3415-44ec-825a-edf2e621c068 status_code=200
+2026-06-04T12:48:52.553121Z [info     ] 172.18.0.1:59746 - "GET /facilities/ HTTP/1.1" 200 request_id=d775a54b-3415-44ec-825a-edf2e621c068
+2026-06-04T12:48:52.554206Z [info     ] request_processed              [app.main] duration=0.0165s method=GET path=/facilities/ request_id=e4dc35d4-bdfd-4d46-a308-1ece858a17e0 status_code=200
+2026-06-04T12:48:52.554875Z [info     ] 172.18.0.1:59760 - "GET /facilities/ HTTP/1.1" 200 request_id=e4dc35d4-bdfd-4d46-a308-1ece858a17e0
+2026-06-04T12:48:52.562916Z [info     ] request_processed              [app.main] duration=0.0252s method=GET path=/bookings/my request_id=285257d6-e61d-426c-8a7d-1a9d790fbf86 status_code=200
+2026-06-04T12:48:52.564059Z [info     ] 172.18.0.1:59748 - "GET /bookings/my HTTP/1.1" 200 request_id=285257d6-e61d-426c-8a7d-1a9d790fbf86
+2026-06-04T12:48:52.567260Z [info     ] request_processed              [app.main] duration=0.0403s method=GET path=/bookings/my request_id=6080f071-7956-47ca-8b78-bcbc6a2281b0 status_code=200
+2026-06-04T12:48:52.568197Z [info     ] 172.18.0.1:59732 - "GET /bookings/my HTTP/1.1" 200 request_id=6080f071-7956-47ca-8b78-bcbc6a2281b0
+2026-06-04T12:48:54.499422Z [info     ] request_processed              [app.main] duration=0.0125s method=GET path=/bookings/8 request_id=eeb7986a-b2b5-495b-8067-c22bcf209d60 status_code=200
+2026-06-04T12:48:54.500539Z [info     ] 172.18.0.1:59746 - "GET /bookings/8 HTTP/1.1" 200 request_id=eeb7986a-b2b5-495b-8067-c22bcf209d60
+2026-06-04T12:48:54.518971Z [info     ] request_processed              [app.main] duration=0.0133s method=GET path=/bookings/8 request_id=bc3af1d7-75a9-4164-8e9e-2544e2cd6b12 status_code=200
+2026-06-04T12:48:54.519944Z [info     ] 172.18.0.1:59760 - "GET /bookings/8 HTTP/1.1" 200 request_id=bc3af1d7-75a9-4164-8e9e-2544e2cd6b12
+2026-06-04T12:48:54.540108Z [info     ] request_processed              [app.main] duration=0.0083s method=GET path=/facilities/8 request_id=a3221bf3-8e0e-42b9-a058-1c0b93ebe58b status_code=200
+2026-06-04T12:48:54.540905Z [info     ] 172.18.0.1:59746 - "GET /facilities/8 HTTP/1.1" 200 request_id=a3221bf3-8e0e-42b9-a058-1c0b93ebe58b
+2026-06-04T12:48:58.508677Z [info     ] 172.18.0.1:59760 - "OPTIONS /bookings/8/document HTTP/1.1" 200
+2026-06-04T12:48:58.550809Z [error    ] unexpected_error               [app.main] error='Booking document not found: https://example.com/docs/surat_peminjaman_rk1.pdf' request_id=55f77893-0265-4f8a-ae45-563dcf798655
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/main.py", line 33, in logging_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/routers/booking_router.py", line 216, in get_booking_document
+    return await storage.read_booking_document(booking.document_url)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/storage/encrypted_document_storage.py", line 48, in read_booking_document
+    raw_response: StreamingResponse = await self._inner.read_booking_document(file_url)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/storage/local_document_storage.py", line 74, in read_booking_document
+    raise FileNotFoundError(f"Booking document not found: {file_url}")
+FileNotFoundError: Booking document not found: https://example.com/docs/surat_peminjaman_rk1.pdf
+2026-06-04T12:48:58.551933Z [info     ] 172.18.0.1:59746 - "GET /bookings/8/document HTTP/1.1" 500 request_id=55f77893-0265-4f8a-ae45-563dcf798655
+2026-06-04T12:48:58.577505Z [error    ] Exception in ASGI application
+ request_id=55f77893-0265-4f8a-ae45-563dcf798655
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/site-packages/uvicorn/protocols/http/h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/main.py", line 33, in logging_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/routers/booking_router.py", line 216, in get_booking_document
+    return await storage.read_booking_document(booking.document_url)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/storage/encrypted_document_storage.py", line 48, in read_booking_document
+    raw_response: StreamingResponse = await self._inner.read_booking_document(file_url)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/storage/local_document_storage.py", line 74, in read_booking_document
+    raise FileNotFoundError(f"Booking document not found: {file_url}")
+FileNotFoundError: Booking document not found: https://example.com/docs/surat_peminjaman_rk1.pdf
+2026-06-04T12:49:01.638261Z [info     ] 172.18.0.1:59760 - "OPTIONS /bookings/8/document HTTP/1.1" 200
+2026-06-04T12:49:01.668474Z [error    ] unexpected_error               [app.main] error='Booking document not found: https://example.com/docs/surat_peminjaman_rk1.pdf' request_id=3239f192-749d-4918-a243-6b7760ef142a
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/main.py", line 33, in logging_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/routers/booking_router.py", line 216, in get_booking_document
+    return await storage.read_booking_document(booking.document_url)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/storage/encrypted_document_storage.py", line 48, in read_booking_document
+    raw_response: StreamingResponse = await self._inner.read_booking_document(file_url)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/storage/local_document_storage.py", line 74, in read_booking_document
+    raise FileNotFoundError(f"Booking document not found: {file_url}")
+FileNotFoundError: Booking document not found: https://example.com/docs/surat_peminjaman_rk1.pdf
+2026-06-04T12:49:01.669235Z [info     ] 172.18.0.1:59760 - "GET /bookings/8/document HTTP/1.1" 500 request_id=3239f192-749d-4918-a243-6b7760ef142a
+2026-06-04T12:49:01.686478Z [error    ] Exception in ASGI application
+ request_id=3239f192-749d-4918-a243-6b7760ef142a
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/site-packages/uvicorn/protocols/http/h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 191, in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/main.py", line 33, in logging_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/usr/local/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/fastapi/routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/routers/booking_router.py", line 216, in get_booking_document
+    return await storage.read_booking_document(booking.document_url)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/storage/encrypted_document_storage.py", line 48, in read_booking_document
+    raw_response: StreamingResponse = await self._inner.read_booking_document(file_url)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/code/app/storage/local_document_storage.py", line 74, in read_booking_document
+    raise FileNotFoundError(f"Booking document not found: {file_url}")
+FileNotFoundError: Booking document not found: https://example.com/docs/surat_peminjaman_rk1.pdf
