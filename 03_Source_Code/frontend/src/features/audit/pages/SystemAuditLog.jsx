@@ -205,7 +205,6 @@ export default function SystemAuditLog() {
         const kvs = parseKeyValuePairs(metaText);
         const category = getCategoryKey(event, logger, kvs, cleanLine);
         const summary = humanizeEvent(event, kvs);
-        const statusCode = kvs.find((item) => item.key === 'status_code')?.val;
 
         return {
           id: `LOG-${index + 1}`,
@@ -216,7 +215,6 @@ export default function SystemAuditLog() {
           category,
           summary,
           kvs,
-          statusCode,
           raw: cleanLine,
         };
       })
@@ -278,14 +276,6 @@ export default function SystemAuditLog() {
     return parsedLogs.filter(log => 
       log.event && log.event.startsWith('auth_failed')
     ).length;
-  }, [parsedLogs]);
-
-  // Aggregate probing (unauthorized/not found access attempts: 404 & 403)
-  const probingCount = useMemo(() => {
-    return parsedLogs.filter(log => {
-      const statusCode = log.statusCode || log.kvs?.find(kv => kv.key === 'status_code')?.val;
-      return statusCode === '404' || statusCode === '403';
-    }).length;
   }, [parsedLogs]);
 
   // Aggregate category donut chart data
@@ -555,7 +545,7 @@ export default function SystemAuditLog() {
       />
 
       {/* SOC Analytics Dashboard Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Card 1: Crypto Ops */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
           <div className="space-y-1.5">
@@ -572,19 +562,7 @@ export default function SystemAuditLog() {
           </div>
         </div>
 
-        {/* Card 2: Probing */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
-          <div className="space-y-1.5">
-            <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Percobaan Akses Tidak Sah (Probing / 404 & 403)</span>
-            <div className="text-2xl font-black text-slate-800">{probingCount}</div>
-            <span className="text-[10px] text-gray-450 font-semibold block leading-none">Deteksi pemindaian URL / halaman tidak sah</span>
-          </div>
-          <div className={`h-12 w-12 rounded-xl border flex items-center justify-center shrink-0 ${probingCount > 0 ? 'bg-amber-50 text-amber-600 border-amber-100' : 'bg-slate-50 text-slate-400 border-slate-200'}`}>
-            <Shield size={24} weight="fill" />
-          </div>
-        </div>
-
-        {/* Card 3: Brute Force */}
+        {/* Card 2: Brute Force */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
           <div className="space-y-1.5">
             <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Indikasi Brute Force</span>
