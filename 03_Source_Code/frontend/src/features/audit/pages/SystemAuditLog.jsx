@@ -221,6 +221,27 @@ export default function SystemAuditLog() {
       .reverse();
   }, [rawLogs]);
 
+  const categorizedLogs = useMemo(() => {
+    const buckets = {
+      all: [],
+      auth: [],
+      booking: [],
+      facility: [],
+      system: [],
+    };
+
+    parsedLogs.forEach((log) => {
+      buckets.all.push(log);
+      if (buckets[log.category]) {
+        buckets[log.category].push(log);
+      } else {
+        buckets.system.push(log);
+      }
+    });
+
+    return buckets;
+  }, [parsedLogs]);
+
   // Aggregate security severity log counts
   const levelCounts = useMemo(() => {
     const counts = { INFO: 0, WARNING: 0, ERROR: 0 };
@@ -312,27 +333,6 @@ export default function SystemAuditLog() {
     });
     return map;
   }, [users]);
-
-  const categorizedLogs = useMemo(() => {
-    const buckets = {
-      all: [],
-      auth: [],
-      booking: [],
-      facility: [],
-      system: [],
-    };
-
-    parsedLogs.forEach((log) => {
-      buckets.all.push(log);
-      if (buckets[log.category]) {
-        buckets[log.category].push(log);
-      } else {
-        buckets.system.push(log);
-      }
-    });
-
-    return buckets;
-  }, [parsedLogs]);
 
   const categoryTabs = [
     { id: 'recent', label: 'Aktivitas Terbaru', count: bookings.length },
