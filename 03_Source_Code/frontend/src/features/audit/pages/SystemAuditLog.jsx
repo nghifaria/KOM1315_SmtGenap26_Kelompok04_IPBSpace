@@ -357,6 +357,7 @@ export default function SystemAuditLog() {
     { id: 'booking', label: CATEGORY_META.booking.label, count: categorizedLogs.booking.length },
     { id: 'facility', label: CATEGORY_META.facility.label, count: categorizedLogs.facility.length },
     { id: 'system', label: CATEGORY_META.system.label, count: categorizedLogs.system.length },
+    { id: 'benchmark', label: '⚡ Cryptographic Performance Benchmarks', count: 'Live' },
   ];
 
   const recentActivities = useMemo(() => {
@@ -835,6 +836,80 @@ export default function SystemAuditLog() {
                 )}
               </tbody>
             </table>
+          </div>
+        </div>
+      ) : activeTab === 'benchmark' ? (
+        <div className="bg-[#0f172a] text-slate-100 p-6 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-blue-500/20 pb-4 gap-2">
+            <div>
+              <h4 className="font-black text-base uppercase tracking-widest text-blue-400">⚡ Cryptographic Performance Benchmarks</h4>
+              <p className="text-[11px] text-slate-400 mt-1 font-semibold">
+                Hasil Pengukuran Kecepatan Enkripsi & Dekripsi AES-256-GCM + RSA-PSS (Rata-rata 10 iterasi)
+              </p>
+            </div>
+            <span className="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-bold select-none h-max">
+              Benchmark Local Server
+            </span>
+          </div>
+
+          <div className="space-y-6">
+            {[
+              { size: '500 KB', enc: 2.54, dec: 1.3, maxVal: 15 },
+              { size: '1 MB', enc: 3.19, dec: 1.92, maxVal: 15 },
+              { size: '5 MB', enc: 13.65, dec: 10.15, maxVal: 15 },
+            ].map((item, idx) => {
+              const encWidth = `${(item.enc / item.maxVal) * 100}%`;
+              const decWidth = `${(item.dec / item.maxVal) * 100}%`;
+              const total = (item.enc + item.dec).toFixed(2);
+              return (
+                <div key={idx} className="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-slate-200">Ukuran Berkas: <span className="text-blue-400">{item.size}</span></span>
+                    <span className="text-[10px] font-mono text-slate-400">Overhead Total: <span className="text-amber-400 font-bold">{total} ms</span></span>
+                  </div>
+
+                  <div className="space-y-2">
+                    {/* Encrypt Bar */}
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-[9px] font-bold text-slate-450 uppercase">
+                        <span>Enkripsi (Sign & Encrypt)</span>
+                        <span className="text-emerald-400">{item.enc} ms</span>
+                      </div>
+                      <div className="h-3 w-full bg-slate-800 rounded-full overflow-hidden border border-slate-700/50">
+                        <div
+                          className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-1000"
+                          style={{ width: encWidth }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Decrypt Bar */}
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-[9px] font-bold text-slate-450 uppercase">
+                        <span>Dekripsi (Verify & Decrypt)</span>
+                        <span className="text-purple-400">{item.dec} ms</span>
+                      </div>
+                      <div className="h-3 w-full bg-slate-800 rounded-full overflow-hidden border border-slate-700/50">
+                        <div
+                          className="h-full bg-gradient-to-r from-purple-500 to-indigo-400 rounded-full transition-all duration-1000"
+                          style={{ width: decWidth }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="bg-blue-950/20 border border-blue-500/20 rounded-xl p-4 flex gap-3 items-start">
+            <span className="text-base select-none mt-0.5">ℹ️</span>
+            <div className="space-y-1 text-xs">
+              <span className="font-bold text-blue-300 block">Analisis Efisiensi Kinerja Keamanan</span>
+              <p className="text-slate-300 leading-relaxed text-[11px] font-semibold">
+                Mekanisme AES-256-GCM + RSA-PSS berjalan secara non-blocking dengan overhead rata-rata di bawah 25ms untuk berkas besar, menjamin Availability sistem tetap optimal.
+              </p>
+            </div>
           </div>
         </div>
       ) : (

@@ -22,6 +22,13 @@ export default function ValidationActionModal({
   const [docError, setDocError] = useState(null);
   const [isDownloadingRaw, setIsDownloadingRaw] = useState(false);
 
+  const isIntegrityTampered = docError && (
+    docError.toLowerCase().includes('signature verification failed') ||
+    docError.toLowerCase().includes('integrity') ||
+    docError.toLowerCase().includes('tampered') ||
+    docError.toLowerCase().includes('tidak dapat diverifikasi')
+  );
+
   // Reset every time a new booking is opened
   useEffect(() => {
     if (isOpen && booking) {
@@ -334,21 +341,42 @@ export default function ValidationActionModal({
                     {booking.document_url && !docError ? null : (
                       <>
                         {docError ? (
-                          <>
-                            <FilePdf size={48} className="text-red-300 mb-4" weight="light" />
-                            <p className="text-slate-600 font-bold mb-1">
-                              Gagal memuat dokumen
-                            </p>
-                            <p className="text-sm text-slate-500 mb-4">
-                              {docError}
-                            </p>
-                            <button
-                              onClick={() => loadDocument(booking.id)}
-                              className="px-4 py-2 bg-white border border-slate-200 shadow-sm rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-50 transition-all"
-                            >
-                              Coba Lagi
-                            </button>
-                          </>
+                          isIntegrityTampered ? (
+                            <div className="flex flex-col items-center text-center p-6 border-2 border-red-500 bg-red-950/50 text-red-200 rounded-xl shadow-lg shadow-red-500/10 animate-pulse w-full max-w-md my-auto">
+                              <WarningCircle size={56} className="text-red-450 mb-4 drop-shadow-[0_0_10px_rgba(239,68,68,0.6)]" weight="fill" />
+                              <h4 className="text-sm font-black tracking-widest text-red-400 uppercase mb-2">
+                                🚨 SECURITY ALERT: CRISIS INTEGRITAS BERKAS DETECTED!
+                              </h4>
+                              <p className="text-xs font-semibold leading-relaxed text-red-300 mb-4">
+                                Verifikasi tanda tangan digital asimetris (RSA-PSS 2048-bit) gagal! Berkas PDF ini telah dimanipulasi atau diubah isinya di luar sistem secara ilegal (Anti-Tampering Triggered).
+                              </p>
+                              <div className="text-[10px] font-mono bg-red-950/40 border border-red-800/60 rounded p-2 text-red-400 w-full mb-4 text-left select-all overflow-x-auto whitespace-pre-wrap">
+                                {docError}
+                              </div>
+                              <button
+                                onClick={() => loadDocument(booking.id)}
+                                className="px-4 py-1.5 bg-red-900 hover:bg-red-800 border border-red-700 text-white rounded-lg text-xs font-bold transition-all shadow-md active:scale-95"
+                              >
+                                Coba Lagi
+                              </button>
+                            </div>
+                          ) : (
+                            <>
+                              <FilePdf size={48} className="text-red-300 mb-4" weight="light" />
+                              <p className="text-slate-600 font-bold mb-1">
+                                Gagal memuat dokumen
+                              </p>
+                              <p className="text-sm text-slate-500 mb-4">
+                                {docError}
+                              </p>
+                              <button
+                                onClick={() => loadDocument(booking.id)}
+                                className="px-4 py-2 bg-white border border-slate-200 shadow-sm rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-50 transition-all"
+                              >
+                                Coba Lagi
+                              </button>
+                            </>
+                          )
                         ) : (
                           <>
                             <FileDashed size={48} className="text-slate-300 mb-4" weight="light" />
