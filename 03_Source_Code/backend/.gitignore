@@ -9,3 +9,6 @@ __pycache__/
 venv/
 env/
 .venv/
+
+app_logs.txt
+uploads/
