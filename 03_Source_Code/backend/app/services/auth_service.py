@@ -12,6 +12,7 @@ from app.repositories.user_repository import (
     LOCK_DURATION_MINUTES,
     UserRepository,
 )
+from app.repositories.audit_repository import AuditRepository
 from app.schemas.auth import AuthBase
 from app.schemas.token import Token
 from app.schemas.user import UserCreate, UserInDB, UserLogin, UserResponse
@@ -24,9 +25,11 @@ class AuthService:
         self,
         user_repository: UserRepository,
         session_repository: SessionRepository,
+        audit_repository: AuditRepository,
     ):
         self.user_repository = user_repository
         self.session_repository = session_repository
+        self.audit_repository = audit_repository
         self.security = Security()
 
     # ------------------------------------------------------------------
@@ -47,7 +50,9 @@ class AuthService:
         hashed_password = self.security.hash_password(user_data.password)
         new_user = await self.user_repository.create(user_data, hashed_password)
 
-        logger.info("registration_successful", email=user_data.email, user_id=new_user.id)
+        logger.info(
+            "registration_successful", email=user_data.email, user_id=new_user.id
+        )
         return UserResponse.model_validate(new_user)
 
     # ------------------------------------------------------------------
@@ -58,8 +63,8 @@ class AuthService:
         self,
         email: str,
         password: str,
-        ip_address: Optional[str] = None, # bisa buat audit log
-        user_agent: Optional[str] = None, # bisa buat audit log
+        ip_address: Optional[str] = None,  # bisa buat audit log
+        user_agent: Optional[str] = None,  # bisa buat audit log
     ) -> Optional[UserInDB]:
         user = await self.user_repository.get_by_email(email)
 
@@ -93,7 +98,7 @@ class AuthService:
                         f"Try again in {remaining_minutes} minute(s)."
                     ),
                 )
-            
+
             # lock expired
             await self.user_repository.reset_failed_login(user.id)
 
@@ -188,7 +193,9 @@ class AuthService:
             user_agent=user_agent,
         )
 
-        logger.info("login_successful", email=user.email, user_id=user.id, role=user.role)
+        logger.info(
+            "login_successful", email=user.email, user_id=user.id, role=user.role
+        )
         return AuthBase(
             token=Token(access_token=access_token, refresh_token=refresh_token),
             data=UserResponse(
@@ -202,6 +209,34 @@ class AuthService:
                 updated_at=user.updated_at,
                 last_login=user.last_login,
             ),
+        )
+
+    #
+    # Login Log
+    #
+    async def record_login_log(
+        self,
+        email: str,
+        status: str,
+        ip_address: str | None = None,
+        user_agent: str | None = None,
+        reason: str | None = None,
+    ):
+        """Fungsi ini akan dijalankan di background oleh FastAPI"""
+
+        # Coba cari user_id berdasarkan email jika ada
+        user_id = None
+        user = await self.user_repository.get_by_email(email)
+        if user:
+            user_id = user.id
+
+        await self.audit_repository.create_login_log(
+            email=email,
+            status=status,
+            ip_address=ip_address,
+            user_agent=user_agent,
+            user_id=user_id,
+            reason=reason,
         )
 
     # ------------------------------------------------------------------
