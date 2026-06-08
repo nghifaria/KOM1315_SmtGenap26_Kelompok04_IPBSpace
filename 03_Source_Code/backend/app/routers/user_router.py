@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.services.user_service import UserService
-from app.repositories import user_repository
+from app.repositories import user_repository, audit_repository
 from app.schemas.user import UserResponse, UserUpdate, ManagerCreate, ManagerUpdate, ManagerResponse
 from app.api.dependencies import ensure_is_admin, get_current_user, ensure_is_admin_or_facility_manager
 from app.schemas.http import HTTPResponse
@@ -185,3 +185,29 @@ async def read_user_by_id(
     """
     user = await service.get_user_by_id(user_id)
     return HTTPResponse(success=True, data={"user": user})
+
+
+@router.get("/admin/login-logs", response_model=HTTPResponse)
+async def read_login_logs(
+    db: AsyncSession = Depends(get_db),
+    _: bool = Depends(ensure_is_admin),
+) -> HTTPResponse:
+    """
+    Retrieve all login logs. Requires admin privileges.
+    """
+    repo = audit_repository.AuditRepository(db)
+    logs = await repo.get_login_logs()
+
+    formatted_logs = []
+    for log in logs:
+        formatted_logs.append({
+            "id": log.id,
+            "email": log.email,
+            "user_id": log.user_id,
+            "ip_address": log.ip_address,
+            "user_agent": log.user_agent,
+            "status": log.status,
+            "reason": log.reason,
+            "created_at": log.created_at.isoformat() if log.created_at else None
+        })
+    return HTTPResponse(success=True, data={"items": formatted_logs})

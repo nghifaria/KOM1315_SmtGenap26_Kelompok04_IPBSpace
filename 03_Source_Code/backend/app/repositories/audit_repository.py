@@ -1,4 +1,5 @@
 import datetime
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.logs import LoginLog
 
@@ -29,3 +30,8 @@ class AuditRepository:
         self.db.add(log_entry)
         await self.db.commit()
         return log_entry
+
+    async def get_login_logs(self, limit: int = 100) -> list[LoginLog]:
+        stmt = select(LoginLog).order_by(LoginLog.created_at.desc()).limit(limit)
+        result = await self.db.execute(stmt)
+        return list(result.scalars().all())

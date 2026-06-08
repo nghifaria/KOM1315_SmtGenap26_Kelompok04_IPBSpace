@@ -47,6 +47,25 @@ const LEVEL_META = {
 
 const stripAnsi = (value) => value.replace(/\u001b\[[0-9;]*m/g, '');
 
+const parseUserAgent = (ua) => {
+  if (!ua) return 'Unknown';
+  let browser = 'Unknown Browser';
+  if (ua.includes('PostmanRuntime')) return 'Postman';
+  if (ua.includes('Firefox/')) browser = 'Firefox';
+  else if (ua.includes('Edg/')) browser = 'Edge';
+  else if (ua.includes('Chrome/')) browser = 'Chrome';
+  else if (ua.includes('Safari/')) browser = 'Safari';
+  
+  let os = 'Unknown OS';
+  if (ua.includes('Windows')) os = 'Windows';
+  else if (ua.includes('Macintosh')) os = 'macOS';
+  else if (ua.includes('Linux')) os = 'Linux';
+  else if (ua.includes('Android')) os = 'Android';
+  else if (ua.includes('iPhone')) os = 'iOS';
+  
+  return `${browser} (${os})`;
+};
+
 const parseKeyValuePairs = (text) => {
   const regex = /([a-zA-Z0-9_.-]+)[:=]('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|[^\s]+)/g;
   const matches = [...text.matchAll(regex)];
@@ -146,6 +165,7 @@ export default function SystemAuditLog() {
   const [bookings, setBookings] = useState([]);
   const [facilities, setFacilities] = useState([]);
   const [users, setUsers] = useState([]);
+  const [loginLogs, setLoginLogs] = useState([]);
 
   const safeExtract = (result, ...paths) => {
     if (result.status !== 'fulfilled') return [];
@@ -160,11 +180,12 @@ export default function SystemAuditLog() {
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const [logsRes, bookingsRes, facilitiesRes, usersRes] = await Promise.allSettled([
+      const [logsRes, bookingsRes, facilitiesRes, usersRes, loginLogsRes] = await Promise.allSettled([
         apiClient.get('/system/logs'),
         bookingService.getAllBookings(),
         facilityService.getAllFacilities(),
         userService.getAllUsers(),
+        apiClient.get('/users/admin/login-logs'),
       ]);
 
       const logsText = logsRes.status === 'fulfilled'
@@ -175,6 +196,11 @@ export default function SystemAuditLog() {
       setBookings(safeExtract(bookingsRes, 'data.items', 'items', 'data'));
       setFacilities(safeExtract(facilitiesRes, 'data.items', 'items', 'data'));
       setUsers(safeExtract(usersRes, 'data.items', 'items', 'data'));
+
+      const loginLogsData = loginLogsRes.status === 'fulfilled'
+        ? (loginLogsRes.value?.data?.items || loginLogsRes.value?.items || [])
+        : [];
+      setLoginLogs(loginLogsData);
     } catch (err) {
       console.error(err);
       toast.error('Gagal mengambil data log audit sistem dari server.');
@@ -665,6 +691,76 @@ export default function SystemAuditLog() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Login Session Forensics & Audit Trail */}
+      <div className="bg-[#0f172a] text-slate-100 p-5 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-4">
+        <div className="flex items-center justify-between border-b border-blue-500/20 pb-3">
+          <div className="flex items-center gap-2">
+            <span className="text-lg">🕵️‍♂️</span>
+            <h4 className="font-black text-sm uppercase tracking-widest text-blue-400">Login Session Forensics & Audit Trail</h4>
+          </div>
+          <span className="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded-full font-bold">
+            Live DB Connection
+          </span>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr className="border-b border-blue-500/20">
+                <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Timestamp</th>
+                <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Email</th>
+                <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">IP Address</th>
+                <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Browser/Device</th>
+                <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Status</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-800">
+              {loginLogs.length === 0 ? (
+                <tr>
+                  <td colSpan={5} className="py-6 text-center text-slate-500 font-semibold">
+                    Tidak ada log sesi login yang tercatat di database.
+                  </td>
+                </tr>
+              ) : (
+                loginLogs.map((log) => {
+                  const d = new Date(log.created_at);
+                  const formattedTime = d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' }) + ' ' + d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
+                  const isSuccess = log.status === 'SUCCESS';
+                  return (
+                    <tr key={log.id} className="hover:bg-slate-800/50 transition-colors">
+                      <td className="py-3 px-4 font-mono text-slate-450">{formattedTime}</td>
+                      <td className="py-3 px-4 font-semibold text-slate-300">{log.email}</td>
+                      <td className="py-3 px-4 font-mono text-blue-400">{log.ip_address || '127.0.0.1'}</td>
+                      <td className="py-3 px-4 text-slate-300 font-semibold" title={log.user_agent}>
+                        {parseUserAgent(log.user_agent)}
+                      </td>
+                      <td className="py-3 px-4">
+                        {isSuccess ? (
+                          <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-bold uppercase text-[10px]">
+                            SUCCESS
+                          </span>
+                        ) : (
+                          <div className="flex flex-col gap-0.5">
+                            <span className="bg-red-500/10 text-red-400 border border-red-500/20 px-2 py-0.5 rounded font-bold uppercase text-[10px] w-max">
+                              FAILED
+                            </span>
+                            {log.reason && (
+                              <span className="text-[10px] text-red-300 font-medium max-w-xs break-words">
+                                {log.reason}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
 
