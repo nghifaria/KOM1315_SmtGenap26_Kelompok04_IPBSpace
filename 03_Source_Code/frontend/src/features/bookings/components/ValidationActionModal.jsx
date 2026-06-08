@@ -20,6 +20,7 @@ export default function ValidationActionModal({
   const [docBlobUrl, setDocBlobUrl] = useState(null);
   const [isDocLoading, setIsDocLoading] = useState(false);
   const [docError, setDocError] = useState(null);
+  const [isDownloadingRaw, setIsDownloadingRaw] = useState(false);
 
   // Reset every time a new booking is opened
   useEffect(() => {
@@ -103,6 +104,29 @@ export default function ValidationActionModal({
       window.open(docBlobUrl, '_blank');
     } else if (onViewPDF) {
       onViewPDF(booking.id);
+    }
+  };
+
+  const handleDownloadRaw = async () => {
+    if (!booking?.document_url) return;
+    try {
+      setIsDownloadingRaw(true);
+      const blob = await bookingService.getRawSecuredDocument(booking.document_url);
+      const filename = booking.document_url.split('/').pop() || 'document.secured';
+      
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', filename);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error(err);
+      alert('Gagal mengunduh raw ciphertext: ' + err.message);
+    } finally {
+      setIsDownloadingRaw(false);
     }
   };
 
@@ -221,6 +245,52 @@ export default function ValidationActionModal({
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {/* Storage Security & Integrity Audit */}
+              {booking.document_url && (
+                <div className="bg-slate-900 text-slate-100 rounded-xl p-4 border border-blue-500/20 space-y-3 shadow-md shadow-blue-950/20">
+                  <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
+                    <span className="text-xs">🔒</span>
+                    <h4 className="text-[10px] font-black uppercase tracking-wider text-blue-400">Storage Security & Integrity Audit</h4>
+                  </div>
+                  <div className="space-y-2 text-[10px] font-mono">
+                    <div className="flex justify-between">
+                      <span className="text-slate-400">Storage Mode:</span>
+                      <span className="text-slate-200 font-bold">LOCAL_DISK (Encrypted)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-400">Cipher:</span>
+                      <span className="text-emerald-400 font-bold">AES-256-GCM</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-400">Signature:</span>
+                      <span className="text-blue-300 font-bold">RSASSA-PSS (2048)</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-400">Integrity:</span>
+                      <span className="text-amber-400 font-bold">SHA-256 Digest</span>
+                    </div>
+                  </div>
+                  <div className="pt-2 border-t border-slate-800 flex flex-col gap-2">
+                    {docBlobUrl && (
+                      <a
+                        href={docBlobUrl}
+                        download={booking.document_url.split('/').pop().replace('.secured', '')}
+                        className="w-full py-2 bg-emerald-500/10 hover:bg-emerald-500/20 active:scale-95 text-emerald-400 border border-emerald-500/20 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 text-center"
+                      >
+                        📄 Download PDF Asli (Didekripsi)
+                      </a>
+                    )}
+                    <button
+                      onClick={handleDownloadRaw}
+                      disabled={isDownloadingRaw}
+                      className="w-full py-2 bg-amber-500/10 hover:bg-amber-500/20 active:scale-95 text-amber-400 border border-amber-500/20 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center gap-1.5 disabled:opacity-50"
+                    >
+                      {isDownloadingRaw ? 'Downloading...' : '📥 Download Raw Ciphertext (.secured)'}
+                    </button>
+                  </div>
                 </div>
               )}
             </div>

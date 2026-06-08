@@ -116,6 +116,12 @@ deleteBookingDocument: async (id) => {
   return await apiClient.delete(`/bookings/${id}/document`);
 },
 
+getRawSecuredDocument: async (documentUrl) => {
+  return await apiClient.get(documentUrl, {
+    responseType: 'blob'
+  });
+},
+
 /**
  * Open and view a booking document in a new tab
  * Handles authentication and correct MIME types via Blob
