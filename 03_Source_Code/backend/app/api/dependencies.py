@@ -23,7 +23,7 @@ async def get_user_service(db: AsyncSession = Depends(get_db)) -> UserService:
 async def get_auth_service(db: AsyncSession = Depends(get_db)) -> AuthService:
     user_repo = user_repository.UserRepository(db)
     session_repo = session_repository.SessionRepository(db)
-    audit_repo = audit_repository.AuditRepository
+    audit_repo = audit_repository.AuditRepository(db)
     return AuthService(user_repo, session_repo, audit_repo)
 
 
