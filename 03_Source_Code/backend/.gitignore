@@ -12,3 +12,6 @@ env/
 
 app_logs.txt
 uploads/
+
+flake.nix
+flake.lock
