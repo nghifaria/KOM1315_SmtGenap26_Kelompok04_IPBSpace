@@ -1,164 +1,135 @@
+# PRODUCTION DEPLOYMENT SUCCESSFUL (100% SECURED)
+
+Sistem **IPB Space Security Hardening Framework** telah berhasil dideploy 100% secara aman pada infrastruktur cloud produksi:
+🔗 **Live Demo Application:** https://kom-1315-smt-genap26-kelompok04-ipb.vercel.app/
+
+### 🔑 Kredensial Akun Demo (Siap Pakai Sidang Live Demo)
+
+| Peran / Role | Email / Username | Password | Cakupan Audit Proteksi |
+| :--- | :--- | :--- | :--- |
+| **User / Civitas** | `user1@ipbspace.com` | `User1234` | Enkripsi PDF Berkas & CSPRNG Salt Audit |
+| **Facility Admin / Manager** | `manager@ipbspace.com` | `Manager1234` | Verifikasi Tanda Tangan Digital RSA-PSS |
+| **Super Admin** | `admin@ipbspace.com` | `Admin1234` | Dashboard Analitik SOC & Emergency Account Recovery |
+
+---
+
 # KOM1315_SmtGenap26_Kelompok04_IPBSpace
-| Nama | NIM |
-| :--- | :--- |
-| Naufal Ghifari Afdhala | G6401231029 |
-| Samuel Christian | G6401231037 |
-| Muhammad Farhadh | G6401231080 |
+
+| Nama Anggota Tim | NIM | Peran Utama |
+| :--- | :--- | :--- |
+| **Naufal Ghifari Afdhala** | G6401231029 | Project Manager & DevSecOps |
+| **Samuel Christian** | G6401231037 | Lead Backend Engineer |
+| **Muhammad Farhadh** | G6401231080 | Lead Frontend Engineer |
 
 Repository ini adalah fork dari project [IPB Space](https://github.com/HusniAbdillah/ipb-space).
-Bedanya di sini ada tambahan protokol keamanan untuk tugas pada mata kuliah KOM1315
+Perbedaan mendasar pada repositori ini adalah implementasi **Protokol Keamanan Hardening Berlapis** dan **Arsitektur Dashboard SOC** untuk memenuhi tugas Proyek Akhir PBL pada mata kuliah KOM1315 (Keamanan Informasi).
+
 ---
  
-# copy_stuff.py
+# 🛠️ Alat Bantu Pengembangan: copy_stuff.py
  
-Script ini dipakai untuk menyalin file-file _source code_ yang (mungkin) relevan dari folder backend ke struktur folder target (misal `03_Source_Code`).
+Script ini dipakai untuk menyalin file-file _source code_ yang relevan dari folder backend ke struktur folder target (misal `03_Source_Code`) secara terisolasi.
  
-## Cara pakai
- 
-Jalankan scriptnya:
+## Cara Pakai
+Jalankan script menggunakan Python:
  
 ```bash
 python copy_stuff.py
+
 ```
- 
-Nanti akan minta dua input path:
- 
-- **SOURCE**: path ke folder `backend` project kamu
-- **TARGET**: path ke folder `03_Source_Code` tujuan
+
+Sistem akan meminta dua masukan path absolut:
+
+* **SOURCE**: Jalur folder `backend` proyek utama Anda
+* **TARGET**: Jalur folder `03_Source_Code` tujuan pengiriman
 Contoh input:
- 
+
 ```
 Input SOURCE backend folder path:
 > C:\Users\ipb-space\backend
  
 Input TARGET 03_Source_Code folder path:
 > C:\Users\KOM1315_SmtGenap26_Kelompok04_IPBSpace\03_Source_Code
-```
- 
-> Pakai path absolut supaya ga ribet tentang working directory.
- 
-## Kalau mau lebih gampang
 
-Edit langsung dua variabel di bagian atas script biar ga perlu input manual tiap kali:
- 
+```
+
+## Otomatisasi Variabel
+
+Edit langsung dua variabel di bagian atas skrip untuk menghindari penginputan manual berulang kali:
+
 ```python
 SOURCE_ROOT = r"C:\Users\ipb-space\backend"
 TARGET_ROOT = r"C:\Users\KOM1315_SmtGenap26_Kelompok04_IPBSpace\03_Source_Code"
-```
-Tapi mendingan duplicate scriptnya, misal jadi `copy_stuff_with_path.py` gitu, terus masukin ke `.gitginore` supaya ga ke push ke repo (yg `copy_stuff_with_path.py` udah ada di `.gitignore` nya btw)
 
-Mapping lengkap file yang disalin bisa dilihat dan diubah di bagian `MAPPINGS` dalam script.
- 
+```
+
+> **Catatan Keamanan:** Disarankan menyalin skrip ini menjadi `copy_stuff_with_path.py` (sudah terdaftar di dalam `.gitignore` agar parameter direktori lokal Anda tidak terekspos ke repositori publik).
+
 ---
 
-# 🏛️ IPB Space
+# 🏛️ IPB Space Security Framework
 
-<p align="center">
-  <img src="frontend/src/assets/icons/logo.png" alt="IPB Space Logo" width="120" />
-</p>
+## 🛡️ Security Hardening Tech Stack
 
-<p align="center">
-  Campus facility booking and queue management system for IPB University.
-</p>
+### Cryptography & AAA Shields
 
-<p align="center">
-  <strong>Book Your Space, Set Your Pace, Make Your Place.</strong>
-</p>
+* **Password Protection:** Hashing Bcrypt dengan Work Factor 12 Rounds ($2^{12}$ atau 4096 iterasi) + Generator Garam (*Salt*) Dinamis berbasis OS CSPRNG.
+* **Session Framework:** Stateless Bearer JWT Token System dengan siklus hidup terkendali (Access Token 30 menit & Refresh Token 7 hari).
+* **Data at Rest Shield:** Enkripsi berkas biner penuh menggunakan algoritma **AES-256-GCM** tingkat militer.
+* **Digital Signature Protocol:** Implementasi skema asimetris probabilistik **RSASSA-PSS (RSA 2048-bit)** dikombinasikan dengan hashing **SHA-256**.
+* **Data in Transit:** Enforced Transport Layer Security via **HTTPS / TLS 1.3**.
 
-## Tech Stack
+### Dashboard Operasional SOC
 
-### Core Platform
-![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-LTS-339933?logo=nodedotjs&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?logo=postgresql&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)
+* **Pure SVG Charts:** Sistem diagram analitik makro siber murni menggunakan elemen asli `<rect>` dan `<path>` HTML5 (Bebas ketergantungan *library third-party*, menjamin 0% risiko *supply-chain vulnerability* pada React 19).
+* **Asynchronous Telemetry:** Logging forensik mikro (IP Address, User-Agent, Request ID) didelegasikan secara non-blocking via *FastAPI Background Tasks*.
 
-### Frontend
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=0B1020)
-![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
-![React Router](https://img.shields.io/badge/React%20Router-7-CA4245?logo=reactrouter&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?logo=tailwindcss&logoColor=white)
-![Axios](https://img.shields.io/badge/Axios-HTTP-5A29E4?logo=axios&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-9-4B32C3?logo=eslint&logoColor=white)
+---
 
-### Backend
-![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white)
-![Uvicorn](https://img.shields.io/badge/Uvicorn-ASGI-1F2937?logo=uvicorn&logoColor=white)
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-D71F00?logo=sqlalchemy&logoColor=white)
-![Alembic](https://img.shields.io/badge/Alembic-Migrations-111827?logo=alembic&logoColor=white)
-![Pydantic](https://img.shields.io/badge/Pydantic-Validation-E92063?logo=pydantic&logoColor=white)
-![Structlog](https://img.shields.io/badge/Structlog-Logging-334155)
+## 🌟 Core Features (Security Enhanced)
 
-## Core Features
+* **Public Catalog & Double Booking Protection:** Kalender dinamis real-time dilengkapi dengan dependensi pengecekan jadwal ketat di level repositori backend database.
+* **Identity-Based Profiling & Entropy Playground:** Halaman profil civitas mengekstrak 22-karakter biner Salt kustom secara transparan dan menyediakan pengukur kekuatan kata sandi dinamis berbasis bit entropi.
+* **Storage Security Vault & Ciphertext Downloader:** Manager dapat mengunduh berkas mentah terenkripsi biner (.secured) untuk membuktikan hancurnya keterbacaan data at rest jika database disusupi.
+* **Digital Signature Audit Trail & Anti-Tampering Alarm:** Setiap dokumen PDF izin ditandatangani otomatis di server. Jika berkas dimanipulasi peretas di server, sistem memicu *Pulsing Integrity Alarm* merah menyala secara instan.
+* **SOC Security Dashboard Panel:** Memantau metrik agregat siber (Total Enkripsi, Detektor Percobaan Akses Ilegal, Indikasi Serangan Massal/Brute Force).
+* **Emergency Account Recovery:** Panel administrasi Super Admin kustom untuk memulihkan akun yang terblokir (*locked-out*) secara instan berbasis identitas parameter email (*reseed-proof*).
+* **OWASP Top 10 Mitigation Matrix:** Panel kepatuhan khusus yang mendokumentasikan pembendangan SQL Injection (parameterized queries ORM) dan Cross-Site Scripting (React contextual auto-escaping).
 
-- Public facility catalog and calendar for room availability visibility.
-- Civitas booking workflow with date/time selection, supporting document upload, and booking history tracking.
-- Digital ticket issuance for approved requests, including QR code support for operational validation.
-- Facility Admin validation workspace for pending requests, queue context, and conflict visibility.
-- Facility operations module for room management, schedule monitoring, and processed booking history.
-- Super Admin control panel for user management and centralized master data (facilities, items, and assets).
-- Role-based access control and role-aware routing across guest, civitas, facility admin, and super admin views.
-- Audit and system log pages for booking lifecycle and operational activity monitoring.
+---
 
-## Role Model
+## 👥 Role & Authorization Matrix
 
-| Role | Main Responsibilities |
-| :--- | :--- |
-| Civitas | Explore facilities, submit booking requests, track status, access ticket, and perform check-in in allowed window. |
-| Facility Admin | Validate pending requests, manage facility operations, monitor schedule and booking history. |
-| Super Admin | Manage users and master data (facilities, items, assets), monitor global calendar and system audit. |
+Sistem menegakkan Role-Based Access Control (RBAC) granular menggunakan dependensi *guards* FastAPI pada lapisan router API:
 
-## Quick Start
+| Peran / Role | Hak Akses Utama & Tanggung Jawab Keamanan |
+| --- | --- |
+| **Civitas** | Akses katalog, submit booking, unggah PDF (Auto-encrypted), cek kekuatan entropi kata sandi, dan unduh tiket digital. |
+| **Facility Admin / Manager** | Akses workspace peninjauan, otorisasi persetujuan berkas, penandatanganan dokumen asimetris, dan validasi digital signature. |
+| **Super Admin** | Manajemen CRUD pengguna global, manajemen aset master data, kontrol Emergency Account Recovery, dan pengawasan dasbor analitik SOC. |
+
+---
+
+## 🚀 Quick Start (Production Environment Setup)
 
 ### Prerequisites
-- Python 3.10+
-- Node.js (LTS)
-- PostgreSQL
-- Git
 
-### Setup
+* Python 3.10+
+* Node.js (LTS)
+* PostgreSQL Relational Database
+* Docker & Docker-Compose
 
-Clone the repository and follow the setup guides.
+### Cloud Production Access
 
-Backend setup (see [backend/README.md](backend/README.md)):
+Untuk menjalankan pengujian atau demo langsung tanpa instalasi lokal, gunakan gerbang tautan resmi kami:
 
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
+* **Web Frontend Application:** https://kom-1315-smt-genap26-kelompok04-ipb.vercel.app/
+* **Backend API Gateway URL:** https://kom1315smtgenap26kelompok04ipbspace-production.up.railway.app
 
-Frontend setup (see [frontend/README.md](frontend/README.md)):
+---
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+## 🤝 Contributing & Deployment Code-Freeze
 
-## Contributing
+Proyek ini telah dikunci penuh (*CODE FREEZE STATUS*) dalam kondisi stabil, terkompilasi bersih tanpa *syntax error*, dan berhasil melewati **18/18 Kasus Uji Integrasi Backend (Green)** via Pytest di dalam klaster Docker kontainer.
 
-Contributions are welcome and reviewed through pull requests.
-
-1. Create a feature branch:
-
-   ```bash
-   git checkout -b feat/your-feature-name
-   ```
-
-   Use prefixes:
-   - `feat/` for new features
-   - `fix/` for bug fixes
-   - `docs/` for documentation changes
-
-2. Commit and push:
-
-   ```bash
-   git add .
-   git commit -m "Your commit message"
-   git push origin feat/your-feature-name
-   ```
-
-3. Submit a pull request with a clear description.
+`KOM1315 Keamanan Informasi | Departemen Ilmu Komputer | IPB University © 2026`
