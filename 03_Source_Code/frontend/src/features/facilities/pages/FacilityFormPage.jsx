@@ -4,7 +4,6 @@ import { ArrowLeft, FloppyDisk, Image, Trash } from '@phosphor-icons/react';
 import toast from 'react-hot-toast';
 import { assetService } from '../../assets/services/assetService';
 import { facilityService } from '../services/facilityService';
-import { getImageUrl } from '../../../shared/utils/image';
 
 const CONDITION_OPTIONS = [
   { value: 'good', label: 'Baik / Tersedia' },
@@ -67,8 +66,8 @@ export default function FacilityFormPage() {
             ? facility.assets.map((asset) => Number(asset.id)).filter((assetId) => Number.isInteger(assetId) && assetId > 0)
             : []
         );
-        setCurrentImageUrl(getImageUrl(facility?.image_url) || '');
-        setImagePreview(getImageUrl(facility?.image_url) || '');
+        setCurrentImageUrl(facility?.image_url || '');
+        setImagePreview(facility?.image_url || '');
       } catch (error) {
         console.error(error);
         toast.error('Gagal memuat data fasilitas.');

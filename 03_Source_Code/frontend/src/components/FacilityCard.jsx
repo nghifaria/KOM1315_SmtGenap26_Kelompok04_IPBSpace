@@ -5,8 +5,6 @@ import { toast } from "react-hot-toast";
 import { MapPin, Users, ChalkboardTeacher, ShieldWarning } from "@phosphor-icons/react";
 import { isFacilityAvailable } from "../shared/constants/facility";
 
-import { getImageUrl } from "../shared/utils/image";
-
 const FacilityCard = ({ facility }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -21,7 +19,7 @@ const FacilityCard = ({ facility }) => {
       {/* Gambar */}
       <div className="h-52 bg-gray-100 relative overflow-hidden shrink-0">
         <img 
-          src={getImageUrl(facility.image_url) || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"} 
+          src={facility.image_url || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"} 
           alt={facility.name}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />

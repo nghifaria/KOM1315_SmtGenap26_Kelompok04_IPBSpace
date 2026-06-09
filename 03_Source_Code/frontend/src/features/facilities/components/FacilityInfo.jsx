@@ -30,7 +30,6 @@ import { isFacilityAvailable } from '@/shared/constants/facility';
 import DescriptionItem from '@/shared/components/data-display/DescriptionItem';
 import AssetBadge from './ui/AssetBadge';
 import { getAssetIcon, getConditionLabel, getConditionColor } from '../constants/facilityConstants';
-import { getImageUrl } from '@/shared/utils/image';
 
 export default function FacilityInfo({ facility }) {
   if (!facility) return null;
@@ -55,7 +54,7 @@ export default function FacilityInfo({ facility }) {
         {/* Left Column: Premium Framed 4:3 Horizontal Image Container */}
         <div className="w-full md:w-[45%] aspect-[4/3] relative bg-gray-50 overflow-hidden shrink-0 rounded-2xl border border-gray-200/80 shadow-sm p-1.5">
           <img
-            src={getImageUrl(facility.image_url) || 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80'}
+            src={facility.image_url || 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80'}
             alt={facility.name}
             className="w-full h-full object-cover rounded-[10px] block animate-fade-in"
           />

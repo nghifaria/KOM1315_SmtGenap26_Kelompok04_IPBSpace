@@ -5,8 +5,6 @@ import { toast } from 'react-hot-toast';
 import FacilityStatusModal from '../components/FacilityStatusModal';
 import CustomDropdown from '../../../shared/components/ui/CustomDropdown';
 
-import { getImageUrl } from '../../../shared/utils/image';
-
 export default function FacilityManagement() {
   const [facilities, setFacilities] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -152,7 +150,7 @@ export default function FacilityManagement() {
                 {/* Image Container */}
                 <div className="h-48 relative overflow-hidden bg-slate-100 border-b border-slate-100">
                   <img 
-                    src={getImageUrl(f.image_url) || 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600&h=400'} 
+                    src={f.image_url || 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600&h=400'} 
                     alt={f.name}
                     className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${isMaintenance ? 'grayscale opacity-60' : ''}`}
                   />
