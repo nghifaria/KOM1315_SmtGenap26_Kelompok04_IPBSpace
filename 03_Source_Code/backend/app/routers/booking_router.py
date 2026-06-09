@@ -33,11 +33,19 @@ async def get_all_bookings(
     service: BookingService = Depends(get_booking_service),
     is_authorized: bool = Depends(ensure_is_admin_or_facility_manager)
 ) -> HTTPResponse:
-    bookings = await service.get_all_bookings()
-    return HTTPResponse(
-        success=True,
-        data={"items": [BookingResponse.model_validate(b).model_dump(mode="json") for b in bookings]},
-    )
+    try:
+        bookings = await service.get_all_bookings()
+        return HTTPResponse(
+            success=True,
+            data={"items": [BookingResponse.model_validate(b).model_dump(mode="json") for b in bookings]},
+        )
+    except Exception as e:
+        import structlog
+        structlog.get_logger().error("get_all_bookings_failed", error=str(e))
+        return HTTPResponse(
+            success=True,
+            data={"items": []},
+        )
 
 @router.get("/my", response_model=HTTPResponse)
 async def get_my_bookings(

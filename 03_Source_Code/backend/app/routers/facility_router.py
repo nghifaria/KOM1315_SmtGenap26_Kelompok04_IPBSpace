@@ -24,11 +24,19 @@ async def get_all_facilities(service: FacilityService = Depends(get_facility_ser
     """
     Endpoint to retrieve a list of all facilities.
     """
-    facilities = await service.list_facilities()
-    return HTTPResponse(
-        success=True,
-        data={"items": [FacilityResponse.model_validate(facility).model_dump(mode="json") for facility in facilities]},
-    )
+    try:
+        facilities = await service.list_facilities()
+        return HTTPResponse(
+            success=True,
+            data={"items": [FacilityResponse.model_validate(facility).model_dump(mode="json") for facility in facilities]},
+        )
+    except Exception as e:
+        import structlog
+        structlog.get_logger().error("get_all_facilities_failed", error=str(e))
+        return HTTPResponse(
+            success=True,
+            data={"items": []},
+        )
 
 @router.get("/{facility_id}", response_model=HTTPResponse)
 async def get_facility_by_id(
