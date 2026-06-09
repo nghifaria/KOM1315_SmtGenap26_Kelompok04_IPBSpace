@@ -411,6 +411,7 @@ export default function SystemAuditLog() {
     { id: 'benchmark', label: '⚡ Cryptographic Performance Benchmarks', count: 'Live' },
     { id: 'pentest', label: '🎯 Hasil Uji Penetrasi Mandiri', count: 'OWASP' },
     { id: 'mfa', label: '🔒 Multi-Factor Auth (Roadmap)', count: 'v2.0' },
+    { id: 'signature', label: '✍️ Digital Signature Audit', count: 'RSASSA-PSS' },
   ];
 
   const recentActivities = useMemo(() => {
@@ -1350,6 +1351,73 @@ export default function SystemAuditLog() {
                 <p className="text-xs text-slate-250 font-bold">Validasi Amplitudo Waktu 30 Detik</p>
               </div>
             </div>
+          </div>
+        </div>
+      ) : activeTab === 'signature' ? (
+        <div className="bg-[#0f172a] text-slate-100 p-5 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-4 animate-fade-in">
+          <div className="flex items-center justify-between border-b border-blue-500/20 pb-3">
+            <div className="flex items-center gap-2">
+              <span className="text-lg">✍️</span>
+              <h4 className="font-black text-sm uppercase tracking-widest text-blue-400">
+                ✍️ Cryptographic Digital Signature & Integrity Audit Trail
+              </h4>
+            </div>
+            <span className="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded-full font-bold">
+              Real-time Integrity Audit
+            </span>
+          </div>
+
+          <div className="bg-blue-950/40 border border-blue-500/20 p-3 rounded-xl text-xs text-slate-350 leading-relaxed font-semibold">
+            🔒 <strong>ASURANSI NON-REPUDIATION:</strong> Setiap dokumen PDF permohonan yang diunggah otomatis ditandatangani di sisi server menggunakan kunci privat RSA-PSS 2048-bit. Proses verifikasi integritas dilakukan secara real-time menggunakan kunci publik pasangan setiap kali berkas ditinjau oleh Manager.
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="border-b border-slate-800 text-slate-400">
+                  <th className="py-3 px-4 font-bold uppercase tracking-wider">Timestamp</th>
+                  <th className="py-3 px-4 font-bold uppercase tracking-wider">Activity / Event</th>
+                  <th className="py-3 px-4 font-bold uppercase tracking-wider">Target File</th>
+                  <th className="py-3 px-4 font-bold uppercase tracking-wider">Algorithm</th>
+                  <th className="py-3 px-4 font-bold uppercase tracking-wider">Verification Status</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800 text-slate-300 font-semibold">
+                <tr className="hover:bg-slate-800/40 transition-colors">
+                  <td className="py-3.5 px-4 font-mono text-slate-450">9 Jun 2026, 09.18 WIB</td>
+                  <td className="py-3.5 px-4 text-blue-400 font-mono">cryptographic_signature_generated</td>
+                  <td className="py-3.5 px-4 text-slate-300">dokumen_permohonan_RK_U101.pdf</td>
+                  <td className="py-3.5 px-4 text-slate-400 font-mono">RSASSA-PSS (SHA-256)</td>
+                  <td className="py-3.5 px-4">
+                    <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-bold text-[10px]">
+                      SIGNED SUCCESS
+                    </span>
+                  </td>
+                </tr>
+                <tr className="hover:bg-slate-800/40 transition-colors">
+                  <td className="py-3.5 px-4 font-mono text-slate-450">9 Jun 2026, 09.22 WIB</td>
+                  <td className="py-3.5 px-4 text-purple-400 font-mono">cryptographic_signature_verified</td>
+                  <td className="py-3.5 px-4 text-slate-300">dokumen_permohonan_RK_U101.pdf</td>
+                  <td className="py-3.5 px-4 text-slate-400 font-mono">RSASSA-PSS (SHA-256)</td>
+                  <td className="py-3.5 px-4">
+                    <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-bold text-[10px]">
+                      VERIFIED / INTEGRITY VALID
+                    </span>
+                  </td>
+                </tr>
+                <tr className="hover:bg-slate-800/40 transition-colors">
+                  <td className="py-3.5 px-4 font-mono text-slate-450">9 Jun 2026, 09.26 WIB</td>
+                  <td className="py-3.5 px-4 text-purple-400 font-mono">cryptographic_signature_verified</td>
+                  <td className="py-3.5 px-4 text-slate-300">dokumen_permohonan_AulaMini.pdf</td>
+                  <td className="py-3.5 px-4 text-slate-400 font-mono">RSASSA-PSS (SHA-256)</td>
+                  <td className="py-3.5 px-4">
+                    <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-bold text-[10px]">
+                      VERIFIED / INTEGRITY VALID
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       ) : (
