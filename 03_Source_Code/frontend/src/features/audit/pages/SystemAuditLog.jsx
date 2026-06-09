@@ -494,11 +494,11 @@ export default function SystemAuditLog() {
     { id: 'booking', label: CATEGORY_META.booking.label, count: categorizedLogs.booking.length },
     { id: 'facility', label: CATEGORY_META.facility.label, count: categorizedLogs.facility.length },
     { id: 'system', label: CATEGORY_META.system.label, count: categorizedLogs.system.length },
-    { id: 'registry', label: '≡ƒöæ Registry Kredensial & RBAC', count: userRegistry.length },
-    { id: 'benchmark', label: 'ΓÜí Cryptographic Performance Benchmarks', count: 'Live' },
-    { id: 'pentest', label: '≡ƒÄ» Hasil Uji Penetrasi Mandiri', count: 'OWASP' },
-    { id: 'mfa', label: '≡ƒöÆ Multi-Factor Auth (Roadmap)', count: 'v2.0' },
-    { id: 'signature', label: 'Γ£ì∩╕Å Digital Signature Audit', count: signatureLogs.length },
+    { id: 'registry', label: 'Registry Kredensial & RBAC', count: userRegistry.length },
+    { id: 'benchmark', label: 'Cryptographic Performance Benchmarks', count: 'Live' },
+    { id: 'pentest', label: 'Hasil Uji Penetrasi Mandiri', count: 'OWASP' },
+    { id: 'mfa', label: 'Multi-Factor Auth (Roadmap)', count: 'v2.0' },
+    { id: 'signature', label: 'Digital Signature Audit', count: signatureLogs.length },
   ];
 
   const recentActivities = useMemo(() => {
@@ -949,7 +949,6 @@ export default function SystemAuditLog() {
       <div className="bg-[#0f172a] text-slate-100 p-5 rounded-2xl border border-red-500/30 shadow-lg shadow-red-500/5 space-y-4">
         <div className="flex items-center justify-between border-b border-red-500/20 pb-3">
           <div className="flex items-center gap-2">
-            <span className="text-lg">≡ƒöô</span>
             <h4 className="font-black text-sm uppercase tracking-widest text-red-400">Emergency Account Recovery Panel</h4>
           </div>
           <span className="text-[10px] bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-0.5 rounded-full font-bold">
@@ -973,7 +972,7 @@ export default function SystemAuditLog() {
             disabled={isUnlocking}
             className="bg-red-600 hover:bg-red-500 text-white font-bold text-xs px-6 py-3 rounded-xl transition-all shadow-md active:scale-95 disabled:opacity-50 flex items-center justify-center gap-1.5 shrink-0"
           >
-            {isUnlocking ? 'Memproses...' : '≡ƒöô Reset & Unlock Account'}
+            {isUnlocking ? 'Memproses...' : 'Reset & Unlock Account'}
           </button>
         </div>
 
