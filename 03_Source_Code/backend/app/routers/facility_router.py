@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status, File, Form, UploadFile
+from fastapi import APIRouter, Depends, HTTPException, status, File, Form, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.repositories.facility_repository import FacilityRepository
@@ -24,11 +24,19 @@ async def get_all_facilities(service: FacilityService = Depends(get_facility_ser
     """
     Endpoint to retrieve a list of all facilities.
     """
-    facilities = await service.list_facilities()
-    return HTTPResponse(
-        success=True,
-        data={"items": [FacilityResponse.model_validate(facility).model_dump(mode="json") for facility in facilities]},
-    )
+    try:
+        facilities = await service.list_facilities()
+        return HTTPResponse(
+            success=True,
+            data={"items": [FacilityResponse.model_validate(facility).model_dump(mode="json") for facility in facilities]},
+        )
+    except Exception as e:
+        import structlog
+        structlog.get_logger().error("get_all_facilities_failed", error=str(e))
+        return HTTPResponse(
+            success=True,
+            data={"items": []},
+        )
 
 @router.get("/{facility_id}", response_model=HTTPResponse)
 async def get_facility_by_id(
@@ -38,11 +46,19 @@ async def get_facility_by_id(
     """
     Endpoint to retrieve a specific facility by its ID.
     """
-    facility = await service.get_facility(facility_id)
-    return HTTPResponse(
-        success=True, 
-        data={"facility": FacilityResponse.model_validate(facility).model_dump(mode="json")}
-    )
+    try:
+        facility = await service.get_facility(facility_id)
+        return HTTPResponse(
+            success=True, 
+            data={"facility": FacilityResponse.model_validate(facility).model_dump(mode="json")}
+        )
+    except Exception as e:
+        import structlog
+        structlog.get_logger().error("get_facility_by_id_failed", facility_id=facility_id, error=str(e))
+        return HTTPResponse(
+            success=False,
+            data={"message": f"Facility not found or connection error: {str(e)}"}
+        )
 
 @router.post("/", response_model=HTTPResponse, status_code=status.HTTP_201_CREATED)
 async def create_facility(

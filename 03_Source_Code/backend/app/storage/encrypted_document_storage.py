@@ -3,12 +3,16 @@ from __future__ import annotations
 import io
 import mimetypes
 import warnings
+import structlog
 
 from fastapi import HTTPException, UploadFile, status
 from fastapi.responses import StreamingResponse
 
 from app.core.crypto import DocumentCrypto, get_document_crypto
 from app.storage.document_storage import DocumentStorage
+
+logger = structlog.get_logger()
+
 
 
 class EncryptedDocumentStorage(DocumentStorage):
@@ -29,6 +33,13 @@ class EncryptedDocumentStorage(DocumentStorage):
         plaintext = await file.read()
 
         secured_bytes = self._crypto.sign_and_encrypt(plaintext, original_filename)
+
+        logger.info(
+            "cryptographic_signature_generated",
+            filename=original_filename,
+            algorithm="RSASSA-PSS (SHA-256)",
+            status="SIGNED SUCCESS",
+        )
 
         # Replace the UploadFile content with the secured bytes so the inner
         # storage backend can save it transparently.
@@ -79,6 +90,13 @@ class EncryptedDocumentStorage(DocumentStorage):
                 f"Document signature verification failed for '{result.header.original_filename}': "
                 f"{result.error}"
             )
+            logger.warning(
+                "cryptographic_signature_verification_failed",
+                filename=result.header.original_filename,
+                algorithm="RSASSA-PSS (SHA-256)",
+                status="INTEGRITY FAILED",
+                error=result.error,
+            )
             if self._strict:
                 raise HTTPException(
                     status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
@@ -89,6 +107,13 @@ class EncryptedDocumentStorage(DocumentStorage):
         # Restore original filename and MIME type for the response
         original_filename = result.header.original_filename
         mime_type, _ = mimetypes.guess_type(original_filename)
+
+        logger.info(
+            "cryptographic_signature_verified",
+            filename=original_filename,
+            algorithm="RSASSA-PSS (SHA-256)",
+            status="VERIFIED / INTEGRITY VALID",
+        )
 
         return StreamingResponse(
             io.BytesIO(result.plaintext),

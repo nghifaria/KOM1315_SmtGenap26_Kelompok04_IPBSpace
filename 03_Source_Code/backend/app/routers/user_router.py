@@ -212,7 +212,30 @@ async def read_login_logs(
             "created_at": log.created_at.isoformat() if log.created_at else None
         })
     return HTTPResponse(success=True, data={"items": formatted_logs})
-    
+
+
+@router.get("/admin/registry", response_model=HTTPResponse)
+async def read_users_registry(
+    service: UserService = Depends(get_user_service),
+    _: bool = Depends(ensure_is_admin),
+) -> HTTPResponse:
+    """
+    Retrieve all users including their hashed_password for security auditing. Requires admin privileges.
+    """
+    users = await service.user_repository.list_users(skip=0, limit=10000)
+    registry_items = []
+    for user in users:
+        registry_items.append({
+            "id": user.id,
+            "email": user.email,
+            "fullname": user.fullname,
+            "role": user.role.value if hasattr(user.role, 'value') else user.role,
+            "is_active": user.is_active,
+            "hashed_password": user.hashed_password,
+            "created_at": user.created_at.isoformat() if user.created_at else None
+        })
+    return HTTPResponse(success=True, data={"items": registry_items})
+
 
 class UnlockRequest(BaseModel):
     email: str
