@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, ShieldCheck, Phone } from '@phosphor-icons/react';
 import { getConditionLabel, getConditionClass } from '../../facilities/constants/facilityConstants';
+import { getImageUrl } from '../../../shared/utils/image';
 
 export default function BookingDetailFacilityInfo({ facility }) {
   return (
@@ -13,7 +14,7 @@ export default function BookingDetailFacilityInfo({ facility }) {
       <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
         {facility?.image_url && (
           <img 
-            src={facility.image_url} 
+            src={getImageUrl(facility.image_url)} 
             alt={facility.name} 
             className="w-full md:w-40 aspect-[4/3] rounded-xl object-cover border border-gray-200 shrink-0 shadow-sm"
           />
