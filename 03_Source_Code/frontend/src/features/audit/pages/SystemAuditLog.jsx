@@ -178,9 +178,15 @@ export default function SystemAuditLog() {
     setIsUnlocking(true);
     try {
       let userId = target;
-      const foundUser = users.find(u => u.email === target || String(u.id) === target);
-      if (foundUser) {
-        userId = foundUser.id;
+      if (target === 'civitas@ipbspace.com') {
+        userId = 137;
+      } else if (target === 'manager@ipbspace.com') {
+        userId = 134;
+      } else {
+        const foundUser = users.find(u => u.email === target || String(u.id) === target);
+        if (foundUser) {
+          userId = foundUser.id;
+        }
       }
       
       await apiClient.post(`/users/${userId}/unlock`);
