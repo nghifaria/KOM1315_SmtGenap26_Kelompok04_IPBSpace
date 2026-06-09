@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status, File, Form, UploadFile
+from fastapi import APIRouter, Depends, HTTPException, status, File, Form, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.repositories.facility_repository import FacilityRepository
@@ -55,7 +55,10 @@ async def get_facility_by_id(
     except Exception as e:
         import structlog
         structlog.get_logger().error("get_facility_by_id_failed", facility_id=facility_id, error=str(e))
-        raise HTTPException(status_code=404, detail="Facility not found or connection error")
+        return HTTPResponse(
+            success=False,
+            data={"message": f"Facility not found or connection error: {str(e)}"}
+        )
 
 @router.post("/", response_model=HTTPResponse, status_code=status.HTTP_201_CREATED)
 async def create_facility(
