@@ -747,7 +747,7 @@ export default function SystemAuditLog() {
           <div className="flex items-start justify-between">
             <div className="space-y-1.5">
               <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Kebijakan Keamanan & Hardening</span>
-              <div className="text-sm font-black text-slate-800">≡ƒ¢í∩╕Å Kebijakan Aktif (Dinamis)</div>
+              <div className="text-sm font-black text-slate-800">Kebijakan Aktif (Dinamis)</div>
             </div>
             <div className="h-10 w-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center shrink-0">
               <Shield size={20} weight="fill" />
