@@ -782,7 +782,6 @@ export default function SystemAuditLog() {
       <div className="bg-[#0f172a] text-slate-100 p-5 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-4">
         <div className="flex items-center justify-between border-b border-blue-500/20 pb-3">
           <div className="flex items-center gap-2">
-            <span className="text-lg">🕵️‍♂️</span>
             <h4 className="font-black text-sm uppercase tracking-widest text-blue-400">Login Session Forensics & Audit Trail</h4>
           </div>
           <span className="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded-full font-bold">
