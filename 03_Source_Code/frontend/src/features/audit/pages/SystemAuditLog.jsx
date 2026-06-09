@@ -407,6 +407,7 @@ export default function SystemAuditLog() {
     { id: 'booking', label: CATEGORY_META.booking.label, count: categorizedLogs.booking.length },
     { id: 'facility', label: CATEGORY_META.facility.label, count: categorizedLogs.facility.length },
     { id: 'system', label: CATEGORY_META.system.label, count: categorizedLogs.system.length },
+    { id: 'registry', label: '🔑 Registry Kredensial & RBAC', count: userRegistry.length },
     { id: 'benchmark', label: '⚡ Cryptographic Performance Benchmarks', count: 'Live' },
   ];
 
@@ -906,77 +907,7 @@ export default function SystemAuditLog() {
         </div>
       </div>
 
-      {/* User Account & Password Hashing Registry */}
-      <div className="bg-[#0f172a] text-slate-100 p-5 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-4">
-        <div className="flex items-center justify-between border-b border-blue-500/20 pb-3">
-          <div className="flex items-center gap-2">
-            <span className="text-lg">🔑</span>
-            <h4 className="font-black text-sm uppercase tracking-widest text-blue-400">
-              User Account & Password Hashing Registry
-            </h4>
-          </div>
-          <span className="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded-full font-bold">
-            Live Database Hashed Credentials
-          </span>
-        </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr className="border-b border-blue-500/20">
-                <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider w-16">User ID</th>
-                <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Email / Akun</th>
-                <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Nama Lengkap</th>
-                <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Role / Hak Akses</th>
-                <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Password Hash Status (Bcrypt)</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800">
-              {userRegistry.length === 0 ? (
-                <tr>
-                  <td colSpan={5} className="py-6 text-center text-slate-500 font-semibold">
-                    Tidak ada data pengguna yang terdaftar di database.
-                  </td>
-                </tr>
-              ) : (
-                userRegistry.map((registryUser) => {
-                  const roleLower = (registryUser.role || '').toLowerCase();
-                  let roleBadge = (
-                    <span className="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded font-bold uppercase text-[10px]">
-                      Civitas
-                    </span>
-                  );
-                  if (roleLower === 'super_admin' || roleLower === 'admin') {
-                    roleBadge = (
-                      <span className="bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-0.5 rounded font-bold uppercase text-[10px]">
-                        Admin
-                      </span>
-                    );
-                  } else if (roleLower === 'facility_manager' || roleLower === 'manager') {
-                    roleBadge = (
-                      <span className="bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2.5 py-0.5 rounded font-bold uppercase text-[10px]">
-                        Manager
-                      </span>
-                    );
-                  }
-
-                  return (
-                    <tr key={registryUser.id} className="hover:bg-slate-800/50 transition-colors">
-                      <td className="py-3 px-4 font-mono text-slate-450 font-bold">{registryUser.id}</td>
-                      <td className="py-3 px-4 font-semibold text-slate-200 select-all">{registryUser.email}</td>
-                      <td className="py-3 px-4 font-semibold text-slate-300">{registryUser.fullname}</td>
-                      <td className="py-3 px-4">{roleBadge}</td>
-                      <td className="py-3 px-4 font-mono text-[11px] text-emerald-400 select-all break-all max-w-xs font-semibold">
-                        {registryUser.hashed_password || 'no-hash-found'}
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
 
       <div className="flex border-b border-slate-200 gap-1 overflow-x-auto whitespace-nowrap">
         {categoryTabs.map((tab) => (
@@ -1046,6 +977,77 @@ export default function SystemAuditLog() {
                       </td>
                     </tr>
                   ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : activeTab === 'registry' ? (
+        <div className="bg-[#0f172a] text-slate-100 p-5 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-4 animate-fade-in">
+          <div className="flex items-center justify-between border-b border-blue-500/20 pb-3">
+            <div className="flex items-center gap-2">
+              <span className="text-lg">🔑</span>
+              <h4 className="font-black text-sm uppercase tracking-widest text-blue-400">
+                User Account & Password Hashing Registry
+              </h4>
+            </div>
+            <span className="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded-full font-bold">
+              Live Database Hashed Credentials
+            </span>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="border-b border-blue-500/20">
+                  <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider w-16">User ID</th>
+                  <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Email / Akun</th>
+                  <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Nama Lengkap</th>
+                  <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Role / Hak Akses</th>
+                  <th className="py-3 px-4 font-bold text-slate-400 uppercase tracking-wider">Password Hash Status (Bcrypt)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800">
+                {userRegistry.length === 0 ? (
+                  <tr>
+                    <td colSpan={5} className="py-6 text-center text-slate-500 font-semibold">
+                      Tidak ada data pengguna yang terdaftar di database.
+                    </td>
+                  </tr>
+                ) : (
+                  userRegistry.map((registryUser) => {
+                    const roleLower = (registryUser.role || '').toLowerCase();
+                    let roleBadge = (
+                      <span className="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded font-bold uppercase text-[10px]">
+                        Civitas
+                      </span>
+                    );
+                    if (roleLower === 'super_admin' || roleLower === 'admin') {
+                      roleBadge = (
+                        <span className="bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-0.5 rounded font-bold uppercase text-[10px]">
+                          Admin
+                        </span>
+                      );
+                    } else if (roleLower === 'facility_manager' || roleLower === 'manager') {
+                      roleBadge = (
+                        <span className="bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2.5 py-0.5 rounded font-bold uppercase text-[10px]">
+                          Manager
+                        </span>
+                      );
+                    }
+
+                    return (
+                      <tr key={registryUser.id} className="hover:bg-slate-800/50 transition-colors">
+                        <td className="py-3 px-4 font-mono text-slate-450 font-bold">{registryUser.id}</td>
+                        <td className="py-3 px-4 font-semibold text-slate-200 select-all">{registryUser.email}</td>
+                        <td className="py-3 px-4 font-semibold text-slate-300">{registryUser.fullname}</td>
+                        <td className="py-3 px-4">{roleBadge}</td>
+                        <td className="py-3 px-4 font-mono text-[11px] text-emerald-400 select-all break-all max-w-xs font-semibold">
+                          {registryUser.hashed_password || 'no-hash-found'}
+                        </td>
+                      </tr>
+                    );
+                  })
                 )}
               </tbody>
             </table>
