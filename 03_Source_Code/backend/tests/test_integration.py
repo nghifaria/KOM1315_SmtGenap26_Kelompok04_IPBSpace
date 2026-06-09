@@ -469,4 +469,54 @@ class TestSystemSecurityPolicyIntegration:
             headers={"Authorization": f"Bearer {user_body['data']['token']['access_token']}"}
         )
         assert resp.status_code == 403
+
+
+# ===============================================================================
+# User Registry & Password Hashing Status — Integration
+# ===============================================================================
+
+class TestUserRegistryIntegration:
+    async def test_get_user_registry_success(self, client: AsyncClient):
+        """GET /users/admin/registry sebagai Admin -> 200 OK dengan daftar user & hashed_password."""
+        # Registrasi Admin
+        admin_register_resp = await client.post("/auth/register", json={
+            "email": "registry_admin@test.com",
+            "fullname": "Registry Admin",
+            "idnum": "INT_REG_ADMIN",
+            "password": "Password123",
+            "role": "admin"
+        })
+        assert admin_register_resp.status_code == 201
+        admin_body = await login_user(client, "registry_admin@test.com")
+        admin_token = admin_body["data"]["token"]["access_token"]
+
+        # Registrasi User Civitas tambahan
+        await register_user(client, "civitas_member@test.com", password="PasswordCivitas123", role="civitas")
+
+        resp = await client.get(
+            "/users/admin/registry",
+            headers={"Authorization": f"Bearer {admin_token}"}
+        )
+        assert resp.status_code == 200
+        res_data = resp.json()
+        assert res_data["success"] is True
+        assert "items" in res_data["data"]
+        
+        items = res_data["data"]["items"]
+        assert len(items) >= 2
+        
+        # Pastikan hashed_password terekspos untuk super admin
+        civitas_item = next(item for item in items if item["email"] == "civitas_member@test.com")
+        assert civitas_item["hashed_password"] is not None
+        assert civitas_item["hashed_password"].startswith("$2b$") or "$2b$" in civitas_item["hashed_password"]
+
+    async def test_get_user_registry_forbidden(self, client: AsyncClient):
+        """GET /users/admin/registry sebagai Civitas -> 403 Forbidden."""
+        user_body = await register_and_login(client, "registry_civitas@test.com", role="civitas")
+        resp = await client.get(
+            "/users/admin/registry",
+            headers={"Authorization": f"Bearer {user_body['data']['token']['access_token']}"}
+        )
+        assert resp.status_code == 403
+
 

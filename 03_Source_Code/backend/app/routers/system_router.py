@@ -11,15 +11,17 @@ async def get_logs(
     _: bool = Depends(ensure_is_admin)
 ):
     """Retrieve the contents of the local application log file."""
-    if not os.path.exists(LOG_FILE):
-        return HTTPResponse(success=True, data={"logs": "", "message": "Log file not found yet."})
-    
     try:
+        if not os.path.exists(LOG_FILE):
+            return HTTPResponse(success=True, data={"logs": "", "message": "Log file not found yet."})
         with open(LOG_FILE, "r") as f:
             logs = f.read()
         return HTTPResponse(success=True, data={"logs": logs})
+    except (FileNotFoundError, OSError):
+        return HTTPResponse(success=True, data={"logs": "", "message": "Log file not found or inaccessible on server."})
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error reading log file: {str(e)}")
+        return HTTPResponse(success=True, data={"logs": "", "message": f"Error: {str(e)}"})
+
 
 
 @router.get("/security-policy", response_model=HTTPResponse)
