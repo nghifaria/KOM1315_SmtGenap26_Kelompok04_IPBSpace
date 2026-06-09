@@ -46,11 +46,16 @@ async def get_facility_by_id(
     """
     Endpoint to retrieve a specific facility by its ID.
     """
-    facility = await service.get_facility(facility_id)
-    return HTTPResponse(
-        success=True, 
-        data={"facility": FacilityResponse.model_validate(facility).model_dump(mode="json")}
-    )
+    try:
+        facility = await service.get_facility(facility_id)
+        return HTTPResponse(
+            success=True, 
+            data={"facility": FacilityResponse.model_validate(facility).model_dump(mode="json")}
+        )
+    except Exception as e:
+        import structlog
+        structlog.get_logger().error("get_facility_by_id_failed", facility_id=facility_id, error=str(e))
+        raise HTTPException(status_code=404, detail="Facility not found or connection error")
 
 @router.post("/", response_model=HTTPResponse, status_code=status.HTTP_201_CREATED)
 async def create_facility(

@@ -52,29 +52,45 @@ async def get_my_bookings(
     service: BookingService = Depends(get_booking_service),
     current_user: UserResponse = Depends(get_current_user)
 ) -> HTTPResponse:
-    stmt = select(Booking).where(Booking.user_id == current_user.id).options(
-        joinedload(Booking.extra_items).joinedload(BookingItem.item),
-        joinedload(Booking.user),
-        joinedload(Booking.facility)
-    )
-    result = await service.booking_repository.db.execute(stmt)
-    bookings = result.unique().scalars().all()
+    try:
+        stmt = select(Booking).where(Booking.user_id == current_user.id).options(
+            joinedload(Booking.extra_items).joinedload(BookingItem.item),
+            joinedload(Booking.user),
+            joinedload(Booking.facility)
+        )
+        result = await service.booking_repository.db.execute(stmt)
+        bookings = result.unique().scalars().all()
 
-    return HTTPResponse(
-        success=True,
-        data={"items": [BookingResponse.model_validate(b).model_dump(mode="json") for b in bookings]},
-    )
+        return HTTPResponse(
+            success=True,
+            data={"items": [BookingResponse.model_validate(b).model_dump(mode="json") for b in bookings]},
+        )
+    except Exception as e:
+        import structlog
+        structlog.get_logger().error("get_my_bookings_failed", user_id=current_user.id, error=str(e))
+        return HTTPResponse(
+            success=True,
+            data={"items": []},
+        )
 
 @router.get("/facility/{facility_id}", response_model=HTTPResponse)
 async def get_bookings_by_facility(
     facility_id: int,
     service: BookingService = Depends(get_booking_service)
 ) -> HTTPResponse:
-    bookings = await service.get_facility_booking_queue(facility_id)
-    return HTTPResponse(
-        success=True,
-        data={"items": [BookingResponse.model_validate(b).model_dump(mode="json") for b in bookings]}
-    )
+    try:
+        bookings = await service.get_facility_booking_queue(facility_id)
+        return HTTPResponse(
+            success=True,
+            data={"items": [BookingResponse.model_validate(b).model_dump(mode="json") for b in bookings]}
+        )
+    except Exception as e:
+        import structlog
+        structlog.get_logger().error("get_bookings_by_facility_failed", facility_id=facility_id, error=str(e))
+        return HTTPResponse(
+            success=True,
+            data={"items": []}
+        )
 
 @router.get("/{booking_id}", response_model=HTTPResponse)
 async def get_booking_by_id(
@@ -82,11 +98,16 @@ async def get_booking_by_id(
     service: BookingService = Depends(get_booking_service),
     current_user: UserResponse = Depends(get_current_user),
 ) -> HTTPResponse:
-    booking = await service.get_booking_by_id(booking_id)
-    return HTTPResponse(
-        success=True,
-        data={"booking": BookingResponse.model_validate(booking).model_dump(mode="json")},
-    )
+    try:
+        booking = await service.get_booking_by_id(booking_id)
+        return HTTPResponse(
+            success=True,
+            data={"booking": BookingResponse.model_validate(booking).model_dump(mode="json")},
+        )
+    except Exception as e:
+        import structlog
+        structlog.get_logger().error("get_booking_by_id_failed", booking_id=booking_id, error=str(e))
+        raise HTTPException(status_code=404, detail="Booking not found or connection error")
 
 @router.post("/{facility_id}", response_model=HTTPResponse, status_code=status.HTTP_201_CREATED)
 async def create_booking(
