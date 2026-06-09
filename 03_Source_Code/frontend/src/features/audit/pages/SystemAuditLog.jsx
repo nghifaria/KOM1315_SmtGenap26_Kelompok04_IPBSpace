@@ -1384,6 +1384,17 @@ export default function SystemAuditLog() {
               </thead>
               <tbody className="divide-y divide-slate-800 text-slate-300 font-semibold">
                 <tr className="hover:bg-slate-800/40 transition-colors">
+                  <td className="py-3.5 px-4 font-mono text-slate-450">9 Jun 2026, 09.30 WIB</td>
+                  <td className="py-3.5 px-4 text-purple-400 font-mono">cryptographic_signature_verified</td>
+                  <td className="py-3.5 px-4 text-slate-300">dokumen_permohonan_AulaMini.pdf</td>
+                  <td className="py-3.5 px-4 text-slate-400 font-mono">RSASSA-PSS (SHA-256)</td>
+                  <td className="py-3.5 px-4">
+                    <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-bold text-[10px]">
+                      VERIFIED / INTEGRITY VALID
+                    </span>
+                  </td>
+                </tr>
+                <tr className="hover:bg-slate-800/40 transition-colors">
                   <td className="py-3.5 px-4 font-mono text-slate-450">9 Jun 2026, 09.18 WIB</td>
                   <td className="py-3.5 px-4 text-blue-400 font-mono">cryptographic_signature_generated</td>
                   <td className="py-3.5 px-4 text-slate-300">dokumen_permohonan_RK_U101.pdf</td>
@@ -1397,7 +1408,7 @@ export default function SystemAuditLog() {
                 <tr className="hover:bg-slate-800/40 transition-colors">
                   <td className="py-3.5 px-4 font-mono text-slate-450">9 Jun 2026, 09.22 WIB</td>
                   <td className="py-3.5 px-4 text-purple-400 font-mono">cryptographic_signature_verified</td>
-                  <td className="py-3.5 px-4 text-slate-300">dokumen_permohonan_RK_U101.pdf</td>
+                  <td className="py-3.5 px-4 text-slate-300">dokumen_permohonan_AulaMini.pdf</td>
                   <td className="py-3.5 px-4 text-slate-400 font-mono">RSASSA-PSS (SHA-256)</td>
                   <td className="py-3.5 px-4">
                     <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded font-bold text-[10px]">
