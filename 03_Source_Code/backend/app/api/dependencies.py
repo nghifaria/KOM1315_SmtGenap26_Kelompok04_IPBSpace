@@ -15,6 +15,20 @@ from app.core.logging import logger
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 
+async def get_audit_repository(
+    db: AsyncSession = Depends(get_db),
+) -> audit_repository.AuditRepository:
+    """Menyuntikkan sesi database ke dalam AuditRepository"""
+    return audit_repository.AuditRepository(db)
+
+
+async def get_user_repository(
+    db: AsyncSession = Depends(get_db),
+) -> user_repository.UserRepository:
+    """Menyuntikkan sesi database ke dalam UserRepository"""
+    return user_repository.UserRepository(db)
+
+
 async def get_user_service(db: AsyncSession = Depends(get_db)) -> UserService:
     repo = user_repository.UserRepository(db)
     return UserService(repo)
@@ -116,4 +130,3 @@ def ensure_is_admin_or_facility_manager(
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN, detail="Not enough permissions"
         )
-

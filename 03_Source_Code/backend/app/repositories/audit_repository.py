@@ -1,6 +1,8 @@
 import datetime
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from sqlalchemy import desc
 from app.models.logs import LoginLog
 
 

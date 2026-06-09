@@ -27,6 +27,7 @@ from app.models.booking import Booking
 from app.models.asset import Asset
 from app.models.items import Items
 from app.models.extraItems import ExtraItems
+from app.models.logs import LoginLog
 
 
 target_metadata = Base.metadata
@@ -40,6 +41,7 @@ if database_url.startswith("postgres://"):
     database_url = database_url.replace("postgres://", "postgresql+asyncpg://", 1)
 
 config.set_main_option("sqlalchemy.url", database_url)
+
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode."""
@@ -64,7 +66,7 @@ def do_run_migrations(connection: Connection) -> None:
 
 async def run_migrations_online() -> None:
     """Run migrations in 'online' mode (Async Version)."""
-    
+
     connectable = async_engine_from_config(
         config.get_section(config.config_ini_section),
         prefix="sqlalchemy.",
@@ -82,3 +84,4 @@ if context.is_offline_mode():
     run_migrations_offline()
 else:
     asyncio.run(run_migrations_online())
+

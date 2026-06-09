@@ -14,7 +14,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.exc import IntegrityError
-from app.routers import facility_router, auth_router, user_router, booking_router, asset_router, item_router, system_router
+from app.routers import (
+    facility_router,
+    auth_router,
+    user_router,
+    booking_router,
+    asset_router,
+    item_router,
+    system_router,
+    audit_router,
+)
 from app.core.config import settings
 
 # Import all models to ensure SQLAlchemy registry is populated
@@ -22,18 +31,19 @@ import app.models
 
 app = FastAPI(title="IPB Space API")
 
+
 @app.middleware("http")
 async def logging_middleware(request: Request, call_next):
     request_id = str(uuid.uuid4())
     structlog.contextvars.clear_contextvars()
     structlog.contextvars.bind_contextvars(request_id=request_id)
-    
+
     start_time = time.perf_counter()
-    
+
     response = await call_next(request)
-    
+
     process_time = time.perf_counter() - start_time
-    
+
     logger.info(
         "request_processed",
         method=request.method,
@@ -41,8 +51,9 @@ async def logging_middleware(request: Request, call_next):
         status_code=response.status_code,
         duration=f"{process_time:.4f}s",
     )
-    
+
     return response
+
 
 uploads_dir = os.getenv("UPLOADS_PUBLIC_DIR", "uploads")
 os.makedirs(uploads_dir, exist_ok=True)
@@ -65,7 +76,9 @@ origins = [
 ]
 
 if settings.CORS_ORIGINS:
-    extra_origins = [origin.strip() for origin in settings.CORS_ORIGINS.split(",") if origin.strip()]
+    extra_origins = [
+        origin.strip() for origin in settings.CORS_ORIGINS.split(",") if origin.strip()
+    ]
     origins.extend(extra_origins)
 
 # Normalize origins (remove trailing slash) and remove duplicates
@@ -80,16 +93,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.on_event("startup")
 async def startup():
     from app.core.database import engine
     from sqlalchemy import text
+
     try:
         async with engine.begin() as conn:
-            await conn.execute(text("ALTER TABLE bookings ADD COLUMN IF NOT EXISTS validated_by VARCHAR;"))
-        logger.info("database_migration_successful", message="Column 'validated_by' checked/added to bookings table")
+            await conn.execute(
+                text(
+                    "ALTER TABLE bookings ADD COLUMN IF NOT EXISTS validated_by VARCHAR;"
+                )
+            )
+        logger.info(
+            "database_migration_successful",
+            message="Column 'validated_by' checked/added to bookings table",
+        )
     except Exception as e:
         logger.error("database_migration_failed", error=str(e))
+
 
 app.include_router(facility_router.router)
 app.include_router(auth_router.router)
@@ -98,10 +121,13 @@ app.include_router(booking_router.router)
 app.include_router(asset_router.router)
 app.include_router(item_router.router)
 app.include_router(system_router.router)
+app.include_router(audit_router.router)
+
 
 @app.get("/")
 def home():
     return {"success": True, "data": {"status": "IPB Space Online"}}
+
 
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exc: HTTPException):
@@ -119,8 +145,11 @@ async def http_exception_handler(request: Request, exc: HTTPException):
         },
     )
 
+
 @app.exception_handler(RequestValidationError)
-async def request_validation_exception_handler(request: Request, exc: RequestValidationError):
+async def request_validation_exception_handler(
+    request: Request, exc: RequestValidationError
+):
     details = jsonable_encoder(
         exc.errors(),
         custom_encoder={Exception: lambda error: str(error)},
@@ -140,12 +169,18 @@ async def request_validation_exception_handler(request: Request, exc: RequestVal
         },
     )
 
+
 @app.exception_handler(IntegrityError)
 async def sqlalchemy_integrity_exception_handler(request: Request, exc: IntegrityError):
     detail = None
-    if hasattr(exc, 'orig') and exc.orig and hasattr(exc.orig, 'args') and exc.orig.args:
+    if (
+        hasattr(exc, "orig")
+        and exc.orig
+        and hasattr(exc.orig, "args")
+        and exc.orig.args
+    ):
         detail = str(exc.orig.args[0])
-    
+
     logger.error("integrity_error", detail=detail)
     return JSONResponse(
         status_code=status.HTTP_400_BAD_REQUEST,
@@ -160,6 +195,7 @@ async def sqlalchemy_integrity_exception_handler(request: Request, exc: Integrit
             },
         },
     )
+
 
 @app.exception_handler(Exception)
 async def unexpected_exception_handler(request: Request, exc: Exception):
@@ -176,3 +212,4 @@ async def unexpected_exception_handler(request: Request, exc: Exception):
             },
         },
     )
+
