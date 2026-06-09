@@ -168,6 +168,7 @@ export default function SystemAuditLog() {
   const [loginLogs, setLoginLogs] = useState([]);
   const [unlockTarget, setUnlockTarget] = useState('');
   const [isUnlocking, setIsUnlocking] = useState(false);
+  const [securityPolicy, setSecurityPolicy] = useState(null);
 
   const handleUnlockByEmailOrId = async (target) => {
     if (!target) {
@@ -216,12 +217,13 @@ export default function SystemAuditLog() {
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const [logsRes, bookingsRes, facilitiesRes, usersRes, loginLogsRes] = await Promise.allSettled([
+      const [logsRes, bookingsRes, facilitiesRes, usersRes, loginLogsRes, policyRes] = await Promise.allSettled([
         apiClient.get('/system/logs'),
         bookingService.getAllBookings(),
         facilityService.getAllFacilities(),
         userService.getAllUsers(),
         apiClient.get('/users/admin/login-logs'),
+        apiClient.get('/system/security-policy'),
       ]);
 
       const logsText = logsRes.status === 'fulfilled'
@@ -237,6 +239,11 @@ export default function SystemAuditLog() {
         ? (loginLogsRes.value?.data?.items || loginLogsRes.value?.items || [])
         : [];
       setLoginLogs(loginLogsData);
+
+      const policyData = policyRes.status === 'fulfilled'
+        ? (policyRes.value?.data?.policies || policyRes.value?.policies || null)
+        : null;
+      setSecurityPolicy(policyData);
     } catch (err) {
       console.error(err);
       toast.error('Gagal mengambil data log audit sistem dari server.');
@@ -608,7 +615,7 @@ export default function SystemAuditLog() {
       />
 
       {/* SOC Analytics Dashboard Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Card 1: Crypto Ops */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
           <div className="space-y-1.5">
@@ -634,6 +641,46 @@ export default function SystemAuditLog() {
           </div>
           <div className={`h-12 w-12 rounded-xl border flex items-center justify-center shrink-0 ${bruteForceCount > 0 ? 'bg-red-50 text-red-600 border-red-100 animate-pulse' : 'bg-slate-50 text-slate-400 border-slate-200'}`}>
             <Warning size={24} weight="fill" />
+          </div>
+        </div>
+
+        {/* Card 3: Security Policy & Hardening Status */}
+        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between md:col-span-2 lg:col-span-1">
+          <div className="flex items-start justify-between">
+            <div className="space-y-1.5">
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Kebijakan Keamanan & Hardening</span>
+              <div className="text-sm font-black text-slate-800">🛡️ Kebijakan Aktif (Dinamis)</div>
+            </div>
+            <div className="h-10 w-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center shrink-0">
+              <Shield size={20} weight="fill" />
+            </div>
+          </div>
+
+          <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-[9px] font-mono text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100 leading-normal">
+            <div>
+              <span className="text-slate-400 block font-sans text-[8px] font-bold uppercase tracking-wider">Brute Force:</span>
+              <span className="font-bold text-slate-700">
+                {securityPolicy?.authentication?.failed_login_threshold || 5}x / {securityPolicy?.authentication?.lockout_duration_minutes || 15}m
+              </span>
+            </div>
+            <div>
+              <span className="text-slate-400 block font-sans text-[8px] font-bold uppercase tracking-wider">Masa Token:</span>
+              <span className="font-bold text-slate-700">
+                {securityPolicy?.authorization?.access_token_expiry_minutes || 15}m / {securityPolicy?.authorization?.refresh_token_expiry_days || 7}d
+              </span>
+            </div>
+            <div>
+              <span className="text-slate-400 block font-sans text-[8px] font-bold uppercase tracking-wider">Kriptografi File:</span>
+              <span className="font-bold text-emerald-600 font-black">
+                {securityPolicy?.cryptography_at_rest?.file_encryption_cipher || 'AES-GCM'}
+              </span>
+            </div>
+            <div>
+              <span className="text-slate-400 block font-sans text-[8px] font-bold uppercase tracking-wider">Status Storage:</span>
+              <span className="font-bold text-blue-600 font-black">
+                {securityPolicy?.system_status?.local_encrypted_storage || 'ACTIVE'}
+              </span>
+            </div>
           </div>
         </div>
       </div>

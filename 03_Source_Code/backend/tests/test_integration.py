@@ -426,4 +426,47 @@ class TestUnlockIntegration:
             json={"email": user_email},
             headers={"Authorization": f"Bearer {user_body['data']['token']['access_token']}"}
         )
-        assert resp.status_code == 403
+        assert resp.status_code == 403
+
+
+# ===============================================================================
+# System Security Policy — Integration
+# ===============================================================================
+
+class TestSystemSecurityPolicyIntegration:
+    async def test_get_security_policy_success(self, client: AsyncClient):
+        """GET /system/security-policy sebagai Admin -> 200 OK dengan metadata kebijakan."""
+        # Registrasi Admin
+        admin_register_resp = await client.post("/auth/register", json={
+            "email": "policy_admin@test.com",
+            "fullname": "Policy Admin",
+            "idnum": "INT_POLICY_ADMIN",
+            "password": "Password123",
+            "role": "admin"
+        })
+        assert admin_register_resp.status_code == 201
+        admin_body = await login_user(client, "policy_admin@test.com")
+        admin_token = admin_body["data"]["token"]["access_token"]
+
+        resp = await client.get(
+            "/system/security-policy",
+            headers={"Authorization": f"Bearer {admin_token}"}
+        )
+        assert resp.status_code == 200
+        res_data = resp.json()
+        assert res_data["success"] is True
+        assert "policies" in res_data["data"]
+        
+        policies = res_data["data"]["policies"]
+        assert policies["authentication"]["failed_login_threshold"] == 5
+        assert policies["cryptography_at_rest"]["file_encryption_cipher"] == "AES-256-GCM"
+
+    async def test_get_security_policy_forbidden(self, client: AsyncClient):
+        """GET /system/security-policy sebagai Civitas -> 403 Forbidden."""
+        user_body = await register_and_login(client, "policy_civitas@test.com", role="civitas")
+        resp = await client.get(
+            "/system/security-policy",
+            headers={"Authorization": f"Bearer {user_body['data']['token']['access_token']}"}
+        )
+        assert resp.status_code == 403
+
