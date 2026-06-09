@@ -410,6 +410,7 @@ export default function SystemAuditLog() {
     { id: 'registry', label: '🔑 Registry Kredensial & RBAC', count: userRegistry.length },
     { id: 'benchmark', label: '⚡ Cryptographic Performance Benchmarks', count: 'Live' },
     { id: 'pentest', label: '🎯 Hasil Uji Penetrasi Mandiri', count: 'OWASP' },
+    { id: 'mfa', label: '🔒 Multi-Factor Auth (Roadmap)', count: 'v2.0' },
   ];
 
   const recentActivities = useMemo(() => {
@@ -997,6 +998,11 @@ export default function SystemAuditLog() {
             </span>
           </div>
 
+          {/* Info-box Legenda Bcrypt */}
+          <div className="bg-blue-950/40 border border-blue-500/20 p-3 rounded-xl text-xs text-slate-350 leading-relaxed font-semibold">
+            💡 <strong>FORENSIK HASH:</strong> Struktur Bcrypt menggunakan format <code className="text-emerald-400 font-mono font-bold">$2b$12$[22-chars-salt][31-chars-hash]</code>. Angka '12' menunjukkan Work Factor (2^12 = 4096 iterasi hashing), memastikan keamanan tingkat tinggi terhadap serangan brute force GPU cluster lokal.
+          </div>
+
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
@@ -1303,6 +1309,47 @@ export default function SystemAuditLog() {
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      ) : activeTab === 'mfa' ? (
+        <div className="bg-[#0f172a] text-slate-100 p-6 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-6 animate-fade-in">
+          <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-blue-500/20 pb-4 gap-2">
+            <div>
+              <h4 className="font-black text-base uppercase tracking-widest text-blue-400">🔒 Future Hardening Roadmap: Multi-Factor Authentication (MFA)</h4>
+              <p className="text-[11px] text-slate-400 mt-1 font-semibold">
+                Rencana Strategis Peningkatan Keamanan Autentikasi Pengguna
+              </p>
+            </div>
+            <span className="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full font-bold select-none h-max">
+              Proposed Version: v2.0
+            </span>
+          </div>
+
+          <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-4">
+            <h5 className="font-bold text-sm text-slate-200">
+              Rencana Pengembangan Terstruktur: Time-Based One-Time Password (TOTP)
+            </h5>
+            <p className="text-slate-350 text-xs leading-relaxed font-medium">
+              Keterbatasan sistem saat ini adalah ketergantungan pada single-factor authentication. Pada pengembangan versi 2.0, sistem akan di-hardening dengan integrasi algoritma HMAC-Based One-Time Password (RFC 6238) menggunakan Google Authenticator / Microsoft Authenticator API.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Alur Kerja Verifikasi Dua Langkah:</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-slate-950/40 border border-slate-850 p-4 rounded-xl flex flex-col justify-between space-y-2">
+                <span className="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded font-bold text-[10px] w-max">Langkah 1</span>
+                <p className="text-xs text-slate-250 font-bold">Pembangkitan Secret Key 160-bit CSPRNG</p>
+              </div>
+              <div className="bg-slate-950/40 border border-slate-850 p-4 rounded-xl flex flex-col justify-between space-y-2">
+                <span className="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded font-bold text-[10px] w-max">Langkah 2</span>
+                <p className="text-xs text-slate-250 font-bold">Visualisasi QR-Code Base32</p>
+              </div>
+              <div className="bg-slate-950/40 border border-slate-850 p-4 rounded-xl flex flex-col justify-between space-y-2">
+                <span className="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded font-bold text-[10px] w-max">Langkah 3</span>
+                <p className="text-xs text-slate-250 font-bold">Validasi Amplitudo Waktu 30 Detik</p>
+              </div>
+            </div>
           </div>
         </div>
       ) : (
