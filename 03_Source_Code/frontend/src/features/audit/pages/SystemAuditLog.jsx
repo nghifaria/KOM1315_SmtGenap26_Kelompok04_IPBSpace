@@ -177,19 +177,21 @@ export default function SystemAuditLog() {
     
     setIsUnlocking(true);
     try {
-      let userId = target;
-      if (target === 'civitas@ipbspace.com') {
-        userId = 137;
-      } else if (target === 'manager@ipbspace.com') {
-        userId = 134;
-      } else {
-        const foundUser = users.find(u => u.email === target || String(u.id) === target);
+      let email = target;
+      // Jika target berupa ID (angka), cari email-nya dari daftar users
+      if (/^\d+$/.test(target)) {
+        const foundUser = users.find(u => String(u.id) === target);
         if (foundUser) {
-          userId = foundUser.id;
+          email = foundUser.email;
+        }
+      } else {
+        const foundUser = users.find(u => u.email === target);
+        if (foundUser) {
+          email = foundUser.email;
         }
       }
       
-      await apiClient.post(`/users/${userId}/unlock`);
+      await apiClient.post('/users/unlock-by-email', { email });
       toast.success('Sukses! Status Brute Force di-reset, akun civitas berhasil dibuka kembali.');
       fetchData();
       setUnlockTarget('');

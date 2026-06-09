@@ -403,7 +403,8 @@ class TestUnlockIntegration:
 
         # Unlock user
         unlock_resp = await client.post(
-            f"/users/{user_id}/unlock",
+            "/users/unlock-by-email",
+            json={"email": user_email},
             headers={"Authorization": f"Bearer {admin_token}"}
         )
         assert unlock_resp.status_code == 200
@@ -421,7 +422,8 @@ class TestUnlockIntegration:
         
         # Coba unlock diri sendiri
         resp = await client.post(
-            f"/users/{user_body['data']['user']['id']}/unlock",
+            "/users/unlock-by-email",
+            json={"email": user_email},
             headers={"Authorization": f"Bearer {user_body['data']['token']['access_token']}"}
         )
         assert resp.status_code == 403

@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, Query, status, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
+from pydantic import BaseModel
 
 from app.core.database import get_db
 from app.services.user_service import UserService
@@ -213,15 +214,24 @@ async def read_login_logs(
     return HTTPResponse(success=True, data={"items": formatted_logs})
     
 
-@router.post("/{user_id}/unlock", response_model=HTTPResponse)
-async def unlock_user(
-    user_id: int,
+class UnlockRequest(BaseModel):
+    email: str
+
+
+@router.post("/unlock-by-email", response_model=HTTPResponse)
+async def unlock_user_by_email(
+    data: UnlockRequest,
     service: UserService = Depends(get_user_service),
     _: bool = Depends(ensure_is_admin),
 ) -> HTTPResponse:
     """
-    Unlock a user account by resetting failed login attempts and lockout timestamps.
-    Requires admin privileges.
+    Unlock a user account by email. Requires admin privileges.
     """
-    await service.user_repository.reset_failed_login(user_id)
+    user = await service.user_repository.get_by_email(data.email)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User with email '{data.email}' not found."
+        )
+    await service.user_repository.reset_failed_login(user.id)
     return HTTPResponse(success=True, data={"message": "Akun berhasil dibuka kembali"})
