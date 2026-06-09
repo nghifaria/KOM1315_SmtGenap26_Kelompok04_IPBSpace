@@ -166,6 +166,34 @@ export default function SystemAuditLog() {
   const [facilities, setFacilities] = useState([]);
   const [users, setUsers] = useState([]);
   const [loginLogs, setLoginLogs] = useState([]);
+  const [unlockTarget, setUnlockTarget] = useState('');
+  const [isUnlocking, setIsUnlocking] = useState(false);
+
+  const handleUnlockByEmailOrId = async (target) => {
+    if (!target) {
+      toast.error('Masukkan Email atau User ID.');
+      return;
+    }
+    
+    setIsUnlocking(true);
+    try {
+      let userId = target;
+      const foundUser = users.find(u => u.email === target || String(u.id) === target);
+      if (foundUser) {
+        userId = foundUser.id;
+      }
+      
+      await apiClient.post(`/users/${userId}/unlock`);
+      toast.success('Sukses! Status Brute Force di-reset, akun civitas berhasil dibuka kembali.');
+      fetchData();
+      setUnlockTarget('');
+    } catch (err) {
+      console.error(err);
+      toast.error('Gagal membuka akun. Pastikan ID/Email terdaftar.');
+    } finally {
+      setIsUnlocking(false);
+    }
+  };
 
   const safeExtract = (result, ...paths) => {
     if (result.status !== 'fulfilled') return [];
@@ -762,6 +790,57 @@ export default function SystemAuditLog() {
               )}
             </tbody>
           </table>
+        </div>
+      </div>
+
+      {/* Emergency Account Recovery Panel */}
+      <div className="bg-[#0f172a] text-slate-100 p-5 rounded-2xl border border-red-500/30 shadow-lg shadow-red-500/5 space-y-4">
+        <div className="flex items-center justify-between border-b border-red-500/20 pb-3">
+          <div className="flex items-center gap-2">
+            <span className="text-lg">🔓</span>
+            <h4 className="font-black text-sm uppercase tracking-widest text-red-400">Emergency Account Recovery Panel</h4>
+          </div>
+          <span className="text-[10px] bg-red-500/10 text-red-400 border border-red-500/20 px-2.5 py-0.5 rounded-full font-bold">
+            Simulasi Pemulihan Brute Force
+          </span>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 items-end">
+          <div className="flex-1 space-y-1.5">
+            <label className="text-[10px] font-bold text-slate-400 uppercase">Email / User ID Civitas Terblokir</label>
+            <input
+              type="text"
+              value={unlockTarget}
+              onChange={(e) => setUnlockTarget(e.target.value)}
+              placeholder="Masukkan email atau ID (contoh: civitas@ipbspace.com)"
+              className="w-full bg-slate-900 border border-slate-700/60 rounded-xl px-4 py-2.5 text-xs text-slate-200 outline-none focus:border-red-500/50 transition-colors font-semibold"
+            />
+          </div>
+          <button
+            onClick={() => handleUnlockByEmailOrId(unlockTarget)}
+            disabled={isUnlocking}
+            className="bg-red-600 hover:bg-red-500 text-white font-bold text-xs px-6 py-3 rounded-xl transition-all shadow-md active:scale-95 disabled:opacity-50 flex items-center justify-center gap-1.5 shrink-0"
+          >
+            {isUnlocking ? 'Memproses...' : '🔓 Reset & Unlock Account'}
+          </button>
+        </div>
+
+        <div className="pt-2 border-t border-slate-800 flex flex-wrap gap-2 items-center">
+          <span className="text-[10px] font-bold text-slate-450">Pintasan Demo Cepat:</span>
+          <button
+            onClick={() => handleUnlockByEmailOrId('civitas@ipbspace.com')}
+            disabled={isUnlocking}
+            className="bg-slate-900/60 hover:bg-slate-850 border border-slate-800/80 text-blue-400 hover:text-blue-300 font-bold text-[10px] px-3 py-1.5 rounded-lg transition-all active:scale-95"
+          >
+            🔓 Unlock civitas@ipbspace.com
+          </button>
+          <button
+            onClick={() => handleUnlockByEmailOrId('manager@ipbspace.com')}
+            disabled={isUnlocking}
+            className="bg-slate-900/60 hover:bg-slate-850 border border-slate-800/80 text-purple-400 hover:text-purple-300 font-bold text-[10px] px-3 py-1.5 rounded-lg transition-all active:scale-95"
+          >
+            🔓 Unlock manager@ipbspace.com
+          </button>
         </div>
       </div>
 

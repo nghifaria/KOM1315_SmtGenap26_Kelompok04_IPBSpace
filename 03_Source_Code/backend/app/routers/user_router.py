@@ -211,3 +211,17 @@ async def read_login_logs(
             "created_at": log.created_at.isoformat() if log.created_at else None
         })
     return HTTPResponse(success=True, data={"items": formatted_logs})
+    
+
+@router.post("/{user_id}/unlock", response_model=HTTPResponse)
+async def unlock_user(
+    user_id: int,
+    service: UserService = Depends(get_user_service),
+    _: bool = Depends(ensure_is_admin),
+) -> HTTPResponse:
+    """
+    Unlock a user account by resetting failed login attempts and lockout timestamps.
+    Requires admin privileges.
+    """
+    await service.user_repository.reset_failed_login(user_id)
+    return HTTPResponse(success=True, data={"message": "Akun berhasil dibuka kembali"})

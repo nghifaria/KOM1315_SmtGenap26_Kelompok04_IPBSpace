@@ -364,3 +364,64 @@ class TestUserSecurityAuditIntegration:
         """GET /users/me/security-audit tanpa token -> 401."""
         resp = await client.get("/users/me/security-audit")
         assert resp.status_code == 401
+
+
+# ===============================================================================
+# Unlock Account — Integration
+# ===============================================================================
+
+class TestUnlockIntegration:
+    async def test_unlock_user_success(self, client: AsyncClient):
+        """
+        Kunci akun lewat failed logins, lalu panggil POST /users/{user_id}/unlock sebagai Admin.
+        Ekspektasi: Sesi terbuka kembali, status 200, login normal kembali berhasil.
+        """
+        # Register user civitas & login pertama kali
+        user_email = "lockandunlock@test.com"
+        user_body = await register_and_login(client, user_email, role="civitas")
+        user_id = user_body["data"]["user"]["id"]
+
+        # Lockout user dengan 5x failed logins
+        for _ in range(5):
+            await client.post("/auth/login", json={"email": user_email, "password": "WrongPassword"})
+
+        # Cek status terblokir (403)
+        locked_resp = await client.post("/auth/login", json={"email": user_email, "password": "WrongPassword"})
+        assert locked_resp.status_code == 403
+
+        # Login sebagai Admin (registrasi manual agar idnum unik)
+        admin_register_resp = await client.post("/auth/register", json={
+            "email": "admin_unlock_executor@test.com",
+            "fullname": "Admin Executor",
+            "idnum": "INT_ADMIN_001",
+            "password": "Password123",
+            "role": "admin"
+        })
+        assert admin_register_resp.status_code == 201
+        admin_body = await login_user(client, "admin_unlock_executor@test.com")
+        admin_token = admin_body["data"]["token"]["access_token"]
+
+        # Unlock user
+        unlock_resp = await client.post(
+            f"/users/{user_id}/unlock",
+            headers={"Authorization": f"Bearer {admin_token}"}
+        )
+        assert unlock_resp.status_code == 200
+        assert unlock_resp.json()["success"] is True
+
+        # Coba login ulang dengan password benar (seharusnya sukses kembali)
+        login_again_resp = await client.post("/auth/login", json={"email": user_email, "password": "Password123"})
+        assert login_again_resp.status_code == 200
+        assert login_again_resp.json()["success"] is True
+
+    async def test_unlock_user_non_admin_forbidden(self, client: AsyncClient):
+        """Panggil unlock sebagai civitas -> 403 Forbidden."""
+        user_email = "non_admin_trying_to_unlock@test.com"
+        user_body = await register_and_login(client, user_email, role="civitas")
+        
+        # Coba unlock diri sendiri
+        resp = await client.post(
+            f"/users/{user_body['data']['user']['id']}/unlock",
+            headers={"Authorization": f"Bearer {user_body['data']['token']['access_token']}"}
+        )
+        assert resp.status_code == 403
