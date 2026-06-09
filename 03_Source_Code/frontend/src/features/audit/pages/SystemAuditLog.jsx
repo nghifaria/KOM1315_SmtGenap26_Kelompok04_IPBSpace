@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ArrowsClockwise, Download, Info, Warning, XCircle, Lock, Shield } from '@phosphor-icons/react';
 import toast from 'react-hot-toast';
 import apiClient from '../../../shared/services/api/apiClient';
@@ -95,7 +95,7 @@ const getCategoryKey = (event, logger, kvs, rawLine) => {
   const path = (kvs.find((item) => item.key === 'path')?.val || '').toLowerCase();
   const haystack = `${lowerEvent} ${lowerLogger} ${lowerRaw} ${path}`;
 
-  // Signature / cryptographic events ΓÇö check first to avoid misclassification
+  // Signature / cryptographic events - check first to avoid misclassification
   if (/\b(signature|signing|sign_generated|sign_verified|rsa[-_]?pss|cryptographic_signature|document_signed|document_verified|integrity_check|pdf_signed)\b/.test(haystack)) {
     return 'signature';
   }
@@ -721,7 +721,7 @@ export default function SystemAuditLog() {
             <div className="text-2xl font-black text-slate-800">{cryptoStats.total}</div>
             <div className="text-[10px] text-emerald-600 font-bold flex items-center gap-1">
               <span>{cryptoStats.encrypts} Enkripsi</span>
-              <span>ΓÇó</span>
+              <span>&bull;</span>
               <span>{cryptoStats.decrypts} Dekripsi</span>
             </div>
           </div>
@@ -983,14 +983,14 @@ export default function SystemAuditLog() {
             disabled={isUnlocking}
             className="bg-slate-900/60 hover:bg-slate-850 border border-slate-800/80 text-blue-400 hover:text-blue-300 font-bold text-[10px] px-3 py-1.5 rounded-lg transition-all active:scale-95"
           >
-            ≡ƒöô Unlock civitas@ipbspace.com
+            Unlock civitas@ipbspace.com
           </button>
           <button
             onClick={() => handleUnlockByEmailOrId('manager@ipbspace.com')}
             disabled={isUnlocking}
             className="bg-slate-900/60 hover:bg-slate-850 border border-slate-800/80 text-purple-400 hover:text-purple-300 font-bold text-[10px] px-3 py-1.5 rounded-lg transition-all active:scale-95"
           >
-            ≡ƒöô Unlock manager@ipbspace.com
+            Unlock manager@ipbspace.com
           </button>
         </div>
       </div>
@@ -1074,7 +1074,6 @@ export default function SystemAuditLog() {
         <div className="bg-[#0f172a] text-slate-100 p-5 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-4 animate-fade-in">
           <div className="flex items-center justify-between border-b border-blue-500/20 pb-3">
             <div className="flex items-center gap-2">
-              <span className="text-lg">≡ƒöæ</span>
               <h4 className="font-black text-sm uppercase tracking-widest text-blue-400">
                 User Account & Password Hashing Registry
               </h4>
@@ -1086,7 +1085,7 @@ export default function SystemAuditLog() {
 
           {/* Info-box Legenda Bcrypt */}
           <div className="bg-blue-950/40 border border-blue-500/20 p-3 rounded-xl text-xs text-slate-350 leading-relaxed font-semibold">
-            ≡ƒÆí <strong>FORENSIK HASH:</strong> Struktur Bcrypt menggunakan format <code className="text-emerald-400 font-mono font-bold">$2b$12$[22-chars-salt][31-chars-hash]</code>. Angka '12' menunjukkan Work Factor (2^12 = 4096 iterasi hashing), memastikan keamanan tingkat tinggi terhadap serangan brute force GPU cluster lokal.
+            <strong>FORENSIK HASH:</strong> Struktur Bcrypt menggunakan format <code className="text-emerald-400 font-mono font-bold">$2b$12$[22-chars-salt][31-chars-hash]</code>. Angka '12' menunjukkan Work Factor (2^12 = 4096 iterasi hashing), memastikan keamanan tingkat tinggi terhadap serangan brute force GPU cluster lokal.
           </div>
 
           <div className="overflow-x-auto">
@@ -1150,7 +1149,7 @@ export default function SystemAuditLog() {
         <div className="bg-[#0f172a] text-slate-100 p-6 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-blue-500/20 pb-4 gap-2">
             <div>
-              <h4 className="font-black text-base uppercase tracking-widest text-blue-400">ΓÜí Cryptographic Performance Benchmarks</h4>
+              <h4 className="font-black text-base uppercase tracking-widest text-blue-400">Cryptographic Performance Benchmarks</h4>
               <p className="text-[11px] text-slate-400 mt-1 font-semibold">
                 Hasil Pengukuran Kecepatan Enkripsi & Dekripsi AES-256-GCM + RSA-PSS (Rata-rata 10 iterasi)
               </p>
@@ -1213,7 +1212,6 @@ export default function SystemAuditLog() {
           {/* Analisis Kinerja: Overhead Ukuran Data (Data Inflation) */}
           <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-4">
             <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
-              <span className="text-base">≡ƒôè</span>
               <h5 className="font-bold text-xs uppercase tracking-wider text-blue-400">
                 Analisis Kinerja: Overhead Ukuran Data (Data Inflation)
               </h5>
@@ -1267,9 +1265,8 @@ export default function SystemAuditLog() {
           {/* Analisis Overhead Infrastruktur Server (CPU & RAM Impact) */}
           <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-4">
             <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
-              <span className="text-base">≡ƒûÑ∩╕Å</span>
               <h5 className="font-bold text-xs uppercase tracking-wider text-blue-400">
-                ≡ƒûÑ∩╕Å Analisis Overhead Infrastruktur Server (CPU & RAM Impact)
+                Analisis Overhead Infrastruktur Server (CPU & RAM Impact)
               </h5>
             </div>
 
@@ -1323,7 +1320,6 @@ export default function SystemAuditLog() {
           </div>
 
           <div className="bg-blue-950/20 border border-blue-500/20 rounded-xl p-4 flex gap-3 items-start">
-            <span className="text-base select-none mt-0.5">Γä╣∩╕Å</span>
             <div className="space-y-1 text-xs">
               <span className="font-bold text-blue-300 block">Analisis Efisiensi Kinerja Keamanan</span>
               <p className="text-slate-300 leading-relaxed text-[11px] font-semibold">
@@ -1336,7 +1332,6 @@ export default function SystemAuditLog() {
         <div className="bg-[#0f172a] text-slate-100 p-5 rounded-2xl border border-red-500/30 shadow-lg shadow-red-500/5 space-y-4 animate-fade-in">
           <div className="flex items-center justify-between border-b border-red-500/20 pb-3">
             <div className="flex items-center gap-2">
-              <span className="text-lg">≡ƒÄ»</span>
               <h4 className="font-black text-sm uppercase tracking-widest text-red-400">
                 OWASP Top 10 Penetration Testing Validation Log
               </h4>
@@ -1401,7 +1396,7 @@ export default function SystemAuditLog() {
         <div className="bg-[#0f172a] text-slate-100 p-6 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-6 animate-fade-in">
           <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-blue-500/20 pb-4 gap-2">
             <div>
-              <h4 className="font-black text-base uppercase tracking-widest text-blue-400">≡ƒöÆ Future Hardening Roadmap: Multi-Factor Authentication (MFA)</h4>
+              <h4 className="font-black text-base uppercase tracking-widest text-blue-400">Future Hardening Roadmap: Multi-Factor Authentication (MFA)</h4>
               <p className="text-[11px] text-slate-400 mt-1 font-semibold">
                 Rencana Strategis Peningkatan Keamanan Autentikasi Pengguna
               </p>
@@ -1442,9 +1437,8 @@ export default function SystemAuditLog() {
         <div className="bg-[#0f172a] text-slate-100 p-5 rounded-2xl border border-blue-500/30 shadow-lg shadow-blue-500/5 space-y-4 animate-fade-in">
           <div className="flex items-center justify-between border-b border-blue-500/20 pb-3">
             <div className="flex items-center gap-2">
-              <span className="text-lg">Γ£ì∩╕Å</span>
               <h4 className="font-black text-sm uppercase tracking-widest text-blue-400">
-                Γ£ì∩╕Å Cryptographic Digital Signature & Integrity Audit Trail
+                Cryptographic Digital Signature & Integrity Audit Trail
               </h4>
             </div>
             <span className="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2.5 py-0.5 rounded-full font-bold">
@@ -1453,7 +1447,7 @@ export default function SystemAuditLog() {
           </div>
 
           <div className="bg-blue-950/40 border border-blue-500/20 p-3 rounded-xl text-xs text-slate-350 leading-relaxed font-semibold">
-            ≡ƒöÆ <strong>ASURANSI NON-REPUDIATION:</strong> Setiap dokumen PDF permohonan yang diunggah otomatis ditandatangani di sisi server menggunakan kunci privat RSA-PSS 2048-bit. Proses verifikasi integritas dilakukan secara real-time menggunakan kunci publik pasangan setiap kali berkas ditinjau oleh Manager.
+            <strong>ASURANSI NON-REPUDIATION:</strong> Setiap dokumen PDF permohonan yang diunggah otomatis ditandatangani di sisi server menggunakan kunci privat RSA-PSS 2048-bit. Proses verifikasi integritas dilakukan secara real-time menggunakan kunci publik pasangan setiap kali berkas ditinjau oleh Manager.
           </div>
 
           <div className="overflow-x-auto">
