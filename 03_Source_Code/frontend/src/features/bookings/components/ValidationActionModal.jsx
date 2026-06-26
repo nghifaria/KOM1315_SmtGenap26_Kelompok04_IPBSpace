@@ -342,7 +342,7 @@ export default function ValidationActionModal({
                       <>
                         {docError ? (
                           isIntegrityTampered ? (
-                            <div className="flex flex-col items-center text-center p-6 border-2 border-red-500 bg-red-950/50 text-red-200 rounded-xl shadow-lg shadow-red-500/10 animate-pulse w-full max-w-md my-auto">
+                            <div className="flex flex-col items-center text-center p-6 border-2 border-red-500 bg-red-950/50 text-red-200 rounded-xl shadow-lg shadow-red-500/10 w-full max-w-md my-auto">
                               <WarningCircle size={56} className="text-red-450 mb-4 drop-shadow-[0_0_10px_rgba(239,68,68,0.6)]" weight="fill" />
                               <h4 className="text-sm font-black tracking-widest text-red-400 uppercase mb-2">
                                 🚨 SECURITY ALERT: CRISIS INTEGRITAS BERKAS DETECTED!
